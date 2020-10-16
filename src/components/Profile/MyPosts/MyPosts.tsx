@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post/Post";
 import styles from "./MyPosts.module.css";
 
-function MyPosts() {
+const MyPosts = () => {
     return (
         <div>
             My posts
@@ -12,12 +12,11 @@ function MyPosts() {
                 <button>Delete post</button>
             </div>
             <div className={styles.posts}>
-                <Post />
-                <Post />
-                <Post />
+                <Post message='Canada' />
+                <Post message='Netherlands' />
             </div>
         </div>
     );
-}
+};
 
 export default MyPosts;

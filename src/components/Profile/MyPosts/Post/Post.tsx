@@ -1,11 +1,16 @@
 import React from "react";
 import styles from './Post.module.css';
+import logo from '../../../../assets/canadaFlag.jpeg'
 
-function Post() {
+type MessageType = {
+    message: string;
+};
+
+const Post: React.FC<MessageType> = (props) => {
     return (
         <div className={styles.item}>
-            <img src="https://steamuserimages-a.akamaihd.net/ugc/862862655199713640/C17A53BED1F8B6CF372693537515C8358541CC49/" alt=""/>
-            Hi everyone!
+            <img src={logo} alt=""/>
+           {props.message}
             <div>
                 <span>Like!</span>
             </div>
