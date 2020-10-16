@@ -1,12 +1,14 @@
 import React from "react";
+import "./Header.css";
 
 function Header() {
     return (
-        <div>
-            <a href="#s">Home</a>
-            <a href="#s">News Feed</a>
-            <a href="#s">Messages</a>
-        </div>
+        <header className="header">
+            <img
+                src="https://steamuserimages-a.akamaihd.net/ugc/862862655199713640/C17A53BED1F8B6CF372693537515C8358541CC49/"
+                alt="Navi logo! Pow-Pow!"
+            />
+        </header>
     );
 }
 

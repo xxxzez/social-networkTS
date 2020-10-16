@@ -1,30 +1,11 @@
-.app {
+.App {
     display: grid;
     margin: 0 auto;
-    width: 1200 px;
+    width: 1200px;
     grid-template-areas:
         "h h"
         "n c";
 
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-}
-
-.header {
-    grid-area: h;
-    background-color: mediumpurple;
-}
-
-.header img {
-    width: 40px;
-}
-
-.nav{
-    grid-area: n;
-    background-color: azure;
-}
-
-.profile{
-    grid-area:c;
-    background-color: darkgreen;
 }
