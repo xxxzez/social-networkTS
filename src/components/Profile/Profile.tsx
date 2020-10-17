@@ -7,7 +7,7 @@ const Profile = () => {
     return (
         <div>
             <div>
-                <img src={logo} alt="" width="600px" />
+                <img src={logo} alt="" width="900px" />
             </div>
             <div>The most gorgeous tournament in CSGO history!</div>
             <MyPosts />

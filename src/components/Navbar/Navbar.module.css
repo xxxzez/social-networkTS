@@ -1,5 +1,33 @@
 .nav {
-    grid-area: n;
-    background-color: rgb(93, 118, 187);
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    display: flex;
+    padding: 10px;
+    background: linear-gradient(90deg, rgba(198,0,252,1) 0%, rgba(128,0,255,1) 100%);
+}
+
+.item:hover {
+    background: rgb(198,0,252);
+background: linear-gradient(90deg, rgba(198,0,252,1) 0%, rgba(91,23,158,1) 100%);
+}
+
+.item:active {
+    background: rgb(198,0,252);
+background: rgba(91,23,158,1) ;
+}
+
+.item a {
+    margin: 10px;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.icon {
+    margin: 10px;
+}
+.item img {
+    width: 20px;
 }
