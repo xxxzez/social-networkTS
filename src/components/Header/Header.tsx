@@ -4,7 +4,7 @@ import styles from './Header.module.css'
 const Header = () => {
     return (
         <header className={styles.header}>
-            <h4>Notifications 23</h4>
+            <h4>No new notifications</h4>
         </header>
     );
 }

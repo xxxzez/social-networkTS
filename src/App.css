@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 .app {
     display: flex;
     margin: 0 auto;
     flex-direction: column;
     width: 1200px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .main {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background: rgb(190, 159, 219);
+    /* background: rgb(190, 159, 219); */
 }
 
 .appContent {

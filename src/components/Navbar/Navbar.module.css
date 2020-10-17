@@ -1,13 +1,7 @@
 .nav {
     display: flex;
     flex-direction: column;
-    background: rgb(91, 23, 158);
-    background: linear-gradient(
-        180deg,
-        rgba(91, 23, 158, 1) 0%,
-        rgba(162, 8, 220, 1) 50%,
-        rgba(91, 23, 158, 1) 100%
-    );
+    
 }
 
 .item {
@@ -16,17 +10,14 @@
 }
 
 .item:hover {
-    background: rgba(91, 23, 158, 1);
+    background: rgb(209, 209, 209);
 }
 
-.item:active {
-    background: rgba(91, 23, 158, 1);
-}
 
 .item a {
     margin: 10px;
     text-decoration: none;
-    color: aliceblue;
+    color: rgb(114, 114, 114);
 }
 
 .icon {

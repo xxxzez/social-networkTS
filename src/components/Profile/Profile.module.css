@@ -2,10 +2,15 @@
     display: flex;
     flex-direction: column;
     margin: 20px;
-    background: rgb(190, 159, 219);
+    color: rgb(114, 114, 114);
+}
+
+.profilePicture{
+    display: flex;
+    flex-direction: column;
 }
 
 .profilePicture img {
-    border-radius: 10%;
+    /* border-radius: 10%; */
     width: 400px;
 }

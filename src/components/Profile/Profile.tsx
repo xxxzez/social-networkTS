@@ -1,7 +1,7 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import styles from "./Profile.module.css";
-import logo from "../../assets/profilePicture.jpeg";
+import logo from "../../assets/profilePicture.jpg";
 
 const Profile = () => {
     return (

@@ -6,7 +6,7 @@ import Navbar from "../Navbar/Navbar";
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            <h3>Fooooooter</h3>
+            <h4>Copyright© 1993-2020</h4>
         </footer>
     );
 }
