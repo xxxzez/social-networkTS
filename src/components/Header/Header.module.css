@@ -1,6 +1,8 @@
 .header{
-    background-color: rgb(77, 36, 88);
+    display: flex;
+    background-color:rgb(91, 23, 158);
     color: rgb(173, 175, 177);
+    padding:10px;
 }
 
 .header img {

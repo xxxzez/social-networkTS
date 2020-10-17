@@ -1,3 +1,6 @@
 .footer{
-    background-color: rgb(96, 128, 155);
+    display: flex;
+    background-color: rgba(91,23,158,1);
+    color: rgb(173, 175, 177);
+    padding: 10px;
 }

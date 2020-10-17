@@ -1,14 +1,17 @@
-.app{
+.app {
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
-    background-color: rgb(233, 233, 233);
+    width: 1200px;
 }
 
-.main{
+.main {
     display: flex;
-    
+    flex-direction: row;
+    justify-content: flex-start;
+    background: rgb(190, 159, 219);
 }
 
-.appContent{
-display: flex;
+.appContent {
+    display: flex;
 }

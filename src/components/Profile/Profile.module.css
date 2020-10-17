@@ -1,0 +1,11 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    background: rgb(190, 159, 219);
+}
+
+.profilePicture img {
+    border-radius: 10%;
+    width: 400px;
+}
