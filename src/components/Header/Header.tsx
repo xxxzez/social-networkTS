@@ -2,7 +2,7 @@ import React from "react";
 import styles from './Header.module.css'
 import logo from '../../assets/canadaFlag.jpeg'
 
-function Header() {
+const Header = () => {
     return (
         <header className={styles.header}>
             <img
