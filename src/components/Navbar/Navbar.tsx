@@ -3,33 +3,29 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import icon from "../../assets/profileIcon.png";
 
+type NavbarItemType = {
+    link: string;
+    title: string;
+};
+
+const NavbarItem: React.FC<NavbarItemType> = (props) => {
+    return (
+        <div className={styles.item}>
+            <div className={styles.icon}>
+                <img src={icon} alt="" />
+            </div>
+            <NavLink to={`/${props.link}`}>{props.title}</NavLink>
+        </div>
+    );
+};
+
 const Navbar = () => {
     return (
         <div className={styles.nav}>
-            <div className={styles.item}>
-                <div className={styles.icon}>
-                    <img src={icon} alt="" />
-                </div>
-                <NavLink to="/profile">Profile</NavLink>
-            </div>
-            <div className={styles.item}>
-                <div className={styles.icon}>
-                    <img src={icon} alt="" />
-                </div>
-                <NavLink to="/messages">Messages</NavLink>
-            </div>
-            <div className={styles.item}>
-                <div className={styles.icon}>
-                    <img src={icon} alt="" />
-                </div>
-                <NavLink to="/news">News</NavLink>
-            </div>
-            <div className={styles.item}>
-                <div className={styles.icon}>
-                    <img src={icon} alt="" />
-                </div>
-                <NavLink to="/settings">Settings</NavLink>
-            </div>
+            <NavbarItem link="profile" title="Profile" />
+            <NavbarItem link="messages" title="Messages" />
+            <NavbarItem link="news" title="News feed" />
+            <NavbarItem link="settings" title="Settings" />
         </div>
     );
 };

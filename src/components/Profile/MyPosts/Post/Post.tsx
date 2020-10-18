@@ -3,7 +3,7 @@ import styles from './Post.module.css';
 import logo from '../../../../assets/canadaFlag.jpeg'
 
 type PostType = {
-    message: string;
+    message: string
     likesCount: number
 };
 
