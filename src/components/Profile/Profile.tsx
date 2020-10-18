@@ -1,7 +1,7 @@
-import React from "react";
-import MyPosts from "./MyPosts/MyPosts";
-import styles from "./Profile.module.css";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import React from "react"
+import MyPosts from "./MyPosts/MyPosts"
+import styles from "./Profile.module.css"
+import ProfileInfo from "./ProfileInfo/ProfileInfo"
 
 const Profile = () => {
     return (
@@ -9,7 +9,7 @@ const Profile = () => {
             <ProfileInfo />
             <MyPosts />
         </div>
-    );
-};
+    )
+}
 
-export default Profile;
+export default Profile

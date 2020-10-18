@@ -1,6 +1,6 @@
-import React from "react";
-import Post from "./Post/Post";
-import styles from "./MyPosts.module.css";
+import React from "react"
+import Post from "./Post/Post"
+import styles from "./MyPosts.module.css"
 
 const MyPosts = () => {
     return (
@@ -20,7 +20,7 @@ const MyPosts = () => {
                 <Post message="Some bullshit" likesCount={6} />
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default MyPosts;
+export default MyPosts

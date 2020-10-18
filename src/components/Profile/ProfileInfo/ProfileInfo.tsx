@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./ProfileInfo.module.css";
-import logo from "../../../assets/profilePicture.jpg";
+import React from "react"
+import styles from "./ProfileInfo.module.css"
+import logo from "../../../assets/profilePicture.jpg"
 
 const ProfileInfo = () => {
     return (
@@ -8,9 +8,11 @@ const ProfileInfo = () => {
             <div className={styles.profilePicture}>
                 <img src={logo} alt="" />
             </div>
-            <div><h3>Welcome to my page guys! Happy to see you here!</h3></div>
+            <div>
+                <h3>Welcome to my page guys! Happy to see you here!</h3>
+            </div>
         </div>
-    );
-};
+    )
+}
 
-export default ProfileInfo;
+export default ProfileInfo

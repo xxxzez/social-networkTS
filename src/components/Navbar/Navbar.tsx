@@ -1,12 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./Navbar.module.css";
-import icon from "../../assets/profileIcon.png";
+import React from "react"
+import { NavLink } from "react-router-dom"
+import styles from "./Navbar.module.css"
+import icon from "../../assets/profileIcon.png"
 
 type NavbarItemType = {
-    link: string;
-    title: string;
-};
+    link: string
+    title: string
+}
 
 const NavbarItem: React.FC<NavbarItemType> = (props) => {
     return (
@@ -16,8 +16,8 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
             </div>
             <NavLink to={`/${props.link}`}>{props.title}</NavLink>
         </div>
-    );
-};
+    )
+}
 
 const Navbar = () => {
     return (
@@ -27,7 +27,7 @@ const Navbar = () => {
             <NavbarItem link="news" title="News feed" />
             <NavbarItem link="settings" title="Settings" />
         </div>
-    );
-};
+    )
+}
 
-export default Navbar;
+export default Navbar
