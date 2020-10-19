@@ -1,26 +1,16 @@
 import React from "react"
 import Post from "./Post/Post"
 import styles from "./MyPosts.module.css"
+import { PostType } from "../../.."
 
-type PostType = {
-    id: number
-    message: string
-    likesCount: number
+type PropsType = {
+    posts: Array<PostType>
 }
 
-const posts: Array<PostType> = [
-    { id: 1, message: "First post!!!!", likesCount: 17 },
-    { id: 2, message: "Some bullshit", likesCount: 7 },
-    { id: 3, message: "Nothing special", likesCount: 11 },
-    { id: 4, message: "Im fine", likesCount: 77 },
-    { id: 5, message: "qq", likesCount: 71 },
-]
-
-const postsElements = posts.map((p) => (
-    <Post message={p.message} likesCount={p.likesCount} />
-))
-
-const MyPosts = () => {
+const MyPosts: React.FC<PropsType> = (props) => {
+    const postsElements = props.posts.map((p) => (
+        <Post message={p.message} likesCount={p.likesCount} />
+    ))
     return (
         <div>
             My posts

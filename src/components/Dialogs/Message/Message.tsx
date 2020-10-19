@@ -1,10 +1,6 @@
 import React from "react"
+import { MessageType } from "../../.."
 import styles from "./Message.module.css"
-
-export type MessageType = {
-    id: number
-    message: string
-}
 
 const Message: React.FC<MessageType> = (props) => {
     return <div className={styles.message}>{props.message}</div>

@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            <h4>Copyright© 1993-2020</h4>
+            <h3>Copyright© 1993-2020</h3>
         </footer>
     );
 }

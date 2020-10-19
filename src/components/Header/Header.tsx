@@ -4,7 +4,7 @@ import styles from './Header.module.css'
 const Header = () => {
     return (
         <header className={styles.header}>
-            <h4>No new notifications</h4>
+            <h2>React TypeScript Social Network</h2>
         </header>
     );
 }

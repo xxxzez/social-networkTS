@@ -1,18 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .app {
     display: flex;
     margin: 0 auto;
     flex-direction: column;
     width: 1000px;
-    font-family: 'Roboto', sans-serif;
+    background-color: white;
 }
 
 .main {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* background: rgb(190, 159, 219); */
 }
 
 .appContent {
