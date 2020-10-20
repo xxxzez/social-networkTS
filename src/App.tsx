@@ -1,6 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { RootStateType } from "./redux/state"
+import { RootStateType } from "./Types"
 import "./App.css"
 import Dialogs from "./components/Dialogs/Dialogs"
 import Footer from "./components/Footer/Footer"
@@ -12,6 +12,7 @@ import Settings from "./components/Settings/Settings"
 
 type PropsType = {
     state: RootStateType
+    addPost: (text: string) => void
 }
 
 const App: React.FC<PropsType> = (props) => {
@@ -24,7 +25,7 @@ const App: React.FC<PropsType> = (props) => {
                     <Route
                         path={"/profile"}
                         render={() => (
-                            <Profile posts={props.state.profilePage.posts} />
+                            <Profile posts={props.state.profilePage.posts} addPost={props.addPost} />
                         )}
                     />
                     <Route

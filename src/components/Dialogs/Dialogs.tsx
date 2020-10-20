@@ -1,5 +1,5 @@
 import React from "react"
-import { DialogType, MessageType } from "../../redux/state"
+import { DialogType, MessageType } from "../../Types"
 import DialogItem from "./DialogItem/DialogItem"
 import s from "./Dialogs.module.css"
 import Message from "./Message/Message"
@@ -11,13 +11,13 @@ type PropsType = {
 
 const Dialogs: React.FC<PropsType> = (props) => {
     const dialogsElements = props.dialogs.map((d) => (
-        <DialogItem name={d.name} id={d.id} />
+        <DialogItem key={d.id} name={d.name} id={d.id} />
     ))
     const messagesElements = props.messages.map((m) => (
-        <Message message={m.message} id={m.id} />
+        <Message key={m.id} message={m.message} id={m.id} />
     ))
     const addNewMessage = () => {
-        alert('New message')
+        alert("New message")
     }
     return (
         <div className={s.dialogs}>
@@ -26,7 +26,7 @@ const Dialogs: React.FC<PropsType> = (props) => {
                 {messagesElements}
                 <div>
                     <textarea name="newMessage"></textarea>
-                    <button onClick={addNewMessage} >Send</button>
+                    <button onClick={addNewMessage}>Send</button>
                 </div>
             </div>
         </div>
