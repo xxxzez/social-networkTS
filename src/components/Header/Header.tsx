@@ -1,10 +1,10 @@
 import React from "react";
-import styles from './Header.module.css'
+import s from './Header.module.css'
 
 const Header = () => {
     return (
-        <header className={styles.header}>
-            <h2>React TypeScript Social Network</h2>
+        <header className={s.header}>
+            <h3>React TypeScript Social Network</h3>
         </header>
     );
 }

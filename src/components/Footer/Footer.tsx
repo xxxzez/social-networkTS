@@ -1,10 +1,10 @@
 import React from "react";
-import styles from './Footer.module.css'
+import s from './Footer.module.css'
 
 const Footer = () => {
     return (
-        <footer className={styles.footer}>
-            <h3>Copyright© 1993-2020</h3>
+        <footer className={s.footer}>
+            <h4>This project is made by Matvei Bohush</h4>
         </footer>
     );
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import Post from "./Post/Post"
-import styles from "./MyPosts.module.css"
-import { PostType } from "../../.."
+import s from "./MyPosts.module.css"
+import { PostType } from "../../../redux/state"
 
 type PropsType = {
     posts: Array<PostType>
@@ -23,7 +23,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
                     <button>Delete post</button>
                 </div>
             </div>
-            <div className={styles.posts}>{postsElements}</div>
+            <div className={s.posts}>{postsElements}</div>
         </div>
     )
 }

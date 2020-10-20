@@ -1,11 +1,11 @@
 import React from "react"
-import styles from "./ProfileInfo.module.css"
+import s from "./ProfileInfo.module.css"
 import logo from "../../../assets/profilePicture.jpg"
 
 const ProfileInfo = () => {
     return (
-        <div className={styles.profile}>
-            <div className={styles.profilePicture}>
+        <div className={s.profile}>
+            <div className={s.profilePicture}>
                 <img src={logo} alt="" />
             </div>
             <div>

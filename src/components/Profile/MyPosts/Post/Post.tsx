@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./Post.module.css"
+import s from "./Post.module.css"
 import logo from "../../../../assets/canadaFlag.jpeg"
 
 type PostType = {
@@ -9,7 +9,7 @@ type PostType = {
 
 const Post: React.FC<PostType> = (props) => {
     return (
-        <div className={styles.item}>
+        <div className={s.item}>
             <img src={logo} alt="" />
             {props.message}
             <div>

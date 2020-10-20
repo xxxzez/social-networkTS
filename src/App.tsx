@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter, Route } from "react-router-dom"
-import { DialogType, MessageType, PostType } from "."
+import { RootStateType } from "./redux/state"
 import "./App.css"
 import Dialogs from "./components/Dialogs/Dialogs"
 import Footer from "./components/Footer/Footer"
@@ -11,9 +11,7 @@ import Profile from "./components/Profile/Profile"
 import Settings from "./components/Settings/Settings"
 
 type PropsType = {
-    posts: Array<PostType>
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
+    state: RootStateType
 }
 
 const App: React.FC<PropsType> = (props) => {
@@ -26,14 +24,18 @@ const App: React.FC<PropsType> = (props) => {
                     <div className="appContent">
                         <Route
                             path={"/profile"}
-                            render={() => <Profile posts={props.posts} />}
+                            render={() => (
+                                <Profile
+                                    posts={props.state.profilePage.posts}
+                                />
+                            )}
                         />
                         <Route
                             path={"/messages"}
                             render={() => (
                                 <Dialogs
-                                    dialogs={props.dialogs}
-                                    messages={props.messages}
+                                    dialogs={props.state.dialogsPage.dialogs}
+                                    messages={props.state.dialogsPage.messages}
                                 />
                             )}
                         />

@@ -1,6 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import styles from "./Navbar.module.css"
+import s from "./Navbar.module.css"
 import icon from '../../assets/profileIcon.png'
 
 type NavbarItemType = {
@@ -10,10 +10,10 @@ type NavbarItemType = {
 
 const NavbarItem: React.FC<NavbarItemType> = (props) => {
     return (
-        <div className={styles.item}>
-            <div className={styles.icon}>
+        <div className={s.item}>
+            {/* <div className={s.icon}>
                 <img src={icon} alt="" />
-            </div>
+            </div> */}
             <NavLink to={`/${props.link}`}>{props.title}</NavLink>
         </div>
     )
@@ -21,7 +21,7 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
 
 const Navbar = () => {
     return (
-        <div className={styles.nav}>
+        <div className={s.nav}>
             <NavbarItem link="profile" title="Profile" />
             <NavbarItem link="messages" title="Messages" />
             <NavbarItem link="news" title="News feed" />

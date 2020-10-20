@@ -1,7 +1,7 @@
 import React from "react"
-import { DialogType, MessageType } from "../.."
+import { DialogType, MessageType } from "../../redux/state"
 import DialogItem from "./DialogItem/DialogItem"
-import styles from "./Dialogs.module.css"
+import s from "./Dialogs.module.css"
 import Message from "./Message/Message"
 
 type PropsType = {
@@ -17,9 +17,9 @@ const Dialogs: React.FC<PropsType> = (props) => {
         <Message message={m.message} id={m.id} />
     ))
     return (
-        <div className={styles.dialogs}>
-            <div className={styles.dialogsItems}>{dialogsElements}</div>
-            <div className={styles.messages}>{messagesElements}</div>
+        <div className={s.dialogs}>
+            <div className={s.dialogsItems}>{dialogsElements}</div>
+            <div className={s.messages}>{messagesElements}</div>
         </div>
     )
 }

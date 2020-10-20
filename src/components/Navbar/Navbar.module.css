@@ -6,13 +6,21 @@
 
 .item {
     display: flex;
-    padding: 10px;
+    padding: 2px;
+    border: 1px solid rgba(0,108,255,1);
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 .item:hover {
-    background: rgb(196, 196, 196);
+    background: rgba(0,108,255,1);
     border-radius: 10px;
     color: white;
+
+}
+.item:hover a {
+    color: white;
+
 }
 
 
