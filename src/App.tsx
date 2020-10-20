@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter, Route } from "react-router-dom"
+import { Route } from "react-router-dom"
 import { RootStateType } from "./redux/state"
 import "./App.css"
 import Dialogs from "./components/Dialogs/Dialogs"
@@ -16,36 +16,32 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
     return (
-        <BrowserRouter>
-            <div className="app">
-                <Header />
-                <div className="main">
-                    <Navbar />
-                    <div className="appContent">
-                        <Route
-                            path={"/profile"}
-                            render={() => (
-                                <Profile
-                                    posts={props.state.profilePage.posts}
-                                />
-                            )}
-                        />
-                        <Route
-                            path={"/messages"}
-                            render={() => (
-                                <Dialogs
-                                    dialogs={props.state.dialogsPage.dialogs}
-                                    messages={props.state.dialogsPage.messages}
-                                />
-                            )}
-                        />
-                        <Route path={"/news"} render={() => <News />} />
-                        <Route path={"/settings"} render={() => <Settings />} />
-                    </div>
+        <div className="app">
+            <Header />
+            <div className="main">
+                <Navbar />
+                <div className="appContent">
+                    <Route
+                        path={"/profile"}
+                        render={() => (
+                            <Profile posts={props.state.profilePage.posts} />
+                        )}
+                    />
+                    <Route
+                        path={"/messages"}
+                        render={() => (
+                            <Dialogs
+                                dialogs={props.state.dialogsPage.dialogs}
+                                messages={props.state.dialogsPage.messages}
+                            />
+                        )}
+                    />
+                    <Route path={"/news"} render={() => <News />} />
+                    <Route path={"/settings"} render={() => <Settings />} />
                 </div>
-                <Footer />
             </div>
-        </BrowserRouter>
+            <Footer />
+        </div>
     )
 }
 

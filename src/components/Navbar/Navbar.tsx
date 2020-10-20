@@ -1,7 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import s from "./Navbar.module.css"
-import icon from '../../assets/profileIcon.png'
 
 type NavbarItemType = {
     link: string

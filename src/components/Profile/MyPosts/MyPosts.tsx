@@ -11,6 +11,11 @@ const MyPosts: React.FC<PropsType> = (props) => {
     const postsElements = props.posts.map((p) => (
         <Post message={p.message} likesCount={p.likesCount} />
     ))
+
+    const onAddPost = () => {
+        alert('d')
+    }
+
     return (
         <div>
             My posts
@@ -19,7 +24,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
                     <textarea name="" id=""></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={onAddPost} >Add post</button>
                     <button>Delete post</button>
                 </div>
             </div>
