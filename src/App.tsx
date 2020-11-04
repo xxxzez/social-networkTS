@@ -13,6 +13,7 @@ import Settings from "./components/Settings/Settings"
 type PropsType = {
     state: RootStateType
     addPost: (text: string) => void
+    updateNewPostText: (text: string) => void
 }
 
 const App: React.FC<PropsType> = (props) => {
@@ -25,7 +26,11 @@ const App: React.FC<PropsType> = (props) => {
                     <Route
                         path={"/profile"}
                         render={() => (
-                            <Profile posts={props.state.profilePage.posts} addPost={props.addPost} />
+                            <Profile
+                                posts={props.state.profilePage.posts}
+                                addPost={props.addPost}
+                                updateNewPostText={props.updateNewPostText}
+                            />
                         )}
                     />
                     <Route

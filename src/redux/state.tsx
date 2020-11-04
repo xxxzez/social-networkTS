@@ -1,3 +1,4 @@
+import { renderEntireTree } from "../render"
 import { RootStateType, PostType } from "../Types"
 
 export const state: RootStateType = {
@@ -6,30 +7,37 @@ export const state: RootStateType = {
             { id: 1, message: "First post!!!!", likesCount: 17 },
             { id: 2, message: "Some bullshit", likesCount: 7 },
         ],
+        newPostText: "",
     },
     dialogsPage: {
         dialogs: [
-            { id: 1, name: "Юля" },
-            { id: 2, name: "Ника" },
-            { id: 3, name: "Влад" },
-            { id: 4, name: "Игорь" },
-            { id: 5, name: "Серега" },
+            { id: 1, name: "Dashiki" },
+            { id: 2, name: "Tommy" },
+            { id: 3, name: "Vlad" },
+            { id: 4, name: "Igor" },
+            { id: 5, name: "Andrew" },
         ],
         messages: [
-            { id: 1, message: "Ну шо ты там" },
-            { id: 2, message: "Просто здравствуй" },
-            { id: 3, message: "Просто как дела" },
-            { id: 4, message: "Где встретимся?" },
-            { id: 5, message: "Всё ясно, пока" },
+            { id: 1, message: "Whats going on" },
+            { id: 2, message: "Hello amigo" },
+            { id: 3, message: "My last message" },
+            { id: 4, message: "Miss me?" },
+            { id: 5, message: "See u tomorrow" },
         ],
     },
 }
 
 export const addPost = (text: string) => {
     let newPost: PostType = {
-        id: 3,
+        id: Math.random(),
         message: text,
         likesCount: 0,
     }
     state.profilePage.posts.push(newPost)
+    renderEntireTree(state)
+    state.profilePage.newPostText = ""
+}
+export const updateNewPostText = (text: string) => {
+    state.profilePage.newPostText = text
+    renderEntireTree(state)
 }

@@ -7,13 +7,18 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo"
 type PropsType = {
     posts: Array<PostType>
     addPost: (text: string) => void
+    updateNewPostText: (text: string) => void
 }
 
 const Profile: React.FC<PropsType> = (props) => {
     return (
         <div className={s.profile}>
             <ProfileInfo />
-            <MyPosts posts={props.posts} addPost={props.addPost} />
+            <MyPosts
+                posts={props.posts}
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText}
+            />
         </div>
     )
 }
