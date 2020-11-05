@@ -1,28 +1,26 @@
-import React from "react"
-import Post from "./Post/Post"
-import s from "./MyPosts.module.css"
-import { PostType } from "../../../Types"
+import React, { ChangeEvent } from 'react'
+import Post from './Post/Post'
+import s from './MyPosts.module.css'
+import { PostType } from '../../../Types'
 
 type PropsType = {
     posts: Array<PostType>
     addPost: (text: string) => void
     updateNewPostText: (text: string) => void
+    newPostText: string
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
-    const newPostText: any = React.createRef()
     const postsElements = props.posts.map((p) => (
         <Post key={p.id} message={p.message} likesCount={p.likesCount} />
     ))
 
     const onAddPost = () => {
-        const newPost: string = newPostText.current.value
-        props.addPost(newPost)
+        props.addPost(props.newPostText)
     }
 
-    const onPostChange = () => {
-        const text: string = newPostText.current.value
-        props.updateNewPostText(text)
+    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.updateNewPostText(e.currentTarget.value)
     }
 
     return (
@@ -30,11 +28,13 @@ const MyPosts: React.FC<PropsType> = (props) => {
             My posts
             <div>
                 <div>
-                    <textarea ref={newPostText} onChange={onPostChange} />
+                    <textarea
+                        onChange={onPostChange}
+                        value={props.newPostText}
+                    />
                 </div>
                 <div>
                     <button onClick={onAddPost}>Add post</button>
-                    <button>Delete post</button>
                 </div>
             </div>
             <div className={s.posts}>{postsElements}</div>

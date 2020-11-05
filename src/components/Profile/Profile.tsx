@@ -8,6 +8,7 @@ type PropsType = {
     posts: Array<PostType>
     addPost: (text: string) => void
     updateNewPostText: (text: string) => void
+    newPostText: string
 }
 
 const Profile: React.FC<PropsType> = (props) => {
@@ -18,6 +19,7 @@ const Profile: React.FC<PropsType> = (props) => {
                 posts={props.posts}
                 addPost={props.addPost}
                 updateNewPostText={props.updateNewPostText}
+                newPostText={props.newPostText}
             />
         </div>
     )

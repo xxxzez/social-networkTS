@@ -30,6 +30,7 @@ const App: React.FC<PropsType> = (props) => {
                                 posts={props.state.profilePage.posts}
                                 addPost={props.addPost}
                                 updateNewPostText={props.updateNewPostText}
+                                newPostText={props.state.profilePage.newPostText}
                             />
                         )}
                     />

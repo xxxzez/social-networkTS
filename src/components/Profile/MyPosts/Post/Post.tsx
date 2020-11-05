@@ -15,6 +15,7 @@ const Post: React.FC<PostType> = (props) => {
             <div>
                 <span>Like! </span>
                 {props.likesCount}
+                <button>Delete post</button>
             </div>
         </div>
     )
