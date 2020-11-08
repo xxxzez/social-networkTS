@@ -1,5 +1,6 @@
-import { renderEntireTree } from '../render'
 import { RootStateType, PostType } from '../Types'
+
+let onChange = () => {}
 
 export const state: RootStateType = {
     profilePage: {
@@ -33,11 +34,18 @@ export const addPost = (text: string) => {
         message: text,
         likesCount: 0,
     }
+    if (newPost.message.trim() === '') {
+        return
+    }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    renderEntireTree(state)
+    onChange()
 }
 export const updateNewPostText = (text: string) => {
     state.profilePage.newPostText = text
-    renderEntireTree(state)
+    onChange()
+}
+
+export const subscribe = (observer: () => void) => {
+    onChange = observer
 }
