@@ -1,15 +1,15 @@
-import React from "react"
-import { DialogType, MessageType } from "../../Types"
-import DialogItem from "./DialogItem/DialogItem"
-import s from "./Dialogs.module.css"
-import Message from "./Message/Message"
+import React from 'react'
+import { DialogType, MessageType } from '../../Types'
+import DialogItem from './DialogItem/DialogItem'
+import s from './Dialogs.module.css'
+import Message from './Message/Message'
 
 type PropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
 
-const Dialogs: React.FC<PropsType> = (props) => {
+export const Dialogs: React.FC<PropsType> = (props) => {
     const dialogsElements = props.dialogs.map((d) => (
         <DialogItem key={d.id} name={d.name} id={d.id} />
     ))
@@ -17,7 +17,7 @@ const Dialogs: React.FC<PropsType> = (props) => {
         <Message key={m.id} message={m.message} id={m.id} />
     ))
     const addNewMessage = () => {
-        alert("New message")
+        alert('New message')
     }
     return (
         <div className={s.dialogs}>
@@ -32,5 +32,3 @@ const Dialogs: React.FC<PropsType> = (props) => {
         </div>
     )
 }
-
-export default Dialogs

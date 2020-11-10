@@ -1,6 +1,6 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import s from "./Navbar.module.css"
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import s from './Navbar.module.css'
 
 type NavbarItemType = {
     link: string
@@ -18,7 +18,7 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
     )
 }
 
-const Navbar = () => {
+export const Navbar = () => {
     return (
         <div className={s.nav}>
             <NavbarItem link="profile" title="Profile" />
@@ -28,5 +28,3 @@ const Navbar = () => {
         </div>
     )
 }
-
-export default Navbar

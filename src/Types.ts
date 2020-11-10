@@ -24,3 +24,12 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
+
+export type StoreType = {
+    _state: RootStateType
+    addPost: (text: string) => void
+    updateNewPostText: (text: string) => void
+    getState: () => RootStateType
+    _onChange: () => void
+    _subscribe: ( observer: () => void) => void
+}

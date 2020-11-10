@@ -1,8 +1,8 @@
-import React from "react"
-import { PostType } from "../../Types"
-import MyPosts from "./MyPosts/MyPosts"
-import s from "./Profile.module.css"
-import ProfileInfo from "./ProfileInfo/ProfileInfo"
+import React from 'react'
+import { PostType } from '../../Types'
+import MyPosts from './MyPosts/MyPosts'
+import s from './Profile.module.css'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 type PropsType = {
     posts: Array<PostType>
@@ -11,7 +11,7 @@ type PropsType = {
     newPostText: string
 }
 
-const Profile: React.FC<PropsType> = (props) => {
+export const Profile: React.FC<PropsType> = (props) => {
     return (
         <div className={s.profile}>
             <ProfileInfo />
@@ -24,5 +24,3 @@ const Profile: React.FC<PropsType> = (props) => {
         </div>
     )
 }
-
-export default Profile
