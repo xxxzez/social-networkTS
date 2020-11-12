@@ -1,5 +1,14 @@
 import { StoreType, PostType } from '../Types'
 
+export const addPostActionCreator = (newPostText: string) => {
+    return {
+        type: 'ADD-POST',
+        text: newPostText,
+    }
+}
+
+export 
+
 const store: StoreType = {
     _state: {
         profilePage: {
