@@ -26,22 +26,23 @@ const store: StoreType = {
             ],
         },
     },
-    addPost(text: string) {
-        let newPost: PostType = {
-            id: Math.random(),
-            message: text,
-            likesCount: 0,
+    dispatch(action){
+        if(action.type === 'ADD-POST'){
+            let newPost: PostType = {
+                id: Math.random(),
+                message: action.text,
+                likesCount: 0,
+            }
+            if (newPost.message.trim() === '') {
+                return
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._onChange()
+        } else if ( action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.text
+            this._onChange()
         }
-        if (newPost.message.trim() === '') {
-            return
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._onChange()
-    },
-    updateNewPostText(text: string) {
-        this._state.profilePage.newPostText = text
-        this._onChange()
     },
     getState() {
         return this._state

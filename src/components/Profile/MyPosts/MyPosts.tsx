@@ -1,13 +1,12 @@
 import React, { ChangeEvent } from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
-import { PostType } from '../../../Types'
+import { ActionsTypes, PostType } from '../../../Types'
 
 type PropsType = {
     posts: Array<PostType>
-    addPost: (text: string) => void
-    updateNewPostText: (text: string) => void
     newPostText: string
+    dispatch: (action: ActionsTypes) => void
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
@@ -16,11 +15,14 @@ const MyPosts: React.FC<PropsType> = (props) => {
     ))
 
     const onAddPost = () => {
-        props.addPost(props.newPostText)
+        props.dispatch({ type: 'ADD-POST', text: props.newPostText })
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewPostText(e.currentTarget.value)
+        props.dispatch({
+            type: 'UPDATE-NEW-POST-TEXT',
+            text: e.currentTarget.value,
+        })
     }
 
     return (

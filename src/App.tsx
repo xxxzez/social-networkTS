@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { StoreType } from './Types'
+import { ActionsTypes, StoreType } from './Types'
 import './App.css'
 import { Dialogs } from './components/Dialogs/Dialogs'
 import { Footer } from './components/Footer/Footer'
@@ -12,6 +12,7 @@ import { Settings } from './components/Settings/Settings'
 
 type PropsType = {
     store: StoreType
+    dispatch: (action: ActionsTypes) => void
 }
 
 export const App: React.FC<PropsType> = (props) => {
@@ -27,11 +28,8 @@ export const App: React.FC<PropsType> = (props) => {
                         render={() => (
                             <Profile
                                 posts={state.profilePage.posts}
-                                addPost={props.store.addPost.bind(props.store)}
-                                updateNewPostText={props.store.updateNewPostText.bind(
-                                    props.store
-                                )}
                                 newPostText={state.profilePage.newPostText}
+                                dispatch={props.dispatch}
                             />
                         )}
                     />
