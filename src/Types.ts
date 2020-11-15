@@ -1,4 +1,4 @@
-import { ActionsTypes } from "./redux/state"
+import { addPostAC, onPostChangeAC } from "./redux/state"
 
 export type PostType = {
     id: number
@@ -35,3 +35,6 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
+export type ActionsTypes =
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof onPostChangeAC>

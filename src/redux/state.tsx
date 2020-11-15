@@ -1,9 +1,5 @@
 import { StoreType, PostType } from '../Types'
 
-export type ActionsTypes =
-    | ReturnType<typeof addPostAC>
-    | ReturnType<typeof onPostChangeAC>
-
 export const addPostAC = (newPostText: string) => {
     return {
         type: 'ADD-POST',

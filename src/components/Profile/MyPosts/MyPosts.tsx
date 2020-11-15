@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
-import { PostType } from '../../../Types'
-import { ActionsTypes, addPostAC } from '../../../redux/state'
+import { ActionsTypes, PostType } from '../../../Types'
+import { addPostAC } from '../../../redux/state'
 
 type PropsType = {
     posts: Array<PostType>
@@ -10,10 +10,7 @@ type PropsType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-
-
 const MyPosts: React.FC<PropsType> = (props) => {
-    
     const postsElements = props.posts.map((p) => (
         <Post key={p.id} message={p.message} likesCount={p.likesCount} />
     ))
