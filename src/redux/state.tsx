@@ -1,13 +1,22 @@
 import { StoreType, PostType } from '../Types'
 
-export const addPostActionCreator = (newPostText: string) => {
+export type ActionsTypes =
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof onPostChangeAC>
+
+export const addPostAC = (newPostText: string) => {
     return {
         type: 'ADD-POST',
         text: newPostText,
-    }
+    } as const
 }
 
-export 
+export const onPostChangeAC = (newPostText: string) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        text: newPostText,
+    } as const
+}
 
 const store: StoreType = {
     _state: {
@@ -35,8 +44,8 @@ const store: StoreType = {
             ],
         },
     },
-    dispatch(action){
-        if(action.type === 'ADD-POST'){
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
             let newPost: PostType = {
                 id: Math.random(),
                 message: action.text,
@@ -48,7 +57,7 @@ const store: StoreType = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this._onChange()
-        } else if ( action.type === 'UPDATE-NEW-POST-TEXT'){
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.text
             this._onChange()
         }

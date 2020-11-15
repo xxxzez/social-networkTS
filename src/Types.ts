@@ -1,3 +1,5 @@
+import { ActionsTypes } from "./redux/state"
+
 export type PostType = {
     id: number
     message: string
@@ -33,14 +35,3 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type AddPostActionType = {
-    type: 'ADD-POST'
-    text: string
-}
-
-export type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    text: string
-}
-
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType

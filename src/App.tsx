@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { ActionsTypes, StoreType } from './Types'
+import { StoreType } from './Types'
 import './App.css'
 import { Dialogs } from './components/Dialogs/Dialogs'
 import { Footer } from './components/Footer/Footer'
@@ -9,6 +9,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
 import { Settings } from './components/Settings/Settings'
+import { ActionsTypes } from './redux/state'
 
 type PropsType = {
     store: StoreType

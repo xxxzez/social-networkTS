@@ -1,5 +1,6 @@
 import React from 'react'
-import { ActionsTypes, PostType } from '../../Types'
+import { ActionsTypes } from '../../redux/state'
+import { PostType } from '../../Types'
 import MyPosts from './MyPosts/MyPosts'
 import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
