@@ -34,8 +34,7 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
 
 export const Navbar = () => {
     return (
-        <div className={s.nav}>
-            <Grid item>
+            <Grid item xs={2} >
                 <List>
                     <NavbarItem link={'/profile'} title={'Profile'} />
                     <NavbarItem link={'/messages'} title={'Messages'} />
@@ -44,6 +43,5 @@ export const Navbar = () => {
                     <NavbarItem link={'/settings'} title={'Settings'} />
                 </List>
             </Grid>
-        </div>
     )
 }
