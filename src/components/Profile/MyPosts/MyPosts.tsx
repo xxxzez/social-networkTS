@@ -3,6 +3,7 @@ import Post from './Post/Post'
 import s from './MyPosts.module.css'
 import { ActionsTypes, PostType } from '../../../Types'
 import { addPostAC } from '../../../redux/state'
+import { Button, TextField } from '@material-ui/core'
 
 type PropsType = {
     posts: Array<PostType>
@@ -31,13 +32,13 @@ const MyPosts: React.FC<PropsType> = (props) => {
             My posts
             <div>
                 <div>
-                    <textarea
+                    <TextField 
                         onChange={onPostChange}
                         value={props.newPostText}
                     />
                 </div>
                 <div>
-                    <button onClick={onAddPost}>Add post</button>
+                    <Button onClick={onAddPost}>Add post</Button>
                 </div>
             </div>
             <div className={s.posts}>{postsElements}</div>

@@ -1,6 +1,6 @@
-import React from "react"
-import s from "./ProfileInfo.module.css"
-import logo from "../../../assets/profilePicture.jpg"
+import React from 'react'
+import s from './ProfileInfo.module.css'
+import logo from '../../../assets/profilePicture.jpg'
 
 const ProfileInfo = () => {
     return (

@@ -1,3 +1,4 @@
+import { Button, TextField } from '@material-ui/core'
 import React from 'react'
 import { DialogType, MessageType } from '../../Types'
 import DialogItem from './DialogItem/DialogItem'
@@ -25,8 +26,8 @@ export const Dialogs: React.FC<PropsType> = (props) => {
             <div className={s.messages}>
                 {messagesElements}
                 <div>
-                    <textarea name="newMessage"></textarea>
-                    <button onClick={addNewMessage}>Send</button>
+                    <TextField  name="newMessage"></TextField>
+                    <Button onClick={addNewMessage}>Send</Button>
                 </div>
             </div>
         </div>
