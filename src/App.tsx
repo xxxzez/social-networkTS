@@ -11,6 +11,7 @@ import { ActionsTypes, StoreType } from './Types'
 import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
+import { Footer } from './components/Footer/Footer'
 
 const drawerWidth = 240
 
@@ -85,7 +86,7 @@ export const App: React.FC<PropsType> = (props) => {
                     <Route path={'/settings'} render={() => <Settings />} />
                 </div>
             </div>
-
+            <Footer />
             {/* <main className={classes.content}>
                 <Toolbar />
                 <Typography paragraph>
@@ -139,7 +140,7 @@ export const App: React.FC<PropsType> = (props) => {
 //                     <Route path={'/settings'} render={() => <Settings />} />
 //                 </div>
 //             </div>
-//             <Footer />
+//
 //         </div>
 //     )
 // }
