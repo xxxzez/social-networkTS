@@ -6,6 +6,7 @@ import {
     ListItemIcon,
     ListItemText,
     Divider,
+    Link,
 } from '@material-ui/core'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
@@ -13,6 +14,8 @@ import classes from './Navbar.module.css'
 import s from './Navbar.module.css'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
+import { Profile } from '../Profile/Profile'
+
 type NavbarItemType = {
     link: string
     title: string
@@ -21,9 +24,7 @@ type NavbarItemType = {
 // const NavbarItem: React.FC<NavbarItemType> = (props) => {
 //     return (
 //         <div className={s.item}>
-//             {/* <div className={s.icon}>
-//                 <img src={icon} alt="" />
-//             </div> */}
+//
 //             <NavLink to={`/${props.link}`}>{props.title}</NavLink>
 //         </div>
 //     )
@@ -42,35 +43,36 @@ export const Navbar = () => {
                 <Toolbar />
                 <div className={classes.drawerContainer}>
                     <List>
-                        {['Profile', 'Messages', 'News feed', 'Drafts'].map(
-                            (text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? (
-                                            <InboxIcon />
-                                        ) : (
-                                            <MailIcon />
-                                        )}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            )
-                        )}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
+                        <ListItem button key={'Profile'}>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <Link component={Profile} to="/profile">
+                                Profile
+                            </Link>
+                            <ListItemText primary={'Profile'} />
+                        </ListItem>
+
+                        <ListItem button key={'Messages'}>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Messages'} />
+                        </ListItem>
+
+                        <ListItem button key={'News feed'}>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'News feed'} />
+                        </ListItem>
+                        <Divider />
+                        <ListItem button key={'Settings'}>
+                            <ListItemIcon>
+                                <InboxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Settings'} />
+                        </ListItem>
                     </List>
                 </div>
             </Drawer>
