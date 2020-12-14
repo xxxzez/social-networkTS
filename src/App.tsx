@@ -7,9 +7,9 @@ import { ActionsTypes, StoreType } from './Types'
 import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
-import { Container, Grid } from '@material-ui/core'
 import { Header } from './components/Header/Header'
 import { Footer } from './components/Footer/Footer'
+import { Grid } from '@material-ui/core'
 
 type PropsType = {
     store: StoreType

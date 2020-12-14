@@ -1,12 +1,5 @@
-import {
-    AppBar,
-    Toolbar,
-    IconButton,
-    Typography,
-    Grid,
-} from '@material-ui/core'
+import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core'
 import React from 'react'
-import s from './Footer.module.css'
 
 export const Footer = () => {
     return (
