@@ -22,39 +22,32 @@ export const App: React.FC<PropsType> = (props) => {
         <div>
             <CssBaseline />
             <Header />
-            <Container fixed>
+            <Container>
                 <Grid container>
-                    <div className="main">
-                        <Navbar />
-                        <div className="appContent">
-                            <Route
-                                path={'/profile'}
-                                render={() => (
-                                    <Profile
-                                        posts={state.profilePage.posts}
-                                        newPostText={
-                                            state.profilePage.newPostText
-                                        }
-                                        dispatch={props.dispatch}
-                                    />
-                                )}
-                            />
-                            <Route
-                                path={'/messages'}
-                                render={() => (
-                                    <Dialogs
-                                        dialogs={state.dialogsPage.dialogs}
-                                        messages={state.dialogsPage.messages}
-                                    />
-                                )}
-                            />
-                            <Route path={'/news'} render={() => <News />} />
-                            <Route
-                                path={'/settings'}
-                                render={() => <Settings />}
-                            />
-                        </div>
-                    </div>
+                    <Navbar />
+                    <Grid item>
+                        <Route
+                            path={'/profile'}
+                            render={() => (
+                                <Profile
+                                    posts={state.profilePage.posts}
+                                    newPostText={state.profilePage.newPostText}
+                                    dispatch={props.dispatch}
+                                />
+                            )}
+                        />
+                        <Route
+                            path={'/messages'}
+                            render={() => (
+                                <Dialogs
+                                    dialogs={state.dialogsPage.dialogs}
+                                    messages={state.dialogsPage.messages}
+                                />
+                            )}
+                        />
+                        <Route path={'/news'} render={() => <News />} />
+                        <Route path={'/settings'} render={() => <Settings />} />
+                    </Grid>
                 </Grid>
             </Container>
         </div>

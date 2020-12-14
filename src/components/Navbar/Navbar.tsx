@@ -5,7 +5,7 @@ import {
     ListItemText,
     Divider,
     Link,
-    Container,
+    Grid,
 } from '@material-ui/core'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
@@ -35,7 +35,7 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
 export const Navbar = () => {
     return (
         <div className={s.nav}>
-            <Container>
+            <Grid item>
                 <List>
                     <NavbarItem link={'/profile'} title={'Profile'} />
                     <NavbarItem link={'/messages'} title={'Messages'} />
@@ -43,7 +43,7 @@ export const Navbar = () => {
                     <Divider />
                     <NavbarItem link={'/settings'} title={'Settings'} />
                 </List>
-            </Container>
+            </Grid>
         </div>
     )
 }
