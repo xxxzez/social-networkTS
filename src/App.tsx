@@ -59,7 +59,7 @@ export const App: React.FC<PropsType> = (props) => {
                     <Route path={'/settings'} render={() => <Settings />} />
                 </Grid>
             </Grid>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }
