@@ -3,7 +3,7 @@ import { ActionsTypes, DialogsPageType } from '../Types'
 export const dialogsReducer = (
     state: DialogsPageType,
     action: ActionsTypes
-) => {
+): DialogsPageType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-TEXT':
             state.newMessageBody = action.text

@@ -3,7 +3,7 @@ import { ActionsTypes, PostType, ProfilePageType } from '../Types'
 export const profileReducer = (
     state: ProfilePageType,
     action: ActionsTypes
-) => {
+): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST':
             let newPost: PostType = {
@@ -12,7 +12,7 @@ export const profileReducer = (
                 likesCount: 0,
             }
             if (newPost.message.trim() === '') {
-                return
+                return state
             }
             state.posts.push(newPost)
             state.newPostText = ''
