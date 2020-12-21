@@ -1,10 +1,11 @@
 import * as serviceWorker from './serviceWorker'
-import store from './redux/store'
+import store from './redux/redux-store'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
+import { AppStateType } from './Types'
 
 const onChange = () => {
     ReactDOM.render(
@@ -18,7 +19,9 @@ const onChange = () => {
 }
 
 onChange()
-store._subscribe(onChange)
+store.subscribe(() => {
+    onChange()
+})
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

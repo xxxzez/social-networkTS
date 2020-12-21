@@ -3,6 +3,7 @@ import {
     sendMessageTextAC,
 } from './redux/dialogs-reducer'
 import { addPostAC, onPostChangeAC } from './redux/profile-reducer'
+import { rootReducer } from './redux/redux-store'
 
 export type PostType = {
     id: string
@@ -32,11 +33,12 @@ export type RootStateType = {
     dialogsPage: DialogsPageType
 }
 
+export type RootReducerType = typeof rootReducer
+export type AppStateType = ReturnType<RootReducerType>
+
 export type StoreType = {
-    _state: RootStateType
+    state: RootStateType
     getState: () => RootStateType
-    _onChange: () => void
-    _subscribe: (observer: () => void) => void
     dispatch: (action: ActionsTypes) => void
 }
 

@@ -15,8 +15,16 @@ export const onPostChangeAC = (newPostText: string) => {
     } as const
 }
 
+const initialState = {
+    posts: [
+        { id: v1(), message: 'Second post!!!!', likesCount: 17 },
+        { id: v1(), message: 'First post!!!!', likesCount: 7 },
+    ],
+    newPostText: '',
+}
+
 export const profileReducer = (
-    state: ProfilePageType,
+    state: ProfilePageType = initialState,
     action: ActionsTypes
 ): ProfilePageType => {
     switch (action.type) {

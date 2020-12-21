@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { Navbar } from './components/Navbar/Navbar'
 import { Settings } from '@material-ui/icons'
 import { Route } from 'react-router-dom'
-import { ActionsTypes, StoreType } from './Types'
+import { ActionsTypes, AppStateType } from './Types'
 import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
@@ -12,12 +12,12 @@ import { Header } from './components/Header/Header'
 import { Grid } from '@material-ui/core'
 
 type PropsType = {
-    store: StoreType
+    store: AppStateType
     dispatch: (action: ActionsTypes) => void
 }
 
 export const App: React.FC<PropsType> = (props) => {
-    const state = props.store.getState()
+    const state = props.store
 
     return (
         <div>
@@ -44,7 +44,10 @@ export const App: React.FC<PropsType> = (props) => {
                                 dialogs={state.dialogsPage.dialogs}
                                 messages={state.dialogsPage.messages}
                                 dispatch={props.dispatch}
-                                newMessage={props.store._state.dialogsPage.newMessageBody}
+                                newMessage={
+                                    props.store.dialogsPage
+                                        .newMessageBody
+                                }
                             />
                         )}
                     />
