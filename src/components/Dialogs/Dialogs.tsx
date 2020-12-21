@@ -1,6 +1,7 @@
 import { Button, TextField } from '@material-ui/core'
-import React from 'react'
-import { DialogType, MessageType } from '../../Types'
+import React, { ChangeEvent } from 'react'
+import { sendMessageTextAC, updateNewMessageTextAC } from '../../redux/state'
+import { ActionsTypes, DialogType, MessageType } from '../../Types'
 import DialogItem from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
 import Message from './Message/Message'
@@ -8,6 +9,8 @@ import Message from './Message/Message'
 type PropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
+    dispatch: (action: ActionsTypes) => void
+    newMessage: string
 }
 
 export const Dialogs: React.FC<PropsType> = (props) => {
@@ -18,7 +21,10 @@ export const Dialogs: React.FC<PropsType> = (props) => {
         <Message key={m.id} message={m.message} id={m.id} />
     ))
     const addNewMessage = () => {
-        alert('New message')
+        props.dispatch(sendMessageTextAC(props.newMessage))
+    }
+    const onNewMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        props.dispatch(updateNewMessageTextAC(e.currentTarget.value))
     }
     return (
         <div className={s.dialogs}>
@@ -26,7 +32,12 @@ export const Dialogs: React.FC<PropsType> = (props) => {
             <div className={s.messages}>
                 {messagesElements}
                 <div>
-                    <TextField  name="newMessage"></TextField>
+                    <TextField
+                        name="newMessage"
+                        placeholder="Send"
+                        onChange={onNewMessageChange}
+                        value={props.newMessage}
+                    ></TextField>
                     <Button onClick={addNewMessage}>Send</Button>
                 </div>
             </div>

@@ -1,4 +1,6 @@
-import { StoreType, PostType } from '../Types'
+import { StoreType } from '../Types'
+import { dialogsReducer } from './dialogs-reducer'
+import { profileReducer } from './profile-reducer'
 
 export const addPostAC = (newPostText: string) => {
     return {
@@ -11,6 +13,17 @@ export const onPostChangeAC = (newPostText: string) => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         text: newPostText,
+    } as const
+}
+export const updateNewMessageTextAC = (newMessageText: string) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE-TEXT',
+        text: newMessageText,
+    } as const
+}
+export const sendMessageTextAC = (newMessageText: string) => {
+    return {
+        type: 'SEND-MESSAGE',
     } as const
 }
 
@@ -38,25 +51,12 @@ const store: StoreType = {
                 { id: 4, message: 'Miss me?' },
                 { id: 5, message: 'See u tomorrow' },
             ],
+            newMessageBody: '',
         },
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost: PostType = {
-                id: Math.random(),
-                message: action.text,
-                likesCount: 0,
-            }
-            if (newPost.message.trim() === '') {
-                return
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._onChange()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.text
-            this._onChange()
-        }
+        profileReducer(this._state.profilePage, action)
+        dialogsReducer(this._state.dialogsPage, action)
     },
     getState() {
         return this._state

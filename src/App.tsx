@@ -8,7 +8,7 @@ import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
 import { Header } from './components/Header/Header'
-import { Footer } from './components/Footer/Footer'
+// import { Footer } from './components/Footer/Footer'
 import { Grid } from '@material-ui/core'
 
 type PropsType = {
@@ -43,6 +43,8 @@ export const App: React.FC<PropsType> = (props) => {
                             <Dialogs
                                 dialogs={state.dialogsPage.dialogs}
                                 messages={state.dialogsPage.messages}
+                                dispatch={props.dispatch}
+                                newMessage={props.store._state.dialogsPage.newMessageBody}
                             />
                         )}
                     />

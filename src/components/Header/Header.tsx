@@ -6,7 +6,7 @@ import s from './Header.module.css'
 export const Header = () => {
     return (
         <header className={s.header}>
-            <AppBar position="static" color="secondary">
+            <AppBar position="static" color="primary">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu">
                         <Menu />
