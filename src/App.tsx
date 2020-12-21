@@ -36,16 +36,7 @@ export const App: React.FC<PropsType> = (props) => {
                             />
                         )}
                     />
-                    <Route
-                        path={'/profile'}
-                        render={() => (
-                            <Profile
-                                posts={state.profilePage.posts}
-                                newPostText={state.profilePage.newPostText}
-                                dispatch={props.dispatch}
-                            />
-                        )}
-                    />
+
                     <Route
                         path={'/messages'}
                         render={() => (
