@@ -1,21 +1,20 @@
 import {
-    addPostAC,
-    onPostChangeAC,
-    sendMessageTextAC,
     updateNewMessageTextAC,
-} from './redux/state'
+    sendMessageTextAC,
+} from './redux/dialogs-reducer'
+import { addPostAC, onPostChangeAC } from './redux/profile-reducer'
 
 export type PostType = {
-    id: number
+    id: string
     message: string
     likesCount: number
 }
 export type MessageType = {
-    id: number
+    id: string
     message: string
 }
 export type DialogType = {
-    id: number
+    id: string
     name: string
 }
 export type ProfilePageType = {

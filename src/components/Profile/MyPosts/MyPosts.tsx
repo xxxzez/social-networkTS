@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
 import { ActionsTypes, PostType } from '../../../Types'
-import { addPostAC } from '../../../redux/state'
+import { addPostAC } from '../../../redux/profile-reducer'
 import { Button, TextField } from '@material-ui/core'
 
 type PropsType = {

@@ -1,6 +1,6 @@
 import { Button, TextField } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
-import { sendMessageTextAC, updateNewMessageTextAC } from '../../redux/state'
+import { sendMessageTextAC, updateNewMessageTextAC } from '../../redux/dialogs-reducer'
 import { ActionsTypes, DialogType, MessageType } from '../../Types'
 import DialogItem from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
