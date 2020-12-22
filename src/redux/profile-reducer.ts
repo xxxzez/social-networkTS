@@ -1,5 +1,5 @@
 import { v1 } from 'uuid'
-import { ActionsTypes, PostType, ProfilePageType } from '../Types'
+import { ActionsTypes, ProfilePageType } from '../Types'
 
 export const addPostAC = () => {
     return {
@@ -27,26 +27,25 @@ export const profileReducer = (
     action: ActionsTypes
 ): ProfilePageType => {
     switch (action.type) {
-        case 'ADD-POST': {
-            const stateCopy = { ...state }
-            stateCopy.posts = [...state.posts]
-            let newPost: PostType = {
-                id: v1(),
-                message: stateCopy.newPostText,
-                likesCount: 0,
+        case 'ADD-POST':
+            if (state.newPostText.trim() === '') {
+                return state
             }
-            if (newPost.message.trim() === '') {
-                return stateCopy
+            return {
+                ...state,
+                posts: [
+                    ...state.posts,
+                    { id: v1(), message: state.newPostText, likesCount: 0 },
+                ],
+                newPostText: '',
             }
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
-        }
-        case 'UPDATE-NEW-POST-TEXT': {
-            const stateCopy = { ...state }
-            stateCopy.newPostText = action.text
-            return stateCopy
-        }
+
+        case 'UPDATE-NEW-POST-TEXT':
+            return {
+                ...state,
+                newPostText: action.text,
+            }
+
         default:
             return state
     }
