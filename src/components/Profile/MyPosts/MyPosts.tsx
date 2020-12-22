@@ -1,13 +1,10 @@
 import React, { ChangeEvent } from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
-import { ActionsTypes, PostType } from '../../../Types'
-import { addPostAC } from '../../../redux/profile-reducer'
 import { Button, TextField } from '@material-ui/core'
+import { PropsFromRedux } from './MyPostsContainer'
 
-type PropsType = {
-    
-}
+type PropsType = PropsFromRedux
 
 const MyPosts: React.FC<PropsType> = (props) => {
     const postsElements = props.posts.map((p) => (
@@ -15,14 +12,12 @@ const MyPosts: React.FC<PropsType> = (props) => {
     ))
 
     const onAddPost = () => {
-        props.dispatch(addPostAC(props.newPostText))
+        props.addPost()
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({
-            type: 'UPDATE-NEW-POST-TEXT',
-            text: e.currentTarget.value,
-        })
+        let text = e.currentTarget.value
+        props.updateNewPostText(text)
     }
 
     return (
@@ -30,10 +25,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
             My posts
             <div>
                 <div>
-                    <TextField 
-                        onChange={onPostChange}
-                        value={props.newPostText}
-                    />
+                    <TextField onChange={onPostChange} value={props.children} />
                 </div>
                 <div>
                     <Button onClick={onAddPost}>Add post</Button>

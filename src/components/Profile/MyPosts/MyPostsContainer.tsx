@@ -1,26 +1,27 @@
+import { connect, ConnectedProps } from 'react-redux'
+import { ProfilePageType } from '../../../Types'
 import { addPostAC, onPostChangeAC } from '../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
-import { connect } from 'react-redux'
-import { RootStateType } from '../../../Types'
 
-const mapStateToProps = (state: RootStateType) => {
+const mapStateToProps = (state: ProfilePageType) => {
     return {
-        posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText,
+        posts: state.posts,
+        newPostText: state.newPostText,
     }
 }
-
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        onAddPost: () => {
+        addPost: () => {
             dispatch(addPostAC())
         },
-        onPostChange: (text: string) => {
+        updateNewPostText: (text: string) => {
             dispatch(onPostChangeAC(text))
         },
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+const connector = connect(mapStateToProps, mapDispatchToProps)
+export type PropsFromRedux = ConnectedProps<typeof connector>
+const MyPostsContainer = connector(MyPosts)
 
 export default MyPostsContainer
