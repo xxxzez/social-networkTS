@@ -7,10 +7,7 @@ import s from './Dialogs.module.css'
 import Message from './Message/Message'
 
 type PropsType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-    dispatch: (action: ActionsTypes) => void
-    newMessage: string
+    
 }
 
 export const Dialogs: React.FC<PropsType> = (props) => {
@@ -21,10 +18,10 @@ export const Dialogs: React.FC<PropsType> = (props) => {
         <Message key={m.id} message={m.message} id={m.id} />
     ))
     const addNewMessage = () => {
-        props.dispatch(sendMessageTextAC(props.newMessage))
+        dispatch(sendMessageTextAC(props.newMessage))
     }
     const onNewMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
-        props.dispatch(updateNewMessageTextAC(e.currentTarget.value))
+        dispatch(updateNewMessageTextAC(e.currentTarget.value))
     }
     return (
         <div className={s.dialogs}>

@@ -7,7 +7,7 @@ export const updateNewMessageTextAC = (newMessageText: string) => {
         text: newMessageText,
     } as const
 }
-export const sendMessageTextAC = (newMessageText: string) => {
+export const sendMessageTextAC = () => {
     return {
         type: 'SEND-MESSAGE',
     } as const

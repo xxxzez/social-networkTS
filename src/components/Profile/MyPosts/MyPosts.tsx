@@ -6,9 +6,7 @@ import { addPostAC } from '../../../redux/profile-reducer'
 import { Button, TextField } from '@material-ui/core'
 
 type PropsType = {
-    posts: Array<PostType>
-    newPostText: string
-    dispatch: (action: ActionsTypes) => void
+    
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {

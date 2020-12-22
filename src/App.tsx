@@ -3,21 +3,17 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { Navbar } from './components/Navbar/Navbar'
 import { Settings } from '@material-ui/icons'
 import { Route } from 'react-router-dom'
-import { AppRootStateType } from './redux/redux-store'
-import { Dialogs } from './components/Dialogs/Dialogs'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
 import { Header } from './components/Header/Header'
 // import { Footer } from './components/Footer/Footer'
 import { Grid } from '@material-ui/core'
-import { useDispatch } from 'react-redux'
+import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 
-type PropsType = {
-    store: AppRootStateType
-}
+type PropsType = {}
 
 export const App: React.FC<PropsType> = (props) => {
-    const state = props.store
+
     return (
         <div>
             <CssBaseline />
@@ -29,9 +25,6 @@ export const App: React.FC<PropsType> = (props) => {
                         path={'/profile'}
                         render={() => (
                             <Profile
-                                posts={state.profilePage.posts}
-                                newPostText={state.profilePage.newPostText}
-                                dispatch={useDispatch}
                             />
                         )}
                     />
@@ -39,13 +32,7 @@ export const App: React.FC<PropsType> = (props) => {
                     <Route
                         path={'/messages'}
                         render={() => (
-                            <Dialogs
-                                dialogs={state.dialogsPage.dialogs}
-                                messages={state.dialogsPage.messages}
-                                dispatch={useDispatch}
-                                newMessage={
-                                    props.store.dialogsPage.newMessageBody
-                                }
+                            <DialogsContainer
                             />
                         )}
                     />

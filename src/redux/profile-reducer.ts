@@ -1,10 +1,9 @@
 import { v1 } from 'uuid'
 import { ActionsTypes, PostType, ProfilePageType } from '../Types'
 
-export const addPostAC = (newPostText: string) => {
+export const addPostAC = () => {
     return {
         type: 'ADD-POST',
-        text: newPostText,
     } as const
 }
 
@@ -31,7 +30,7 @@ export const profileReducer = (
         case 'ADD-POST':
             let newPost: PostType = {
                 id: v1(),
-                message: action.text,
+                message: state.newPostText,
                 likesCount: 0,
             }
             if (newPost.message.trim() === '') {
