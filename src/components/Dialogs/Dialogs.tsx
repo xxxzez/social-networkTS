@@ -1,24 +1,26 @@
 import { Button, TextField } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
+import { useDispatch } from 'react-redux'
 import { sendMessageTextAC, updateNewMessageTextAC } from '../../redux/dialogs-reducer'
-import { ActionsTypes, DialogType, MessageType } from '../../Types'
+import { ActionsTypes, DialogsPageType, DialogType, MessageType } from '../../Types'
 import DialogItem from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
 import Message from './Message/Message'
 
 type PropsType = {
-    
+    dialogsPage: DialogsPageType
 }
 
 export const Dialogs: React.FC<PropsType> = (props) => {
-    const dialogsElements = props.dialogs.map((d) => (
+    const dispatch = useDispatch()
+    const dialogsElements = props.dialogsPage.dialogs.map((d) => (
         <DialogItem key={d.id} name={d.name} id={d.id} />
     ))
-    const messagesElements = props.messages.map((m) => (
+    const messagesElements = props.dialogsPage.messages.map((m) => (
         <Message key={m.id} message={m.message} id={m.id} />
     ))
     const addNewMessage = () => {
-        dispatch(sendMessageTextAC(props.newMessage))
+        dispatch(sendMessageTextAC())
     }
     const onNewMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(updateNewMessageTextAC(e.currentTarget.value))
@@ -33,7 +35,7 @@ export const Dialogs: React.FC<PropsType> = (props) => {
                         name="newMessage"
                         placeholder="Send"
                         onChange={onNewMessageChange}
-                        value={props.newMessage}
+                        value={props.dialogsPage.newMessageBody}
                     ></TextField>
                     <Button onClick={addNewMessage}>Send</Button>
                 </div>

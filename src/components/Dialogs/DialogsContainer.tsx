@@ -16,7 +16,7 @@ const mapStateToProps = (state: RootStateType) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         onNewMessageChange: () => {
-            dispatch(updateNewMessageTextAC(newMessageText))
+            dispatch(updateNewMessageTextAC(''))
         },
         addNewMessage: () => {
             dispatch(sendMessageTextAC())
