@@ -13,7 +13,7 @@ export const sendMessageTextAC = () => {
     } as const
 }
 
-const initialState = {
+const initialState: DialogsPageType = {
     dialogs: [
         { id: v1(), name: 'Dashiki' },
         { id: v1(), name: 'Tommy' },
