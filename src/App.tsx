@@ -12,7 +12,7 @@ import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 
 type PropsType = {}
 
-export const App: React.FC<PropsType> = (props) => {
+export const App: React.FC<PropsType> = () => {
 
     return (
         <div>
