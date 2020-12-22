@@ -5,13 +5,12 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
-import { AppStateType } from './Types'
 
 const onChange = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App store={store} dispatch={store.dispatch.bind(store)} />
+                <App store={store} />
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
@@ -19,9 +18,7 @@ const onChange = () => {
 }
 
 onChange()
-store.subscribe(() => {
-    onChange()
-})
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

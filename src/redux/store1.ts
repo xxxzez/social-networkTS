@@ -51,3 +51,4 @@
 //     _onChange() {},
 // }
 // export default store
+export {}
