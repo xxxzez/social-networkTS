@@ -16,8 +16,8 @@ export const onPostChangeAC = (newPostText: string) => {
 
 const initialState = {
     posts: [
-        { id: v1(), message: 'Second post!!!!', likesCount: 17 },
-        { id: v1(), message: 'First post!!!!', likesCount: 7 },
+        { id: v1(), message: 'First post!!!!', likesCount: 17 },
+        { id: v1(), message: 'Second post!!!!', likesCount: 7 },
     ],
     newPostText: '',
 }
@@ -29,6 +29,7 @@ export const profileReducer = (
     switch (action.type) {
         case 'ADD-POST': {
             const stateCopy = { ...state }
+            stateCopy.posts = [...state.posts]
             let newPost: PostType = {
                 id: v1(),
                 message: stateCopy.newPostText,
@@ -37,7 +38,7 @@ export const profileReducer = (
             if (newPost.message.trim() === '') {
                 return stateCopy
             }
-            stateCopy.posts.unshift(newPost)
+            stateCopy.posts.push(newPost)
             stateCopy.newPostText = ''
             return stateCopy
         }

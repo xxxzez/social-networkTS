@@ -7,7 +7,7 @@ import { RootStateType } from '../../Types'
 import { Dialogs } from './Dialogs'
 
 const mapStateToProps = (state: RootStateType) => ({
-    dialogsPage: state.dialogsPage
+    dialogsPage: state.dialogsPage,
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -21,5 +21,4 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
 export type DialogsPropsFromRedux = ConnectedProps<typeof connector>
-
 export const DialogsContainer = connector(Dialogs)

@@ -43,6 +43,7 @@ export const dialogsReducer = (
         }
         case 'SEND-MESSAGE': {
             const stateCopy = { ...state }
+            stateCopy.messages = [...state.messages]
             let body = state.newMessageBody
             let newMessageId = v1()
             stateCopy.newMessageBody = ''
