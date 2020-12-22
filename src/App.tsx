@@ -1,7 +1,7 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Navbar } from './components/Navbar/Navbar'
-import { Settings } from '@material-ui/icons'
+import { Settings } from './components/Settings/Settings'
 import { Route } from 'react-router-dom'
 import { News } from './components/News/News'
 import { Profile } from './components/Profile/Profile'
