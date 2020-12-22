@@ -1,5 +1,4 @@
-
-import { connect } from 'react-redux'
+import { connect, ConnectedProps } from 'react-redux'
 import {
     sendMessageTextAC,
     updateNewMessageTextAC,
@@ -7,23 +6,20 @@ import {
 import { RootStateType } from '../../Types'
 import { Dialogs } from './Dialogs'
 
-const mapStateToProps = (state: RootStateType) => {
-    return {
-        dialogsPage: state.dialogsPage,
-    }
-}
+const mapStateToProps = (state: RootStateType) => ({
+    dialogsPage: state.dialogsPage
+})
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        onNewMessageChange: () => {
-            dispatch(updateNewMessageTextAC(''))
-        },
-        addNewMessage: () => {
-            dispatch(sendMessageTextAC())
-        },
-    }
-}
-export const DialogsContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Dialogs)
+const mapDispatchToProps = (dispatch: any) => ({
+    onNewMessageChange: (text: string) => {
+        dispatch(updateNewMessageTextAC(text))
+    },
+    addNewMessage: () => {
+        dispatch(sendMessageTextAC())
+    },
+})
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+export type DialogsPropsFromRedux = ConnectedProps<typeof connector>
+
+export const DialogsContainer = connector(Dialogs)

@@ -2,30 +2,31 @@ import React, { ChangeEvent } from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
 import { Button, TextField } from '@material-ui/core'
-import { PropsFromRedux } from './MyPostsContainer'
+import { MyPostsPropsFromRedux } from './MyPostsContainer'
 
-type PropsType = PropsFromRedux
+type PropsType = MyPostsPropsFromRedux
 
 const MyPosts: React.FC<PropsType> = (props) => {
-    const postsElements = props.posts.map((p) => (
-        <Post key={p.id} message={p.message} likesCount={p.likesCount} />
-    ))
-
     const onAddPost = () => {
         props.addPost()
     }
-
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let text = e.currentTarget.value
-        props.updateNewPostText(text)
+        props.updateNewPostText(e.currentTarget.value)
     }
+
+    const postsElements = props.posts.map((p) => (
+        <Post key={p.id} message={p.message} likesCount={p.likesCount} />
+    ))
 
     return (
         <div>
             My posts
             <div>
                 <div>
-                    <TextField onChange={onPostChange} value={props.children} />
+                    <TextField
+                        onChange={onPostChange}
+                        value={props.newPostText}
+                    />
                 </div>
                 <div>
                     <Button onClick={onAddPost}>Add post</Button>

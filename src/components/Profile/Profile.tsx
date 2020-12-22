@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 type PropsType = {}
 
-export const Profile: React.FC<PropsType> = (props) => {
+export const Profile: React.FC<PropsType> = () => {
     return (
         <div className={s.profile}>
             <ProfileInfo />

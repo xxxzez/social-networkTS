@@ -1,21 +1,13 @@
 import { Button, TextField } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
-import { useDispatch } from 'react-redux'
-import {
-    sendMessageTextAC,
-    updateNewMessageTextAC,
-} from '../../redux/dialogs-reducer'
-import { DialogsPageType } from '../../Types'
 import DialogItem from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
+import { DialogsPropsFromRedux } from './DialogsContainer'
 import Message from './Message/Message'
 
-type PropsType = {
-    dialogsPage: DialogsPageType
-}
+type PropsType = DialogsPropsFromRedux
 
 export const Dialogs: React.FC<PropsType> = (props) => {
-    const dispatch = useDispatch()
     const dialogsElements = props.dialogsPage.dialogs.map((d) => (
         <DialogItem key={d.id} name={d.name} id={d.id} />
     ))
@@ -23,10 +15,10 @@ export const Dialogs: React.FC<PropsType> = (props) => {
         <Message key={m.id} message={m.message} id={m.id} />
     ))
     const addNewMessage = () => {
-        dispatch(sendMessageTextAC())
+        props.addNewMessage()
     }
     const onNewMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(updateNewMessageTextAC(e.currentTarget.value))
+        props.onNewMessageChange(e.currentTarget.value)
     }
     return (
         <div className={s.dialogs}>

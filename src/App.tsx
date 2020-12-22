@@ -28,7 +28,6 @@ export const App: React.FC<PropsType> = (props) => {
                             />
                         )}
                     />
-
                     <Route
                         path={'/messages'}
                         render={() => (

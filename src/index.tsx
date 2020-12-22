@@ -7,24 +7,16 @@ import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-const onChange = (state: any) => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </BrowserRouter>
-        </React.StrictMode>,
-        document.getElementById('root')
-    )
-}
-
-onChange(store.getState())
-store.subscribe(()=> {
-    let state = store.getState()
-    onChange(state)
-})
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,14 +1,12 @@
 import { connect, ConnectedProps } from 'react-redux'
-import { ProfilePageType } from '../../../Types'
+import { RootStateType } from '../../../Types'
 import { addPostAC, onPostChangeAC } from '../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 
-const mapStateToProps = (state: ProfilePageType) => {
-    return {
-        posts: state.posts,
-        newPostText: state.newPostText,
-    }
-}
+const mapStateToProps = (state: RootStateType) => ({
+    posts: state.profilePage.posts,
+    newPostText: state.profilePage.newPostText,
+})
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addPost: () => {
@@ -21,7 +19,7 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
-export type PropsFromRedux = ConnectedProps<typeof connector>
+export type MyPostsPropsFromRedux = ConnectedProps<typeof connector>
 const MyPostsContainer = connector(MyPosts)
 
 export default MyPostsContainer
