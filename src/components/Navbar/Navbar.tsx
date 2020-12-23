@@ -14,6 +14,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import ChatIcon from '@material-ui/icons/Chat'
 import SettingsIcon from '@material-ui/icons/Settings'
 import LineWeightIcon from '@material-ui/icons/LineWeight'
+import GroupIcon from '@material-ui/icons/Group'
 
 type NavbarItemType = {
     link: string
@@ -31,6 +32,8 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
                 return <LineWeightIcon />
             case 'Settings':
                 return <SettingsIcon />
+            case 'Users':
+                return <GroupIcon />
         }
     }
     return (
@@ -52,6 +55,7 @@ export const Navbar = () => {
                 <NavbarItem link={'/profile'} title={'Profile'} />
                 <NavbarItem link={'/messages'} title={'Messages'} />
                 <NavbarItem link={'/news'} title={'News feed'} />
+                <NavbarItem link={'/users'} title={'Users'} />
                 <Divider />
                 <NavbarItem link={'/settings'} title={'Settings'} />
             </List>

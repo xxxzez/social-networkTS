@@ -1,3 +1,4 @@
+import { followAC, setUsersAC, unfollowAC } from './redux/users-reducer'
 import {
     updateNewMessageTextAC,
     sendMessageTextAC,
@@ -30,16 +31,31 @@ export type DialogsPageType = {
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
+    usersPage: UsersPageType
 }
 
-export type StoreType = {
-    state: RootStateType
-    getState: () => RootStateType
-    dispatch: (action: ActionsTypes) => void
+export type LocationType = {
+    city: string
+    country: string
+}
+export type UserType = {
+    id: string
+    fullname: string
+    status: string
+    location: LocationType
+    followed: boolean
+    photoUrl: string
 }
 
+export type UsersPageType = {
+    users: Array<UserType>
+}
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof onPostChangeAC>
     | ReturnType<typeof updateNewMessageTextAC>
     | ReturnType<typeof sendMessageTextAC>
+    | ReturnType<typeof followAC>
+    | ReturnType<typeof unfollowAC>
+    | ReturnType<typeof setUsersAC>
+

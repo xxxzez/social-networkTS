@@ -9,11 +9,9 @@ import { Header } from './components/Header/Header'
 // import { Footer } from './components/Footer/Footer'
 import { Grid } from '@material-ui/core'
 import { DialogsContainer } from './components/Dialogs/DialogsContainer'
+import { UsersContainer } from './components/Users/UsersContainer'
 
-type PropsType = {}
-
-export const App: React.FC<PropsType> = () => {
-
+export const App: React.FC = () => {
     return (
         <div>
             <CssBaseline />
@@ -21,20 +19,12 @@ export const App: React.FC<PropsType> = () => {
             <Grid container>
                 <Navbar />
                 <Grid item xs={10}>
-                    <Route
-                        path={'/profile'}
-                        render={() => (
-                            <Profile
-                            />
-                        )}
-                    />
+                    <Route path={'/profile'} render={() => <Profile />} />
                     <Route
                         path={'/messages'}
-                        render={() => (
-                            <DialogsContainer
-                            />
-                        )}
+                        render={() => <DialogsContainer />}
                     />
+                    <Route path={'/users'} render={() => <UsersContainer />} />
                     <Route path={'/news'} render={() => <News />} />
                     <Route path={'/settings'} render={() => <Settings />} />
                 </Grid>
