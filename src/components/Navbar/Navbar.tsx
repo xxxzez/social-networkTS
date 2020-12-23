@@ -53,8 +53,11 @@ export const Navbar = () => {
         <Grid item xs={2}>
             <List>
                 <NavbarItem link={'/profile'} title={'Profile'} />
+                <Divider />
                 <NavbarItem link={'/messages'} title={'Messages'} />
+                <Divider />
                 <NavbarItem link={'/news'} title={'News feed'} />
+                <Divider />
                 <NavbarItem link={'/users'} title={'Users'} />
                 <Divider />
                 <NavbarItem link={'/settings'} title={'Settings'} />

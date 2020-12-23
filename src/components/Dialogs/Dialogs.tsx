@@ -32,7 +32,7 @@ export const Dialogs: React.FC<PropsType> = (props) => {
                         onChange={onNewMessageChange}
                         value={props.dialogsPage.newMessageBody}
                     ></TextField>
-                    <Button onClick={addNewMessage}>Send</Button>
+                    <Button variant='contained' color='primary' onClick={addNewMessage}>Send</Button>
                 </div>
             </div>
         </div>

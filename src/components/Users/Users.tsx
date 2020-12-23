@@ -34,45 +34,42 @@ export const Users: React.FC<PropsType> = (props) => {
             },
         ])
     }
-
     return (
         <div>
             {props.usersPage.users.map((u) => (
-                <div key={u.id}>
-                    <span>
-                        <div>
-                            <Avatar alt={u.fullname} src={'/static/images/avatar/1.jpg'} />
-                        </div>
-                        <div>
-                            {u.followed ? (
-                                <Button
-                                    onClick={() => {
-                                        props.follow(u.id)
-                                    }}
-                                >
-                                    Unfollow
-                                </Button>
-                            ) : (
-                                <Button
-                                    onClick={() => {
-                                        props.unfollow(u.id)
-                                    }}
-                                >
-                                    Follow
-                                </Button>
-                            )}
-                        </div>
-                    </span>
-                    <span>
-                        <span>
-                            <div>{u.fullname}</div>
-                            <div>{u.status}</div>
-                        </span>
-                        <span>
-                            <div>{u.location.city}</div>
-                            <div>{u.location.country}</div>
-                        </span>
-                    </span>
+                <div className="card">
+                    <Avatar
+                        alt={u.fullname}
+                        src={'/static/images/avatar/1.jpg'}
+                    />
+                    <h1>{u.fullname}</h1>
+                    <h4>{u.status}</h4>
+                    <h5>
+                        {u.location.city}, {u.location.country}
+                    </h5>
+                    <p>
+                        {u.followed ? (
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => {
+                                    props.follow(u.id)
+                                }}
+                            >
+                                Unfollow
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="text"
+                                color="primary"
+                                onClick={() => {
+                                    props.unfollow(u.id)
+                                }}
+                            >
+                                Follow
+                            </Button>
+                        )}
+                    </p>
                 </div>
             ))}
         </div>

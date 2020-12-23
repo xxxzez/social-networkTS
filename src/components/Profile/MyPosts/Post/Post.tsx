@@ -16,7 +16,7 @@ const Post: React.FC<PostType> = (props) => {
             <div>
                 <span>Like! </span>
                 {props.likesCount}
-                <Button>Delete post</Button>
+                <Button variant='contained' color='primary'>Delete post</Button>
             </div>
         </div>
     )

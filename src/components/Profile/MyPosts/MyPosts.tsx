@@ -29,7 +29,13 @@ const MyPosts: React.FC<PropsType> = (props) => {
                     />
                 </div>
                 <div>
-                    <Button onClick={onAddPost}>Add post</Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={onAddPost}
+                    >
+                        Add post
+                    </Button>
                 </div>
             </div>
             <div className={s.posts}>{postsElements}</div>
