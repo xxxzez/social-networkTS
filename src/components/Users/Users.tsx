@@ -37,7 +37,7 @@ export const Users: React.FC<PropsType> = (props) => {
     return (
         <div>
             {props.usersPage.users.map((u) => (
-                <div className="card">
+                <div className="card" key={u.id}>
                     <Avatar
                         alt={u.fullname}
                         src={'/static/images/avatar/1.jpg'}
