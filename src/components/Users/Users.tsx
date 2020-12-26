@@ -3,6 +3,7 @@ import axios from 'axios'
 import React from 'react'
 import { UsersPropsFromRedux } from './UsersContainer'
 import profileIcon from '../../assets/profileIcon.png'
+import locationLogo from '../../assets/canadaFlag.jpeg'
 
 type PropsType = UsersPropsFromRedux
 export const Users: React.FC<PropsType> = (props) => {
@@ -29,9 +30,11 @@ export const Users: React.FC<PropsType> = (props) => {
 
                     <h3>{u.name}</h3>
                     <h4>{u.status}</h4>
-                    <h5>
-                        {'Vancouver'}, {'Canada'}
-                    </h5>
+                    <h4>
+                        {'Vancouver'}, {'Canada '}
+                        <img src={locationLogo} alt="" width="30px" />
+                    </h4>
+
                     <p>
                         {u.followed ? (
                             <Button
