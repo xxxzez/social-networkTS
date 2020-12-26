@@ -38,13 +38,17 @@ export type LocationType = {
     city: string
     country: string
 }
+export type PhotosTypes = {
+    small: string | null | undefined
+    large: string | null | undefined
+}
 export type UserType = {
     id: string
-    fullname: string
+    name: string
     status: string
     location: LocationType
     followed: boolean
-    photoUrl: string
+    photos: PhotosTypes
 }
 
 export type UsersPageType = {
@@ -58,4 +62,3 @@ export type ActionsTypes =
     | ReturnType<typeof followAC>
     | ReturnType<typeof unfollowAC>
     | ReturnType<typeof setUsersAC>
-
