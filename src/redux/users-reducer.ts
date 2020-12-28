@@ -2,6 +2,9 @@ import { ActionsTypes, UsersPageType, UserType } from '../Types'
 
 const initialState: UsersPageType = {
     users: [],
+    pageSize: 10,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 export const followAC = (userId: string) => {
     return {
