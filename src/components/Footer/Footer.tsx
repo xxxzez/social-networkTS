@@ -5,7 +5,7 @@ export const Footer = () => {
     return (
         <footer>
             <Grid item xs={12}>
-                <AppBar position="static" color="secondary">
+                <AppBar position="static" color="primary">
                     <Toolbar>
                         <Typography variant="h6">
                             This project is made by Matvei Bohush
