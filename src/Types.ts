@@ -1,4 +1,9 @@
-import { followAC, setUsersAC, unfollowAC } from './redux/users-reducer'
+import {
+    followAC,
+    setCurrentPageAC,
+    setUsersAC,
+    unfollowAC,
+} from './redux/users-reducer'
 import {
     updateNewMessageTextAC,
     sendMessageTextAC,
@@ -65,3 +70,4 @@ export type ActionsTypes =
     | ReturnType<typeof followAC>
     | ReturnType<typeof unfollowAC>
     | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPageAC>

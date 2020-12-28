@@ -3,8 +3,8 @@ import { ActionsTypes, UsersPageType, UserType } from '../Types'
 const initialState: UsersPageType = {
     users: [],
     pageSize: 10,
-    totalUsersCount: 0,
-    currentPage: 1
+    totalUsersCount: 10,
+    currentPage: 1,
 }
 export const followAC = (userId: string) => {
     return {
@@ -22,6 +22,12 @@ export const setUsersAC = (users: Array<UserType>) => {
     return {
         type: 'SET-USERS',
         users: users,
+    } as const
+}
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET-CURRENT-PAGE',
+        currentPage: currentPage,
     } as const
 }
 export const usersReducer = (state = initialState, action: ActionsTypes) => {
@@ -49,7 +55,12 @@ export const usersReducer = (state = initialState, action: ActionsTypes) => {
         case 'SET-USERS':
             return {
                 ...state,
-                users: [...state.users, ...action.users],
+                users: [...action.users],
+            }
+        case 'SET-CURRENT-PAGE':
+            return {
+                ...state,
+                currentPage: action.currentPage,
             }
         default:
             return state

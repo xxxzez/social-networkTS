@@ -1,5 +1,5 @@
 import { connect, ConnectedProps } from 'react-redux'
-import { followAC, setUsersAC, unfollowAC } from '../../redux/users-reducer'
+import { followAC, setCurrentPageAC, setUsersAC, unfollowAC } from '../../redux/users-reducer'
 import { RootStateType, UserType } from '../../Types'
 import { Users } from './Users'
 
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch: any) => ({
     setUsers: (users: Array<UserType>) => {
         dispatch(setUsersAC(users))
     },
+    setCurrentPage: (currentPage: number) => {
+        dispatch(setCurrentPageAC(currentPage))
+    }
 })
 
 const connector = connect(mapStateToProps, mapDispatchToProps)

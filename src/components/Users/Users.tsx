@@ -12,11 +12,23 @@ type PropsType = UsersPropsFromRedux
 export class Users extends React.Component<PropsType> {
     componentDidMount = () => {
         axios
-            .get('https://social-network.samuraijs.com/api/1.0/users')
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.totalUsersCount}`
+            )
+            .then((response) => this.props.setUsers(response.data.items))
+    }
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.totalUsersCount}`
+            )
             .then((response) => this.props.setUsers(response.data.items))
     }
     render = () => {
-        const pagesCount = this.props.totalUsersCount / this.props.pageSize
+        const pagesCount = Math.ceil(
+            this.props.totalUsersCount / this.props.pageSize
+        )
         const pages = []
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i)
@@ -26,8 +38,15 @@ export class Users extends React.Component<PropsType> {
             <Grid item xs={2}>
                 <div>
                     {pages.map((page) => (
-                        <span className={true && styles.selectedPage}>
-                            <h3>{page}</h3>
+                        <span
+                            onClick={() => this.onPageChanged(page)}
+                            className={
+                                this.props.currentPage === page
+                                    ? styles.selectedPage
+                                    : ''
+                            }
+                        >
+                            {page}
                         </span>
                     ))}
                 </div>
