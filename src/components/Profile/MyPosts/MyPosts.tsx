@@ -6,7 +6,7 @@ import { MyPostsPropsFromRedux } from './MyPostsContainer'
 
 type PropsType = MyPostsPropsFromRedux
 
-const MyPosts: React.FC<PropsType> = (props) => {
+const MyPosts: React.FC<PropsType> = React.memo((props) => {
     const onAddPost = () => {
         props.addPost()
     }
@@ -41,6 +41,6 @@ const MyPosts: React.FC<PropsType> = (props) => {
             <div className={s.posts}>{postsElements}</div>
         </div>
     )
-}
+})
 
 export default MyPosts

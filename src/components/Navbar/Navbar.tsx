@@ -21,7 +21,7 @@ type NavbarItemType = {
     title: string
 }
 
-const NavbarItem: React.FC<NavbarItemType> = (props) => {
+const NavbarItem: React.FC<NavbarItemType> = React.memo((props) => {
     const iconRender = (title: string) => {
         switch (title) {
             case 'Profile':
@@ -46,9 +46,9 @@ const NavbarItem: React.FC<NavbarItemType> = (props) => {
             </ListItem>
         </div>
     )
-}
+})
 
-export const Navbar = () => {
+export const Navbar = React.memo(() => {
     return (
         <Grid item xs={2}>
             <List>
@@ -64,4 +64,4 @@ export const Navbar = () => {
             </List>
         </Grid>
     )
-}
+})

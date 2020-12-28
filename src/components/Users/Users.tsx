@@ -6,7 +6,7 @@ import profileIcon from '../../assets/profileIcon.png'
 import locationLogo from '../../assets/canadaFlag.jpeg'
 
 type PropsType = UsersPropsFromRedux
-export const Users: React.FC<PropsType> = (props) => {
+export const Users: React.FC<PropsType> = React.memo((props) => {
     if (props.usersPage.users.length === 0) {
         axios
             .get('https://social-network.samuraijs.com/api/1.0/users')
@@ -62,4 +62,4 @@ export const Users: React.FC<PropsType> = (props) => {
             ))}
         </div>
     )
-}
+})

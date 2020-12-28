@@ -1,13 +1,13 @@
 import { Button, TextField } from '@material-ui/core'
 import React, { ChangeEvent } from 'react'
-import DialogItem from './DialogItem/DialogItem'
+import { DialogItem } from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
 import { DialogsPropsFromRedux } from './DialogsContainer'
 import Message from './Message/Message'
 
 type PropsType = DialogsPropsFromRedux
 
-export const Dialogs: React.FC<PropsType> = (props) => {
+export const Dialogs: React.FC<PropsType> = React.memo((props) => {
     const dialogsElements = props.dialogsPage.dialogs.map((d) => (
         <DialogItem key={d.id} name={d.name} id={d.id} />
     ))
@@ -32,9 +32,15 @@ export const Dialogs: React.FC<PropsType> = (props) => {
                         onChange={onNewMessageChange}
                         value={props.dialogsPage.newMessageBody}
                     ></TextField>
-                    <Button variant='contained' color='primary' onClick={addNewMessage}>Send</Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={addNewMessage}
+                    >
+                        Send
+                    </Button>
                 </div>
             </div>
         </div>
     )
-}
+})

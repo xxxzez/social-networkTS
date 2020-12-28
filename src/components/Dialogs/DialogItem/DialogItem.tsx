@@ -3,12 +3,10 @@ import { NavLink } from "react-router-dom"
 import { DialogType } from "../../../Types"
 import s from "./DialogItem.module.css"
 
-const DialogItem: React.FC<DialogType> = (props) => {
+export const DialogItem: React.FC<DialogType> = React.memo((props) => {
     return (
         <div className={s.dialog}>
             <NavLink to={`/messages/${props.id}`}>{props.name}</NavLink>
         </div>
     )
-}
-
-export default DialogItem
+})

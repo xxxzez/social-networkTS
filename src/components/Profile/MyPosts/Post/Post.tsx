@@ -8,7 +8,7 @@ type PostType = {
     likesCount: number
 }
 
-const Post: React.FC<PostType> = (props) => {
+const Post: React.FC<PostType> = React.memo((props) => {
     return (
         <div className={s.item}>
             <img src={logo} alt="" />
@@ -20,6 +20,6 @@ const Post: React.FC<PostType> = (props) => {
             </div>
         </div>
     )
-}
+})
 
 export default Post
