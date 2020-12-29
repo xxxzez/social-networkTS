@@ -15,7 +15,6 @@ class ProfileClassContainer extends React.Component<ProfilePropsFromRedux> {
     }
 
     render() {
-        debugger
         return <Profile profile={this.props.profile} />
     }
 }

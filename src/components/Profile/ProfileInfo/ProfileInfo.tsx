@@ -4,17 +4,17 @@ import { Preloader } from '../../common/Preloader/Preloader'
 import { ProfileType } from '../../../Types'
 
 type PropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
 }
 
 const ProfileInfo: React.FC<PropsType> = (props) => {
-    // if (!props.profile) {
-    //     return <Preloader />
-    // }
+    if (!props.profile) {
+        return <Preloader />
+    }
     return (
         <div className={s.profile}>
             <div className={s.profilePicture}>
-                <img src={props.profile.photos.large} alt="" />
+                <img src={''} alt="" />
             </div>
             <h3>Welcome to my page guys! Happy to see you here!</h3>
             <h3>{props.profile.aboutMe}</h3>

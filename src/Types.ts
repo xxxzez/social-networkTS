@@ -29,9 +29,8 @@ export type DialogType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
-    profile: any
+    profile: ProfileType
 }
-
 export type ProfileType = {
     aboutMe: string | null | undefined
     contacts: ProfileContactsType
@@ -40,13 +39,12 @@ export type ProfileType = {
     fullName: string | null | undefined
     userId: number
     photos: ProfilePhotosType
-}
+} | null
 
 export type ProfilePhotosType = {
     small: string | null | undefined | HTMLImageElement
     large: string | null | undefined | HTMLImageElement
 }
-
 export type ProfileContactsType = {
     facebook: string | null | undefined
     website: string | null | undefined
