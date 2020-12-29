@@ -9,7 +9,7 @@ import { Header } from './components/Header/Header'
 import { Grid } from '@material-ui/core'
 import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
-import { Footer } from './components/Footer/Footer'
+// import { Footer } from './components/Footer/Footer'
 
 export const App: React.FC = () => {
     return (
@@ -26,7 +26,7 @@ export const App: React.FC = () => {
                     <Route path={'/settings'} render={() => <Settings />} />
                 </Grid>
             </Grid>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

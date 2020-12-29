@@ -1,6 +1,7 @@
 import {
     followAC,
     setCurrentPageAC,
+    setToggleIsFetchingAC,
     setTotalUsersCountAC,
     setUsersAC,
     unfollowAC,
@@ -62,6 +63,7 @@ export type UsersPageType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
@@ -73,3 +75,4 @@ export type ActionsTypes =
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalUsersCountAC>
+    | ReturnType<typeof setToggleIsFetchingAC>
