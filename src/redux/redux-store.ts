@@ -13,6 +13,4 @@ const rootReducer = combineReducers({
 export type AppRootStateType = any
 const store: AppRootStateType = createStore(rootReducer, composeWithDevTools())
 
-
-
 export default store

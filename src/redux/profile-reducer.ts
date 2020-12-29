@@ -13,6 +13,12 @@ export const onPostChangeAC = (newPostText: string) => {
         text: newPostText,
     } as const
 }
+export const setUserProfile = (profile: any) => {
+    return {
+        type: 'SET-USER-PROFILE',
+        profile: profile,
+    } as const
+}
 
 const initialState = {
     posts: [
@@ -20,6 +26,29 @@ const initialState = {
         { id: v1(), message: 'Second post!!!!', likesCount: 7 },
     ],
     newPostText: '',
+    profile: {
+        aboutMe: 'я круто чувак 1001%',
+        contacts: {
+            facebook: 'facebook.com',
+            website: null,
+            vk: 'vk.com/dimych',
+            twitter: 'https://twitter.com/@sdf',
+            instagram: 'instagra.com/sds',
+            youtube: null,
+            github: 'github.com',
+            mainLink: null,
+        },
+        lookingForAJob: true,
+        lookingForAJobDescription: 'не ищу, а дурачусь',
+        fullName: 'samurai dimych',
+        userId: 2,
+        photos: {
+            small:
+                'https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0',
+            large:
+                'https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0',
+        },
+    },
 }
 
 export const profileReducer = (
@@ -44,6 +73,11 @@ export const profileReducer = (
             return {
                 ...state,
                 newPostText: action.text,
+            }
+        case 'SET-USER-PROFILE':
+            return {
+                ...state,
+                profile: action.profile,
             }
 
         default:

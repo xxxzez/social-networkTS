@@ -4,6 +4,7 @@ import profileIcon from '../../assets/profileIcon.png'
 import locationLogo from '../../assets/canadaFlag.jpeg'
 import styles from './Users.module.css'
 import { UserType } from '../../Types'
+import { NavLink } from 'react-router-dom'
 
 type PropsType = {
     totalUsersCount: number
@@ -41,15 +42,17 @@ export const Users = (props: PropsType) => {
             </div>
             {props.users.map((u) => (
                 <div className="card" key={u.id}>
-                    <img
-                        src={
-                            u.photos.small !== null
-                                ? u.photos.small
-                                : profileIcon
-                        }
-                        alt="ProfileImage"
-                        width="90px"
-                    />
+                    <NavLink to={'/profile/' + u.id}>
+                        <img
+                            src={
+                                u.photos.small !== null
+                                    ? u.photos.small
+                                    : profileIcon
+                            }
+                            alt="ProfileImage"
+                            width="90px"
+                        />
+                    </NavLink>
 
                     <h3>{u.name}</h3>
                     <h4>{u.status}</h4>

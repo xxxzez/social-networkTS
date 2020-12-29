@@ -4,11 +4,11 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Settings } from './components/Settings/Settings'
 import { Route } from 'react-router-dom'
 import { News } from './components/News/News'
-import { Profile } from './components/Profile/Profile'
 import { Header } from './components/Header/Header'
 import { Grid } from '@material-ui/core'
 import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
+import { ProfileContainer } from './components/Profile/ProfileContainer'
 // import { Footer } from './components/Footer/Footer'
 
 export const App: React.FC = () => {
@@ -19,7 +19,7 @@ export const App: React.FC = () => {
             <Grid container>
                 <Navbar />
                 <Grid item xs={10}>
-                    <Route path={'/profile'} render={() => <Profile />} />
+                    <Route path={'/profile'} render={() => <ProfileContainer />} />
                     <Route path={'/messages'} render={() => <DialogsContainer />} />
                     <Route path={'/users'} render={() => <UsersContainer />} />
                     <Route path={'/news'} render={() => <News />} />

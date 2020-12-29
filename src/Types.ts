@@ -7,7 +7,11 @@ import {
     unfollow,
 } from './redux/users-reducer'
 import { onNewMessageChange, addNewMessage } from './redux/dialogs-reducer'
-import { addPostAC, onPostChangeAC } from './redux/profile-reducer'
+import {
+    addPostAC,
+    onPostChangeAC,
+    setUserProfile,
+} from './redux/profile-reducer'
 
 export type PostType = {
     id: string
@@ -25,6 +29,7 @@ export type DialogType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
+    profile: any
 }
 export type DialogsPageType = {
     dialogs: Array<DialogType>
@@ -73,3 +78,4 @@ export type ActionsTypes =
     | ReturnType<typeof setCurrentPage>
     | ReturnType<typeof setTotalUsersCount>
     | ReturnType<typeof setToggleIsFetching>
+    | ReturnType<typeof setUserProfile>
