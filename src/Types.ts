@@ -1,6 +1,7 @@
 import {
     followAC,
     setCurrentPageAC,
+    setTotalUsersCountAC,
     setUsersAC,
     unfollowAC,
 } from './redux/users-reducer'
@@ -71,3 +72,4 @@ export type ActionsTypes =
     | ReturnType<typeof unfollowAC>
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
+    | ReturnType<typeof setTotalUsersCountAC>
