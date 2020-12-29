@@ -31,6 +31,33 @@ export type ProfilePageType = {
     newPostText: string
     profile: any
 }
+
+export type ProfileType = {
+    aboutMe: string | null | undefined
+    contacts: ProfileContactsType
+    lookingForAJob: boolean
+    lookingForAJobDescription: string | null | undefined
+    fullName: string | null | undefined
+    userId: number
+    photos: ProfilePhotosType
+}
+
+export type ProfilePhotosType = {
+    small: string | null | undefined | HTMLImageElement
+    large: string | null | undefined | HTMLImageElement
+}
+
+export type ProfileContactsType = {
+    facebook: string | null | undefined
+    website: string | null | undefined
+    vk: string | null | undefined
+    twitter: string | null | undefined
+    instagram: string | null | undefined
+    youtube: string | null | undefined
+    github: string | null | undefined
+    mainLink: string | null | undefined
+}
+
 export type DialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>

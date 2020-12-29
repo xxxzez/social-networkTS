@@ -1,10 +1,11 @@
 import React from 'react'
+import { ProfileType } from '../../Types'
 import MyPostsContainer from './MyPosts/MyPostsContainer'
 import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 type PropsType = {
-    profile: any
+    profile: ProfileType
 }
 
 export const Profile: React.FC<PropsType> = (props) => {

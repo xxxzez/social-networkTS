@@ -1,9 +1,10 @@
 import React from 'react'
 import s from './ProfileInfo.module.css'
 import { Preloader } from '../../common/Preloader/Preloader'
+import { ProfileType } from '../../../Types'
 
 type PropsType = {
-    profile: any
+    profile: ProfileType
 }
 
 const ProfileInfo: React.FC<PropsType> = (props) => {
