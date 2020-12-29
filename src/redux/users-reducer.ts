@@ -2,7 +2,7 @@ import { ActionsTypes, UsersPageType, UserType } from '../Types'
 
 const initialState: UsersPageType = {
     users: [],
-    pageSize: 50,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
 }
