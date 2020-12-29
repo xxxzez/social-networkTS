@@ -2,14 +2,14 @@ import axios from 'axios'
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import {
-    followAC,
-    setCurrentPageAC,
-    setToggleIsFetchingAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC,
+    follow,
+    setCurrentPage,
+    setToggleIsFetching,
+    setTotalUsersCount,
+    setUsers,
+    unfollow,
 } from '../../redux/users-reducer'
-import { RootStateType, UserType } from '../../Types'
+import { RootStateType } from '../../Types'
 import { Preloader } from '../common/Preloader/Preloader'
 import { Users } from './Users'
 class UsersClassContainer extends React.Component<UsersPropsFromRedux> {
@@ -65,28 +65,14 @@ const mapStateToProps = (state: RootStateType) => ({
     isFetching: state.usersPage.isFetching,
 })
 
-const mapDispatchToProps = (dispatch: any) => ({
-    follow: (userId: string) => {
-        dispatch(followAC(userId))
-    },
-    unfollow: (userId: string) => {
-        dispatch(unfollowAC(userId))
-    },
-    setUsers: (users: Array<UserType>) => {
-        dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (currentPage: number) => {
-        dispatch(setCurrentPageAC(currentPage))
-    },
-    setTotalUsersCount: (totalUsersCount: number) => {
-        dispatch(setTotalUsersCountAC(totalUsersCount))
-    },
-    setToggleIsFetching: (isFetching: boolean) => {
-        dispatch(setToggleIsFetchingAC(isFetching))
-    },
+const connector = connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    setToggleIsFetching,
 })
-
-const connector = connect(mapStateToProps, mapDispatchToProps)
 export type UsersPropsFromRedux = ConnectedProps<typeof connector>
 
 export const UsersContainer = connector(UsersClassContainer)

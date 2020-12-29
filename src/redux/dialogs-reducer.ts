@@ -1,13 +1,13 @@
 import { ActionsTypes, DialogsPageType } from '../Types'
 import { v1 } from 'uuid'
 
-export const updateNewMessageTextAC = (newMessageText: string) => {
+export const onNewMessageChange = (newMessageText: string) => {
     return {
         type: 'UPDATE-NEW-MESSAGE-TEXT',
         text: newMessageText,
     } as const
 }
-export const sendMessageTextAC = () => {
+export const addNewMessage = () => {
     return {
         type: 'SEND-MESSAGE',
     } as const

@@ -1,15 +1,12 @@
 import {
-    followAC,
-    setCurrentPageAC,
-    setToggleIsFetchingAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC,
+    follow,
+    setCurrentPage,
+    setToggleIsFetching,
+    setTotalUsersCount,
+    setUsers,
+    unfollow,
 } from './redux/users-reducer'
-import {
-    updateNewMessageTextAC,
-    sendMessageTextAC,
-} from './redux/dialogs-reducer'
+import { onNewMessageChange, addNewMessage } from './redux/dialogs-reducer'
 import { addPostAC, onPostChangeAC } from './redux/profile-reducer'
 
 export type PostType = {
@@ -68,11 +65,11 @@ export type UsersPageType = {
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof onPostChangeAC>
-    | ReturnType<typeof updateNewMessageTextAC>
-    | ReturnType<typeof sendMessageTextAC>
-    | ReturnType<typeof followAC>
-    | ReturnType<typeof unfollowAC>
-    | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setTotalUsersCountAC>
-    | ReturnType<typeof setToggleIsFetchingAC>
+    | ReturnType<typeof onNewMessageChange>
+    | ReturnType<typeof addNewMessage>
+    | ReturnType<typeof follow>
+    | ReturnType<typeof unfollow>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setTotalUsersCount>
+    | ReturnType<typeof setToggleIsFetching>

@@ -1,7 +1,7 @@
 import { connect, ConnectedProps } from 'react-redux'
 import {
-    sendMessageTextAC,
-    updateNewMessageTextAC,
+    addNewMessage,
+    onNewMessageChange,
 } from '../../redux/dialogs-reducer'
 import { RootStateType } from '../../Types'
 import { Dialogs } from './Dialogs'
@@ -12,10 +12,10 @@ const mapStateToProps = (state: RootStateType) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
     onNewMessageChange: (text: string) => {
-        dispatch(updateNewMessageTextAC(text))
+        dispatch(onNewMessageChange(text))
     },
     addNewMessage: () => {
-        dispatch(sendMessageTextAC())
+        dispatch(addNewMessage())
     },
 })
 

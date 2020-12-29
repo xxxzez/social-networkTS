@@ -7,37 +7,37 @@ const initialState: UsersPageType = {
     currentPage: 1,
     isFetching: true,
 }
-export const followAC = (userId: string) => {
+export const follow = (userId: string) => {
     return {
         type: 'FOLLOW',
         userId: userId,
     } as const
 }
-export const unfollowAC = (userId: string) => {
+export const unfollow = (userId: string) => {
     return {
         type: 'UNFOLLOW',
         userId: userId,
     } as const
 }
-export const setUsersAC = (users: Array<UserType>) => {
+export const setUsers = (users: Array<UserType>) => {
     return {
         type: 'SET-USERS',
         users: users,
     } as const
 }
-export const setCurrentPageAC = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number) => {
     return {
         type: 'SET-CURRENT-PAGE',
         currentPage: currentPage,
     } as const
 }
-export const setTotalUsersCountAC = (totalUsersCount: number) => {
+export const setTotalUsersCount = (totalUsersCount: number) => {
     return {
         type: 'SET-TOTAL-USERS-COUNT',
         totalUsersCount: totalUsersCount,
     } as const
 }
-export const setToggleIsFetchingAC = (isFetching: boolean) => {
+export const setToggleIsFetching = (isFetching: boolean) => {
     return {
         type: 'SET-TOGGLE-IS-FETCHING',
         isFetching: isFetching,
