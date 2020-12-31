@@ -14,7 +14,11 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
     return (
         <div className={s.profile}>
             <div className={s.profilePicture}>
-                <img src={''} alt="" />
+                {props.profile.photos.large ? (
+                    <img src={props.profile.photos.large} alt="" />
+                ) : (
+                    'dddd'
+                )}
             </div>
             <h3>Welcome to my page guys! Happy to see you here!</h3>
             <h3>{props.profile.aboutMe}</h3>
