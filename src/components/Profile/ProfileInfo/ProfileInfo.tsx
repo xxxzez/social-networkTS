@@ -20,18 +20,17 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
                     'dddd'
                 )}
             </div>
-            <h3>Welcome to my page guys! Happy to see you here!</h3>
-            <h3>{props.profile.aboutMe}</h3>
-            <h3>{props.profile.lookingForAJob}</h3>
-            <h3>{props.profile.lookingForAJobDescription}</h3>
-            <h3>{props.profile.fullName}</h3>
-            <h3>{props.profile.userId}</h3>
-            <h3>{props.profile.contacts.facebook}</h3>
-            <h3>{props.profile.contacts.website}</h3>
-            <h3>{props.profile.contacts.vk}</h3>
-            <h3>{props.profile.contacts.youtube}</h3>
-            <h3>{props.profile.contacts.github}</h3>
-            <h3>{props.profile.contacts.mainLink}</h3>
+            <h3>About me: {props.profile.aboutMe}</h3>
+            <h3>Looking for a job? {props.profile.lookingForAJob ? 'Yes' : 'Currently no!'}</h3>
+            <h3>What kind of job are u looking for? {props.profile.lookingForAJobDescription}</h3>
+            <h3>Name: {props.profile.fullName}</h3>
+            <h3>UserId: {props.profile.userId}</h3>
+            <h3>Facebook link: {props.profile.contacts.facebook}</h3>
+            <h3>Your website link: {props.profile.contacts.website}</h3>
+            <h3>VK link: {props.profile.contacts.vk}</h3>
+            <h3>Youtube: {props.profile.contacts.youtube}</h3>
+            <h3>Your github: {props.profile.contacts.github}</h3>
+            <h3>Email: {props.profile.contacts.mainLink}</h3>
 
             <div>
                 <h3>Welcome to my page guys! Happy to see you here!</h3>

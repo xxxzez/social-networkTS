@@ -1,15 +1,6 @@
-.profile{
+.profile {
     display: flex;
     flex-direction: column;
     margin: 20px;
     color: rgb(114, 114, 114);
-}
-
-.profilePicture{
-    display: flex;
-    flex-direction: column;
-}
-
-.profilePicture img {
-    width: 600px;
 }
