@@ -32,28 +32,28 @@ export type ProfilePageType = {
     profile: ProfileType
 }
 export type ProfileType = {
-    aboutMe: string | null | undefined
+    aboutMe: string
     contacts: ProfileContactsType
     lookingForAJob: boolean
-    lookingForAJobDescription: string | null | undefined
-    fullName: string | null | undefined
+    lookingForAJobDescription: string
+    fullName: string
     userId: number
     photos: ProfilePhotosType
 } | null
 
 export type ProfilePhotosType = {
-    small: string | null | undefined | HTMLImageElement
-    large: string | null | undefined | HTMLImageElement
+    small: string | null
+    large: string | null
 }
 export type ProfileContactsType = {
-    facebook: string | null | undefined
-    website: string | null | undefined
-    vk: string | null | undefined
-    twitter: string | null | undefined
-    instagram: string | null | undefined
-    youtube: string | null | undefined
-    github: string | null | undefined
-    mainLink: string | null | undefined
+    facebook: string
+    website: string
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string
+    github: string
+    mainLink: string
 }
 
 export type DialogsPageType = {
@@ -73,8 +73,8 @@ export type LocationType = {
     country: string
 }
 export type PhotosTypes = {
-    small: string | null | undefined
-    large: string | null | undefined
+    small: string | null
+    large: string | null
 }
 export type UserType = {
     id: string

@@ -11,7 +11,7 @@ type PropsType = {
 export const Profile: React.FC<PropsType> = (props) => {
     return (
         <div className={s.profile}>
-            <ProfileInfo profile={props.profile}  />
+            <ProfileInfo profile={props.profile} />
             <MyPostsContainer />
         </div>
     )
