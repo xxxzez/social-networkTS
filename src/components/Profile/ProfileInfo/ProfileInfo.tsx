@@ -29,7 +29,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
             <h3>Your website link: {props.profile.contacts.website}</h3>
             <h3>VK link: {props.profile.contacts.vk}</h3>
             <h3>Youtube: {props.profile.contacts.youtube}</h3>
-            <h3>Your github: {props.profile.contacts.github}</h3>
+            <h3>Github: {props.profile.contacts.github}</h3>
             <h3>Email: {props.profile.contacts.mainLink}</h3>
 
             <div>
