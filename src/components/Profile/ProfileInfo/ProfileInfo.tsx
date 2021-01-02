@@ -2,6 +2,7 @@ import React from 'react'
 import s from './ProfileInfo.module.css'
 import { Preloader } from '../../common/Preloader/Preloader'
 import { ProfileType } from '../../../Types'
+import profilePicture from '../../../assets/profileIcon.png'
 
 type PropsType = {
     profile: ProfileType | null
@@ -16,8 +17,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
             <div className={s.profilePicture}>
                 {props.profile.photos.large ? (
                     <img src={props.profile.photos.large} alt="" />
-                ) : (
-                    'dddd'
+                ) : (<img src={profilePicture} alt="" />
                 )}
             </div>
             <h3>About me: {props.profile.aboutMe}</h3>

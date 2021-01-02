@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Settings } from './components/Settings/Settings'
 import { Route } from 'react-router-dom'
 import { News } from './components/News/News'
-import { Header } from './components/Header/Header'
+import { HeaderContainer } from './components/Header/HeaderContainer'
 import { Grid } from '@material-ui/core'
 import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
@@ -15,7 +15,7 @@ export const App: React.FC = () => {
     return (
         <div>
             <CssBaseline />
-            <Header />
+            <HeaderContainer />
             <Grid container>
                 <Navbar />
                 <Grid item xs={10}>

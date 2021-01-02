@@ -14,6 +14,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
+import { NavLink } from 'react-router-dom'
+import style from './Header.module.css'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -81,7 +83,12 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-export function Header() {
+type PropsType = {
+    login: string
+    isAuth: boolean
+}
+
+export function Header(props: PropsType) {
     const classes = useStyles()
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
     const [
@@ -197,6 +204,15 @@ export function Header() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
+
+                    <div className={style.login}>
+                        {props.isAuth ? (
+                            <span>HELLO</span>
+                        ) : (
+                            <NavLink to={'/login'}>Login</NavLink>
+                        )}
+                    </div>
+
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton

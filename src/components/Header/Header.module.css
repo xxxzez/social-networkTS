@@ -1,12 +1,3 @@
-/* .header{
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(0deg, rgba(0,108,255,1) 0%, rgba(8,55,220,1) 100%);
-    color: rgb(255, 255, 255);
-    border-radius:  0 0 70px 70px;
-    margin-bottom: 10px;
+.login a {
+    color: white;
 }
-
-.header img {
-    width: 120px;
-} */

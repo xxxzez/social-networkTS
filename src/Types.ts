@@ -12,6 +12,7 @@ import {
     onPostChangeAC,
     setUserProfile,
 } from './redux/profile-reducer'
+import { setAuthUserData } from './redux/auth-reducer'
 
 export type PostType = {
     id: string
@@ -62,6 +63,13 @@ export type DialogsPageType = {
     newMessageBody: string
 }
 
+export type AuthType = {
+    id: string
+    email: string
+    login: string
+    isAuth: boolean
+}
+
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
@@ -104,3 +112,5 @@ export type ActionsTypes =
     | ReturnType<typeof setTotalUsersCount>
     | ReturnType<typeof setToggleIsFetching>
     | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setAuthUserData>
+
