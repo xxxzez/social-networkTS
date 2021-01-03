@@ -206,8 +206,7 @@ export function Header(props: PropsType) {
                     </div>
 
                     <div className={style.login}>
-                        {props.isAuth ? (
-                            <span>HELLO</span>
+                        {props.isAuth ? (props.login
                         ) : (
                             <NavLink to={'/login'}>Login</NavLink>
                         )}

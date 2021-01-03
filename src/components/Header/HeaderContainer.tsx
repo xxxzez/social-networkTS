@@ -12,9 +12,13 @@ export class HeaderClassContainer extends React.Component<PropsType> {
                 withCredentials: true,
             })
             .then((response) => {
+                debugger
                 if (response.data.resultCode === 0) {
-                    let { id, email, login } = response.data.data
-                    this.props.setAuthUserData(id, email, login)
+                    this.props.setAuthUserData(
+                        response.data.data.id,
+                        response.data.data.email,
+                        response.data.data.login
+                    )
                 }
             })
     }
@@ -25,7 +29,7 @@ export class HeaderClassContainer extends React.Component<PropsType> {
 
 const mapStateToProps = (state: AuthType) => ({
     isAuth: state.isAuth,
-    login: state.login
+    login: state.login,
 })
 export type PropsType = ConnectedProps<typeof connector>
 const connector = connect(mapStateToProps, { setAuthUserData })
