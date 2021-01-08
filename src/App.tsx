@@ -31,7 +31,7 @@ export const App: React.FC = () => {
                     <Route path={'/settings'} render={() => <Settings />} />
                 </Grid>
             </Grid>
-            {/* <Footer /> */}
+            
         </div>
     )
 }
