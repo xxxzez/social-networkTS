@@ -30,7 +30,7 @@ export type DialogType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
-    profile: ProfileType
+    profile: Profile
 }
 export type ProfileType = {
     aboutMe: string
