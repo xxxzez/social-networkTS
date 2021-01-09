@@ -16,5 +16,3 @@ export type AppRootStateType = any
 const store: AppRootStateType = createStore(rootReducer, composeWithDevTools())
 
 export default store
-//@ts-ignore
-window.store = store
