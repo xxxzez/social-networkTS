@@ -12,7 +12,6 @@ export class HeaderClassContainer extends React.Component<PropsType> {
                 withCredentials: true,
             })
             .then((response) => {
-                debugger
                 if (response.data.resultCode === 0) {
                     this.props.setAuthUserData(
                         response.data.data.id,

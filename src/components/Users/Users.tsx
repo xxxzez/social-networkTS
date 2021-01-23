@@ -2,7 +2,7 @@ import { Button, Grid } from '@material-ui/core'
 import React from 'react'
 import profileIcon from '../../assets/profileIcon.png'
 import locationLogo from '../../assets/canadaFlag.jpeg'
-import styles from './Users.module.css'
+import './Users.module.scss'
 import { UserType } from '../../Types'
 import { NavLink } from 'react-router-dom'
 
@@ -24,67 +24,64 @@ export const Users = (props: PropsType) => {
     }
 
     return (
+        <div>
         <Grid item xs={2}>
+            <input type="text"/>
             <div>
                 {pages.map((page) => (
-                    <span
-                        key={page}
-                        onClick={() => props.onPageChanged(page)}
-                        className={
-                            props.currentPage === page
-                                ? styles.selectedPage
-                                : ''
-                        }
-                    >
+                    <span key={page} onClick={() => props.onPageChanged(page)}>
                         {page}
                     </span>
                 ))}
             </div>
             {props.users.map((u) => (
-                <div className="card" key={u.id}>
-                    <NavLink to={'/profile/' + u.id}>
-                        <img
-                            src={
-                                u.photos.small !== null
-                                    ? u.photos.small
-                                    : profileIcon
-                            }
-                            alt="ProfileImage"
-                            width="90px"
-                        />
-                    </NavLink>
-
-                    <h3>{u.name}</h3>
-                    <h4>{u.status}</h4>
-                    <h4>
-                        {'Vancouver, Canada '}
-                        <img src={locationLogo} alt="" width="30px" />
-                    </h4>
-                    <p>
-                        {u.followed ? (
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={() => {
+                <input id="slider" className="customSlider" type="checkbox" >
+                {/* <label for="slider"></label> */}
+                <div className="wrapper">
+                    <div className="top-icons">
+                        <i className="fas fa-long-arrow-alt-left"></i>
+                        <i className="fas fa-ellipsis-v"></i>
+                        <i className="far fa-heart"></i>
+                    </div>
+                    <div className="profile">
+                        <img src={u.photos.small !== null ? u.photos.small : profileIcon} className="thumbnail" />
+                        <div className="check"><i className="fas fa-check"></i></div>
+                        <h3 className="name">{u.name}</h3>
+                        <p className="title">Javascript Developer</p>
+                        <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
+                        {u.followed ? 
+                        (<button onClick={() => {
                                     props.follow(u.id)
-                                }}
-                            >
-                                Unfollow
-                            </Button>
-                        ) : (
-                            <Button
-                                variant="text"
-                                color="primary"
-                                onClick={() => {
-                                    props.unfollow(u.id)
-                                }}
-                            >
-                                Follow
-                            </Button>
-                        )}
-                    </p>
+                                }} 
+                                type="button" 
+                                className="btn">Unfollow</button>) 
+                      : (<button onClick={() => {
+                                        props.unfollow(u.id)
+                                    }
+                                } type="button" 
+                                className="btn">Follow</button>
+                                )}
+                    </div>
+                    <div className="social-icons">
+                        <div className="icon">
+                            <a href="/"><i className="fab fa-dribbble"></i></a>
+                            <h4>12.8k</h4>
+                            <p>Followers</p>
+                        </div>
+                        <div className="icon">
+                            <a href="#"><i className="fab fa-behance"></i></a>
+                            <h4>12.8k</h4>
+                            <p>Followers</p>
+                        </div>
+                        <div className="icon">
+                            <a href="#"><i className="fab fa-twitter"></i></a>
+                            <h4>12.8k</h4>
+                            <p>Followers</p>
+                        </div>
+                    </div>
                 </div>
             ))}
         </Grid>
+        </div>
     )
 }
