@@ -41,7 +41,7 @@ export const Users = (props: PropsType) => {
                 ))}
             </div>
             {props.users.map((u) => (
-                <div className="card" key={u.id}>
+                <div className={styles.card} key={u.id}>
                     <NavLink to={'/profile/' + u.id}>
                         <img
                             src={
@@ -56,10 +56,10 @@ export const Users = (props: PropsType) => {
 
                     <h3>{u.name}</h3>
                     <h4>{u.status}</h4>
-                    <h4>
+                    <h5>
                         {'Vancouver, Canada '}
                         <img src={locationLogo} alt="" width="30px" />
-                    </h4>
+                    </h5>
                     <p>
                         {u.followed ? (
                             <Button
