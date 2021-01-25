@@ -2,6 +2,13 @@
     font-weight: bold;
 }
 
+.userCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 900px;
+}
+
 .card {
     display: flex;
     border: 1px solid black;
@@ -11,7 +18,4 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(238, 238, 238, 0.76);
-}
-
-.userCards {
 }

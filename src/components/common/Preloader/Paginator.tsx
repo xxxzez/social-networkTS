@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import cn from 'classnames'
 import styles from './Paginator.module.css'
+import Button from '@material-ui/core/Button'
 
 type PropsType = {
     totalItemsCount: number
@@ -30,13 +31,13 @@ export const Paginator = ({
     return (
         <div className={styles.paginator}>
             {portionNumber > 1 ? (
-                <button
+                <Button
                     onClick={() => {
                         setPortionNumber(portionNumber - 1)
                     }}
                 >
                     Prev
-                </button>
+                </Button>
             ) : (
                 false
             )}
@@ -49,7 +50,8 @@ export const Paginator = ({
                 )
                 .map((p) => {
                     return (
-                        <span
+                        <Button
+                            variant="outlined"
                             className={cn(
                                 {
                                     [styles.selectedPage]: currentPage === p,
@@ -62,18 +64,18 @@ export const Paginator = ({
                             }}
                         >
                             {p}
-                        </span>
+                        </Button>
                     )
                 })}
 
             {portionCount > portionNumber ? (
-                <button
+                <Button
                     onClick={() => {
                         setPortionNumber(portionNumber + 1)
                     }}
                 >
                     Next
-                </button>
+                </Button>
             ) : (
                 false
             )}

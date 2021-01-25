@@ -50,7 +50,6 @@ export const Users = (props: PropsType) => {
                                 width="90px"
                             />
                         </NavLink>
-
                         <h3>{u.name}</h3>
                         <h4>{u.status}</h4>
                         <h5>

@@ -3,15 +3,8 @@
     display: flex;
 }
 
-.pageNumber {
-    padding: 2px;
-    margin: 3px;
-    border: 1px solid black;
-}
-
 .pageNumber.selectedPage {
     font-weight: bold;
-    border-color: black;
 }
 button {
     margin: 5px;
