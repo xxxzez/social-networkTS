@@ -47,7 +47,7 @@ export const Users = (props: PropsType) => {
                                         : profileIcon
                                 }
                                 alt="ProfileImage"
-                                width="90px"
+                                width="100px"
                             />
                         </NavLink>
                         <h3>{u.name}</h3>

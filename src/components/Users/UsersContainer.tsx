@@ -74,5 +74,4 @@ const connector = connect(mapStateToProps, {
     setToggleIsFetching,
 })
 export type UsersPropsFromRedux = ConnectedProps<typeof connector>
-
 export const UsersContainer = connector(UsersClassContainer)
