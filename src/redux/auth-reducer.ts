@@ -13,13 +13,11 @@ export const authReducer = (
 ): AuthType => {
     switch (action.type) {
         case 'SET-USER-DATA':
-            let aa = {
+            return {
                 ...state,
                 ...action.data,
                 isAuth: true,
             }
-            console.log(aa)
-            return aa
         default:
             return state
     }
