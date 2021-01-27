@@ -204,14 +204,15 @@ export function Header(props: PropsType) {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
+
                     <div className={style.login}>
-                        {console.log(props)}
                         {props.isAuth ? (
                             props.login
                         ) : (
                             <NavLink to={'/login'}>Login</NavLink>
                         )}
                     </div>
+
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton
