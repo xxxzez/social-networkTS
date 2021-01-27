@@ -15,6 +15,9 @@ type PropsType = RouteComponentProps<PathParamsType> & ProfilePropsFromRedux
 class ProfileClassContainer extends React.Component<PropsType> {
     componentDidMount = () => {
         let userId = this.props.match.params.userId
+        if(!userId){
+            userId = '8250'
+        }
         axios
             .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then((response) => {

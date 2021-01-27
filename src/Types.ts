@@ -64,7 +64,7 @@ export type DialogsPageType = {
 }
 
 export type AuthType = {
-    id: string
+    id: number
     email: string
     login: string
     isAuth: boolean
@@ -74,6 +74,7 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     usersPage: UsersPageType
+    auth: AuthType
 }
 
 export type LocationType = {
@@ -113,4 +114,3 @@ export type ActionsTypes =
     | ReturnType<typeof setToggleIsFetching>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setAuthUserData>
-

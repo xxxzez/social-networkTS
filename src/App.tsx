@@ -18,19 +18,13 @@ export const App: React.FC = () => {
             <Grid container>
                 <Navbar />
                 <Grid item xs={10}>
-                    <Route
-                        path={'/profile/:userId?'}
-                        render={() => <ProfileContainer />}
-                    />
-                    <Route
-                        path={'/messages'}
-                        render={() => <DialogsContainer />}
-                    />
+                    <Route path={'/profile/:userId?'} render={() => <ProfileContainer />} />
+                    <Route path={'/messages'} render={() => <DialogsContainer />} />
                     <Route path={'/users'} render={() => <UsersContainer />} />
                     <Route path={'/news'} render={() => <News />} />
                     <Route path={'/settings'} render={() => <Settings />} />
                 </Grid>
             </Grid>
         </div>
-    )
+    ) 
 }

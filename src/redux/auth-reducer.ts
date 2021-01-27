@@ -1,17 +1,10 @@
 import { ActionsTypes, AuthType } from '../Types'
 
-export const setAuthUserData = (id: string, email: string, login: string) => {
-    return {
-        type: 'SET-USER-DATA',
-        data: { id, email, login },
-    } as const
-}
-
 const initialState = {
-    id: '',
+    id: 0,
     email: '',
-    login: '',
-    isAuth: true,
+    login: 'not correct login',
+    isAuth: false,
 }
 
 export const authReducer = (
@@ -20,12 +13,20 @@ export const authReducer = (
 ): AuthType => {
     switch (action.type) {
         case 'SET-USER-DATA':
-            return {
+            let aa = {
                 ...state,
                 ...action.data,
                 isAuth: true,
             }
+            console.log(aa)
+            return aa
         default:
             return state
     }
+}
+export const setAuthUserData = (id: number, email: string, login: string) => {
+    return {
+        type: 'SET-USER-DATA',
+        data: { id, email, login },
+    } as const
 }

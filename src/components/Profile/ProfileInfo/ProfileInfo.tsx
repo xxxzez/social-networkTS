@@ -17,7 +17,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
             <div className={s.profilePicture}>
                 {props.profile.photos.large ? (
                     <img src={props.profile.photos.large} alt="" />
-                ) : (<img src={profilePicture} alt="" />
+                ) : (<img src={profilePicture} alt="" width='300px' />
                 )}
             </div>
             <h3>About me: {props.profile.aboutMe}</h3>
