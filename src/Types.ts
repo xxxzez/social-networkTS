@@ -1,11 +1,11 @@
 import {
-    follow,
+    followSuccess,
     setCurrentPage,
     toggleIsFetching,
     setTotalUsersCount,
     setUsers,
     toggleFollowingProgress,
-    unfollow,
+    unfollowSuccess,
 } from './redux/users-reducer'
 import { onNewMessageChange, addNewMessage } from './redux/dialogs-reducer'
 import {
@@ -108,8 +108,8 @@ export type ActionsTypes =
     | ReturnType<typeof onPostChangeAC>
     | ReturnType<typeof onNewMessageChange>
     | ReturnType<typeof addNewMessage>
-    | ReturnType<typeof follow>
-    | ReturnType<typeof unfollow>
+    | ReturnType<typeof followSuccess>
+    | ReturnType<typeof unfollowSuccess>
     | ReturnType<typeof setUsers>
     | ReturnType<typeof setCurrentPage>
     | ReturnType<typeof setTotalUsersCount>
