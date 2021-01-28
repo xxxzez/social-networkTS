@@ -4,32 +4,26 @@ import { usersAPI } from '../../api/api'
 import {
     follow,
     setCurrentPage,
-    setToggleIsFetching,
+    toggleIsFetching,
     setTotalUsersCount,
     setUsers,
     unfollow,
     toggleFollowingProgress,
+    getUsersTC,
 } from '../../redux/users-reducer'
 import { RootStateType } from '../../Types'
 import { Preloader } from '../common/Preloader/Preloader'
 import { Users } from './Users'
 class UsersClassContainer extends React.Component<UsersPropsFromRedux> {
     componentDidMount = () => {
-        this.props.setToggleIsFetching(true)
-        usersAPI
-            .getUsers(this.props.currentPage, this.props.pageSize)
-            .then((data) => {
-                this.props.setToggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
+        this.props.getUsersTC()
     }
 
     onPageChanged = (pageNumber: number) => {
         this.props.setCurrentPage(pageNumber)
-        this.props.setToggleIsFetching(true)
+        this.props.toggleIsFetching(true)
         usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
-            this.props.setToggleIsFetching(false)
+            this.props.toggleIsFetching(false)
             this.props.setUsers(data.items)
         })
     }
@@ -69,8 +63,9 @@ const connector = connect(mapStateToProps, {
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
-    setToggleIsFetching,
+    toggleIsFetching,
     toggleFollowingProgress,
+    getUsersTC
 })
 export type UsersPropsFromRedux = ConnectedProps<typeof connector>
 export const UsersContainer = connector(UsersClassContainer)

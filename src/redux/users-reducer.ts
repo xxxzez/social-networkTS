@@ -1,3 +1,4 @@
+import { usersAPI } from './../api/api'
 import { ActionsTypes, UsersPageType, UserType } from '../Types'
 
 const initialState: UsersPageType = {
@@ -38,7 +39,7 @@ export const setTotalUsersCount = (totalUsersCount: number) => {
         totalUsersCount: totalUsersCount,
     } as const
 }
-export const setToggleIsFetching = (isFetching: boolean) => {
+export const toggleIsFetching = (isFetching: boolean) => {
     return {
         type: 'SET-TOGGLE-IS-FETCHING',
         isFetching: isFetching,
@@ -54,6 +55,18 @@ export const toggleFollowingProgress = (
         userId,
     } as const
 }
+
+export const getUsersTC = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+        dispatch(toggleIsFetching(true))
+        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalUsersCount(data.totalCount))
+        })
+    }
+}
+
 export const usersReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case 'FOLLOW':

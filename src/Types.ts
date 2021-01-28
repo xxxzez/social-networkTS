@@ -1,7 +1,7 @@
 import {
     follow,
     setCurrentPage,
-    setToggleIsFetching,
+    toggleIsFetching,
     setTotalUsersCount,
     setUsers,
     toggleFollowingProgress,
@@ -113,7 +113,7 @@ export type ActionsTypes =
     | ReturnType<typeof setUsers>
     | ReturnType<typeof setCurrentPage>
     | ReturnType<typeof setTotalUsersCount>
-    | ReturnType<typeof setToggleIsFetching>
+    | ReturnType<typeof toggleIsFetching>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setAuthUserData>
     | ReturnType<typeof toggleFollowingProgress>
