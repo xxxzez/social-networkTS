@@ -4,6 +4,7 @@ import {
     setToggleIsFetching,
     setTotalUsersCount,
     setUsers,
+    toggleFollowingProgress,
     unfollow,
 } from './redux/users-reducer'
 import { onNewMessageChange, addNewMessage } from './redux/dialogs-reducer'
@@ -86,7 +87,7 @@ export type PhotosTypes = {
     large: string | null
 }
 export type UserType = {
-    id: string
+    id: number
     name: string
     status: string
     location: LocationType
@@ -100,6 +101,7 @@ export type UsersPageType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: number[]
 }
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
@@ -114,3 +116,4 @@ export type ActionsTypes =
     | ReturnType<typeof setToggleIsFetching>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setAuthUserData>
+    | ReturnType<typeof toggleFollowingProgress>

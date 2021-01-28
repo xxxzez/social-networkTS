@@ -1,4 +1,4 @@
-import { Button, Grid } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import React from 'react'
 import profileIcon from '../../assets/profileIcon.png'
 import locationLogo from '../../assets/canadaFlag.jpeg'
@@ -7,6 +7,7 @@ import { UserType } from '../../Types'
 import { NavLink } from 'react-router-dom'
 import { Paginator } from '../common/Preloader/Paginator'
 import axios from 'axios'
+import Button from '@material-ui/core/Button'
 
 type PropsType = {
     totalUsersCount: number
@@ -14,8 +15,10 @@ type PropsType = {
     currentPage: number
     users: Array<UserType>
     onPageChanged: (pageNumber: number) => void
-    follow: (userId: string) => void
-    unfollow: (userId: string) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    toggleFollowingProgress: (isFetching: boolean, userId: number) => void
+    followingInProgress: number[]
 }
 
 export const Users = (props: PropsType) => {
@@ -60,9 +63,14 @@ export const Users = (props: PropsType) => {
                         <p>
                             {u.followed ? (
                                 <Button
-                                    variant="contained"
-                                    color="primary"
+                                    disabled={props.followingInProgress.some(
+                                        (id) => id === u.id
+                                    )}
                                     onClick={() => {
+                                        props.toggleFollowingProgress(
+                                            true,
+                                            u.id
+                                        )
                                         axios
                                             .delete(
                                                 `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -82,6 +90,10 @@ export const Users = (props: PropsType) => {
                                                 ) {
                                                     props.unfollow(u.id)
                                                 }
+                                                props.toggleFollowingProgress(
+                                                    false,
+                                                    u.id
+                                                )
                                             })
                                     }}
                                 >
@@ -89,9 +101,11 @@ export const Users = (props: PropsType) => {
                                 </Button>
                             ) : (
                                 <Button
-                                    variant="text"
-                                    color="primary"
+                                    disabled={props.followingInProgress.some(
+                                        (id) => id === u.id
+                                    )}
                                     onClick={() => {
+                                        props.toggleFollowingProgress(true,u.id)
                                         axios
                                             .post(
                                                 `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -111,6 +125,9 @@ export const Users = (props: PropsType) => {
                                                 ) {
                                                     props.follow(u.id)
                                                 }
+                                                props.toggleFollowingProgress(
+                                                    false, u.id
+                                                )
                                             })
                                     }}
                                 >
