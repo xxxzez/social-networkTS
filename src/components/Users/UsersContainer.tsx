@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import {
-    followSuccess,
+    follow,
     setCurrentPage,
-    unfollowSuccess,
+    unfollow,
     toggleFollowingProgress,
     getUsers,
 } from '../../redux/users-reducer'
@@ -28,8 +28,8 @@ class UsersClassContainer extends React.Component<UsersPropsFromRedux> {
                     currentPage={this.props.currentPage}
                     users={this.props.users}
                     onPageChanged={this.onPageChanged}
-                    follow={this.props.followSuccess}
-                    unfollow={this.props.unfollowSuccess}
+                    follow={this.props.follow}
+                    unfollow={this.props.unfollow}
                     followingInProgress={this.props.followingInProgress}
                 />
             )}
@@ -47,8 +47,8 @@ const mapStateToProps = (state: RootStateType) => ({
 })
 
 const connector = connect(mapStateToProps, {
-    followSuccess,
-    unfollowSuccess,
+    follow,
+    unfollow,
     setCurrentPage,
     toggleFollowingProgress,
     getUsers,

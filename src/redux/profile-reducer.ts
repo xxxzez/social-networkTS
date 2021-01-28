@@ -1,4 +1,5 @@
 import { v1 } from 'uuid'
+import { profileAPI } from '../api/api'
 import { ActionsTypes, ProfilePageType, ProfileType } from '../Types'
 
 export const addPostAC = () => {
@@ -19,6 +20,14 @@ export const setUserProfile = (profile: ProfileType) => {
     } as const
 }
 
+export const setUserProfileTC = (userId: number) => {
+    return (dispatch: any) => {
+        profileAPI.getUserProfile(userId).then((response) => {
+            dispatch(setUserProfile(response.data))
+        })
+    }
+}
+
 const initialState = {
     posts: [
         { id: v1(), message: 'First post!!!!', likesCount: 17 },
@@ -26,20 +35,20 @@ const initialState = {
     ],
     newPostText: '',
     profile: {
-        aboutMe: 'я не крутой чувак 1001%',
+        aboutMe: 'я не cool guy 1001%',
         contacts: {
             facebook: 'facebook.com',
             website: '',
-            vk: 'vk.com/dimych',
+            vk: 'vk.com/vk',
             twitter: 'https://twitter.com/@sdf',
-            instagram: 'instagra.com/sds',
+            instagram: 'instagram.com/sds',
             youtube: 'null',
             github: 'github.com',
             mainLink: 'null',
         },
         lookingForAJob: true,
-        lookingForAJobDescription: 'не ищу, а дурачусь',
-        fullName: 'samurai dimych',
+        lookingForAJobDescription: 'не ищу, а cool',
+        fullName: 'Matvei Bohush',
         userId: 2,
         photos: {
             small:
