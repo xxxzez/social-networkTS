@@ -21,4 +21,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
-export const DialogsContainer = compose(connector, withAuthRedirect)(Dialogs)
+export const DialogsContainer = compose<React.ComponentType>(
+    connector,
+    withAuthRedirect
+)(Dialogs)

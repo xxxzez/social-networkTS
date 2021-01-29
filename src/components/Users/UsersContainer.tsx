@@ -58,7 +58,7 @@ const connector = connect(mapStateToProps, {
 
 export type UsersPropsFromRedux = ConnectedProps<typeof connector>
 
-export const UsersContainer = compose(
+export const UsersContainer = compose<React.ComponentType>(
     connector,
     withAuthRedirect
 )(UsersClassContainer)

@@ -3,16 +3,24 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { RootStateType } from '../Types'
 
-const mapStateToPropsForRedirect = (state: RootStateType) => ({
+type MSTPType = {
+    isAuth: boolean
+}
+
+const mapStateToProps = (state: RootStateType): MSTPType => ({
     isAuth: state.auth.isAuth,
 })
 
-export const withAuthRedirect = (Component: any) => {
-    class RedirectComponent extends React.Component {
+export function withAuthRedirect<WCP>(Component: React.ComponentType<WCP>) {
+    class RedirectComponent extends React.Component<MSTPType> {
         render() {
-            if (!this.props.isAuth) return <Redirect to="/login" />
-            return <Component {...this.props} />
+            let { isAuth, ...restProps } = this.props
+
+            if (!isAuth) {
+                return <Redirect to="/login" />
+            }
+            return <Component {...(restProps as WCP)} />
         }
     }
-    return connect(mapStateToPropsForRedirect)(RedirectComponent)
+    return connect(mapStateToProps)(RedirectComponent)
 }
