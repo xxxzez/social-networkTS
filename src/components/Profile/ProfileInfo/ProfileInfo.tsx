@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css'
 import { Preloader } from '../../common/Preloader/Preloader'
 import { ProfileType } from '../../../Types'
 import profilePicture from '../../../assets/profileIcon.png'
+import { ProfileStatus } from './ProfileStatus'
 
 type PropsType = {
     profile: ProfileType | null
@@ -21,6 +22,9 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
                     <img src={profilePicture} alt="" width="300px" />
                 )}
             </div>
+
+            <ProfileStatus status="one more thing" />
+
             <h3>About me: {props.profile.aboutMe}</h3>
             <h3>
                 Looking for a job?{' '}
