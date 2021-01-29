@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { Profile } from './Profile'
-import { setUserProfileTC } from '../../redux/profile-reducer'
+import { getUserProfile } from '../../redux/profile-reducer'
 import { RootStateType } from '../../Types'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import { compose } from 'redux'
 
 type PathParamsType = {
     userId: string | undefined
@@ -17,7 +19,7 @@ class ProfileClassContainer extends React.Component<PropsType> {
         if (!userId) {
             userId = '8250'
         }
-        this.props.setUserProfileTC(+(userId))
+        this.props.getUserProfile(+userId)
     }
 
     render() {
@@ -29,7 +31,6 @@ const mapStateToProps = (state: RootStateType) => ({
     profile: state.profilePage.profile,
 })
 
-const connector = connect(mapStateToProps, { setUserProfileTC })
+const connector = connect(mapStateToProps, { getUserProfile })
 
-const ProfileClassContainerWithRouter = withRouter(ProfileClassContainer)
-export const ProfileContainer = connector(ProfileClassContainerWithRouter)
+export const ProfileContainer = compose(connector,withRouter,withAuthRedirect)(ProfileClassContainer)

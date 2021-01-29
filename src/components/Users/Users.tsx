@@ -5,7 +5,7 @@ import locationLogo from '../../assets/canadaFlag.jpeg'
 import styles from './Users.module.css'
 import { UserType } from '../../Types'
 import { NavLink } from 'react-router-dom'
-import { Paginator } from '../common/Preloader/Paginator'
+import { Paginator } from '../common/Paginator'
 import Button from '@material-ui/core/Button'
 
 type PropsType = {

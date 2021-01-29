@@ -20,7 +20,7 @@ export const setUserProfile = (profile: ProfileType) => {
     } as const
 }
 
-export const setUserProfileTC = (userId: number) => {
+export const getUserProfile = (userId: number) => {
     return (dispatch: any) => {
         profileAPI.getUserProfile(userId).then((response) => {
             dispatch(setUserProfile(response.data))

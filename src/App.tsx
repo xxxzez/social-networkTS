@@ -9,6 +9,7 @@ import { Grid } from '@material-ui/core'
 import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
 import { ProfileContainer } from './components/Profile/ProfileContainer'
+import { Login } from './components/Login/Login'
 
 export const App: React.FC = () => {
     return (
@@ -23,6 +24,7 @@ export const App: React.FC = () => {
                     <Route path={'/users'} render={() => <UsersContainer />} />
                     <Route path={'/news'} render={() => <News />} />
                     <Route path={'/settings'} render={() => <Settings />} />
+                    <Route path={'/login'} render={() => <Login />} />
                 </Grid>
             </Grid>
         </div>
