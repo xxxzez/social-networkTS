@@ -1,11 +1,11 @@
-.profile{
+.profile {
     display: flex;
     flex-direction: column;
     margin: 20px;
     color: rgb(114, 114, 114);
 }
 
-.profilePicture{
+.profilePicture {
     display: flex;
     flex-direction: column;
 }

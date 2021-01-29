@@ -1,7 +1,7 @@
-import React from "react"
-import s from "./Post.module.css"
-import logo from "../../../../assets/canadaFlag.jpeg"
-import { Button } from "@material-ui/core"
+import React from 'react'
+import s from './Post.module.css'
+import logo from '../../../../assets/canadaFlag.jpeg'
+import { Button } from '@material-ui/core'
 
 type PostType = {
     message: string
@@ -16,7 +16,9 @@ const Post: React.FC<PostType> = React.memo((props) => {
             <div>
                 <span>Like! </span>
                 {props.likesCount}
-                <Button variant='contained' color='primary'>Delete post</Button>
+                <Button variant="contained" color="primary">
+                    Delete post
+                </Button>
             </div>
         </div>
     )

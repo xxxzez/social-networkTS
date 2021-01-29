@@ -33,4 +33,8 @@ const mapStateToProps = (state: RootStateType) => ({
 
 const connector = connect(mapStateToProps, { getUserProfile })
 
-export const ProfileContainer = compose<React.ComponentType>(connector,withRouter,withAuthRedirect)(ProfileClassContainer)
+export const ProfileContainer = compose<React.ComponentType>(
+    connector,
+    withRouter,
+    withAuthRedirect
+)(ProfileClassContainer)

@@ -17,12 +17,19 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
             <div className={s.profilePicture}>
                 {props.profile.photos.large ? (
                     <img src={props.profile.photos.large} alt="" />
-                ) : (<img src={profilePicture} alt="" width='300px' />
+                ) : (
+                    <img src={profilePicture} alt="" width="300px" />
                 )}
             </div>
             <h3>About me: {props.profile.aboutMe}</h3>
-            <h3>Looking for a job? {props.profile.lookingForAJob ? 'Yes' : 'Currently no!'}</h3>
-            <h3>What kind of job are u looking for? {props.profile.lookingForAJobDescription}</h3>
+            <h3>
+                Looking for a job?{' '}
+                {props.profile.lookingForAJob ? 'Yes' : 'Currently no!'}
+            </h3>
+            <h3>
+                What kind of job are u looking for?{' '}
+                {props.profile.lookingForAJobDescription}
+            </h3>
             <h3>Name: {props.profile.fullName}</h3>
             <h3>UserId: {props.profile.userId}</h3>
             <h3>Facebook link: {props.profile.contacts.facebook}</h3>
