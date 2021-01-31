@@ -4,11 +4,22 @@ type PropsType = {
     status: string
     updateStatus: (status: string) => void
 }
+type LocalStateType = {
+    editMode: boolean
+    status: string
+}
 
 export class ProfileStatus extends React.Component<PropsType> {
-    state = {
+    state: LocalStateType = {
         editMode: false,
         status: this.props.status,
+    }
+    componentDidUpdate(prevProps: PropsType, prevState: LocalStateType) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status,
+            })
+        }
     }
     activateEditMode = () => {
         this.setState({
