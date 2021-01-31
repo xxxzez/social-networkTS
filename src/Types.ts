@@ -11,6 +11,7 @@ import { onNewMessageChange, addNewMessage } from './redux/dialogs-reducer'
 import {
     addPostAC,
     onPostChangeAC,
+    setStatus,
     setUserProfile,
 } from './redux/profile-reducer'
 import { setAuthUserData } from './redux/auth-reducer'
@@ -32,6 +33,7 @@ export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
     profile: ProfileType
+    status: string
 }
 export type ProfileType = {
     aboutMe: string
@@ -117,3 +119,4 @@ export type ActionsTypes =
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setAuthUserData>
     | ReturnType<typeof toggleFollowingProgress>
+    | ReturnType<typeof setStatus>

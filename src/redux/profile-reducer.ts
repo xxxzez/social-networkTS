@@ -7,6 +7,12 @@ export const addPostAC = () => {
         type: 'ADD-POST',
     } as const
 }
+export const setStatus = (status: string) => {
+    return {
+        type: 'SET-STATUS',
+        status,
+    } as const
+}
 export const onPostChangeAC = (newPostText: string) => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
@@ -20,10 +26,26 @@ export const setUserProfile = (profile: ProfileType) => {
     } as const
 }
 
-export const getUserProfile = (userId: number) => {
+export const getProfile = (userId: number) => {
     return (dispatch: any) => {
-        profileAPI.getUserProfile(userId).then((response) => {
+        profileAPI.getProfile(userId).then((response) => {
             dispatch(setUserProfile(response.data))
+        })
+    }
+}
+export const getStatus = (userId: number) => {
+    return (dispatch: any) => {
+        profileAPI.getStatus(userId).then((response) => {
+            dispatch(setStatus(response.data))
+        })
+    }
+}
+export const updateStatus = (status: string) => {
+    return (dispatch: any) => {
+        profileAPI.updateStatus(status).then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
         })
     }
 }
@@ -34,6 +56,7 @@ const initialState = {
         { id: v1(), message: 'Second post!!!!', likesCount: 7 },
     ],
     newPostText: '',
+    status: '',
     profile: {
         aboutMe: 'я не cool guy 1001%',
         contacts: {
@@ -86,6 +109,11 @@ export const profileReducer = (
             return {
                 ...state,
                 profile: action.profile,
+            }
+        case 'SET-STATUS':
+            return {
+                ...state,
+                status: action.status,
             }
 
         default:

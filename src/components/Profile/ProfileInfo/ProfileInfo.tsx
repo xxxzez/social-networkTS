@@ -7,6 +7,8 @@ import { ProfileStatus } from './ProfileStatus'
 
 type PropsType = {
     profile: ProfileType | null
+    status: string
+    updateStatus: (status: string) => void
 }
 
 const ProfileInfo: React.FC<PropsType> = (props) => {
@@ -23,7 +25,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
                 )}
             </div>
 
-            <ProfileStatus status="one more thing" />
+            <ProfileStatus status={props.status} />
 
             <h3>About me: {props.profile.aboutMe}</h3>
             <h3>
