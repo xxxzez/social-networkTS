@@ -25,7 +25,7 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
                 )}
             </div>
 
-            <ProfileStatus status={props.status} />
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
 
             <h3>About me: {props.profile.aboutMe}</h3>
             <h3>
