@@ -25,7 +25,7 @@ const LoginForm = (props: any) => {
             </div>
             <div>
                 <Field type="checkbox" name="rememberMe" component="input" />
-                Remember me
+                Remember
             </div>
             <div>
                 <button>Login</button>
