@@ -7,7 +7,7 @@ import {
     toggleFollowingProgress,
     unfollowSuccess,
 } from './redux/users-reducer'
-import { onNewMessageChange, addNewMessage } from './redux/dialogs-reducer'
+import { addNewMessage } from './redux/dialogs-reducer'
 import {
     addPostAC,
     onPostChangeAC,
@@ -63,7 +63,6 @@ export type ProfileContactsType = {
 export type DialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessageBody: string
 }
 
 export type AuthType = {
@@ -108,7 +107,6 @@ export type UsersPageType = {
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof onPostChangeAC>
-    | ReturnType<typeof onNewMessageChange>
     | ReturnType<typeof addNewMessage>
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof unfollowSuccess>

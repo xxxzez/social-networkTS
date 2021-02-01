@@ -1,7 +1,7 @@
 import { connect, ConnectedProps } from 'react-redux'
 import { compose } from 'redux'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
-import { addNewMessage, onNewMessageChange } from '../../redux/dialogs-reducer'
+import { addNewMessage } from '../../redux/dialogs-reducer'
 import { RootStateType } from '../../Types'
 import { Dialogs } from './Dialogs'
 
@@ -12,11 +12,8 @@ const mapStateToProps = (state: RootStateType) => ({
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
-    onNewMessageChange: (text: string) => {
-        dispatch(onNewMessageChange(text))
-    },
-    addNewMessage: () => {
-        dispatch(addNewMessage())
+    addNewMessage: (newMessageBody: string) => {
+        dispatch(addNewMessage(newMessageBody))
     },
 })
 

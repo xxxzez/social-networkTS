@@ -1,15 +1,10 @@
 import { ActionsTypes, DialogsPageType } from '../Types'
 import { v1 } from 'uuid'
 
-export const onNewMessageChange = (newMessageText: string) => {
-    return {
-        type: 'UPDATE-NEW-MESSAGE-TEXT',
-        text: newMessageText,
-    } as const
-}
-export const addNewMessage = () => {
+export const addNewMessage = (newMessageBody: string) => {
     return {
         type: 'SEND-MESSAGE',
+        newMessageBody,
     } as const
 }
 
@@ -28,7 +23,6 @@ const initialState: DialogsPageType = {
         { id: v1(), message: 'Miss me?' },
         { id: v1(), message: 'See u tomorrow' },
     ],
-    newMessageBody: '',
 }
 
 export const dialogsReducer = (
@@ -36,16 +30,10 @@ export const dialogsReducer = (
     action: ActionsTypes
 ): DialogsPageType => {
     switch (action.type) {
-        case 'UPDATE-NEW-MESSAGE-TEXT':
-            return {
-                ...state,
-                newMessageBody: action.text,
-            }
         case 'SEND-MESSAGE':
-            let body = state.newMessageBody
+            let body = action.newMessageBody
             return {
                 ...state,
-                newMessageBody: '',
                 messages: [...state.messages, { id: v1(), message: body }],
             }
         default:
