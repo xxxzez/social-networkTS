@@ -14,12 +14,6 @@ export const setStatus = (status: string) => {
         status,
     } as const
 }
-export const onPostChangeAC = (newPostText: string) => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        text: newPostText,
-    } as const
-}
 export const setUserProfile = (profile: ProfileType) => {
     return {
         type: 'SET-USER-PROFILE',
@@ -94,8 +88,8 @@ export const profileReducer = (
             return {
                 ...state,
                 posts: [
-                    ...state.posts,
                     { id: v1(), message: action.newPostBody, likesCount: 0 },
+                    ...state.posts,
                 ],
             }
 

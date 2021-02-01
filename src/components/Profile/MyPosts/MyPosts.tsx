@@ -3,6 +3,10 @@ import Post from './Post/Post'
 import s from './MyPosts.module.css'
 import { MyPostsPropsFromRedux } from './MyPostsContainer'
 import { Field, reduxForm } from 'redux-form'
+import {
+    maxLengthCreator,
+    required,
+} from '../../../utils/validators/validators'
 
 type PropsType = MyPostsPropsFromRedux
 
@@ -26,6 +30,7 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
 
 export default MyPosts
 
+const maxLength20 = maxLengthCreator(20)
 const AddPostForm = (props: any) => {
     return (
         <form onSubmit={props.handleSubmit}>
@@ -33,11 +38,10 @@ const AddPostForm = (props: any) => {
                 name="newPostBody"
                 placeholder="Send"
                 component="textarea"
+                validate={[required, maxLength20]}
             ></Field>
             <button>Send</button>
         </form>
     )
 }
-const AddPostFormRedux = reduxForm({ form: 'dialogAddMessageForm' })(
-    AddPostForm
-)
+const AddPostFormRedux = reduxForm({ form: 'profileAddPostForm' })(AddPostForm)

@@ -10,7 +10,6 @@ import {
 import { addNewMessage } from './redux/dialogs-reducer'
 import {
     addPostAC,
-    onPostChangeAC,
     setStatus,
     setUserProfile,
 } from './redux/profile-reducer'
@@ -105,7 +104,6 @@ export type UsersPageType = {
 }
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
-    | ReturnType<typeof onPostChangeAC>
     | ReturnType<typeof addNewMessage>
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof unfollowSuccess>
