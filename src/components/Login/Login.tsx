@@ -1,25 +1,30 @@
 import React from 'react'
+import { Field, reduxForm } from 'redux-form'
 
 export const Login = () => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginForm />
+            <LoginReduxForm />
         </div>
     )
 }
 
-const LoginForm = () => {
+const LoginForm = (props: any) => {
     return (
-        <form>
+        <form onSubmit={props.handleSubmit}>
             <div>
-                <input placeholder="login" />
+                <Field placeholder="login" name="login" component="input" />
             </div>
             <div>
-                <input placeholder="password" />
+                <Field
+                    placeholder="password"
+                    name="password"
+                    component="input"
+                />
             </div>
             <div>
-                <input type="checkbox" />
+                <Field type="checkbox" name="rememberMe" component="input" />
                 Remember me
             </div>
             <div>
@@ -28,3 +33,5 @@ const LoginForm = () => {
         </form>
     )
 }
+
+const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
