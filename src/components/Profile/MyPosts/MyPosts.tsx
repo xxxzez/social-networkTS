@@ -1,17 +1,14 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
-import { Button, TextField } from '@material-ui/core'
 import { MyPostsPropsFromRedux } from './MyPostsContainer'
+import { Field, reduxForm } from 'redux-form'
 
 type PropsType = MyPostsPropsFromRedux
 
 const MyPosts: React.FC<PropsType> = React.memo((props) => {
-    const onAddPost = () => {
-        props.addPost()
-    }
-    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewPostText(e.currentTarget.value)
+    const onAddPost = (values: any) => {
+        props.addPost(values.newPostBody)
     }
 
     const postsElements = props.posts.map((p) => (
@@ -21,26 +18,26 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
     return (
         <div>
             My posts
-            <div>
-                <div>
-                    <TextField
-                        onChange={onPostChange}
-                        value={props.newPostText}
-                    />
-                </div>
-                <div>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={onAddPost}
-                    >
-                        Add post
-                    </Button>
-                </div>
-            </div>
+            <AddPostFormRedux onSubmit={onAddPost} />
             <div className={s.posts}>{postsElements}</div>
         </div>
     )
 })
 
 export default MyPosts
+
+const AddPostForm = (props: any) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field
+                name="newPostBody"
+                placeholder="Send"
+                component="textarea"
+            ></Field>
+            <button>Send</button>
+        </form>
+    )
+}
+const AddPostFormRedux = reduxForm({ form: 'dialogAddMessageForm' })(
+    AddPostForm
+)

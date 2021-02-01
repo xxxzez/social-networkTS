@@ -1,19 +1,15 @@
 import { connect, ConnectedProps } from 'react-redux'
 import { RootStateType } from '../../../Types'
-import { addPostAC, onPostChangeAC } from '../../../redux/profile-reducer'
+import { addPostAC } from '../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 
 const mapStateToProps = (state: RootStateType) => ({
     posts: state.profilePage.posts,
-    newPostText: state.profilePage.newPostText,
 })
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        addPost: () => {
-            dispatch(addPostAC())
-        },
-        updateNewPostText: (text: string) => {
-            dispatch(onPostChangeAC(text))
+        addPost: (newPostBody: string) => {
+            dispatch(addPostAC(newPostBody))
         },
     }
 }

@@ -16,7 +16,6 @@ export const Dialogs: React.FC<PropsType> = React.memo((props) => {
     ))
 
     const addMessage = (values: any) => {
-        debugger
         props.addNewMessage(values.newMessageBody)
     }
     return (

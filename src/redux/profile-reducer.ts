@@ -2,9 +2,10 @@ import { v1 } from 'uuid'
 import { profileAPI } from '../api/api'
 import { ActionsTypes, ProfilePageType, ProfileType } from '../Types'
 
-export const addPostAC = () => {
+export const addPostAC = (newPostBody: string) => {
     return {
         type: 'ADD-POST',
+        newPostBody,
     } as const
 }
 export const setStatus = (status: string) => {
@@ -55,7 +56,6 @@ const initialState = {
         { id: v1(), message: 'First post!!!!', likesCount: 17 },
         { id: v1(), message: 'Second post!!!!', likesCount: 7 },
     ],
-    newPostText: '',
     status: '',
     profile: {
         aboutMe: 'я не cool guy 1001%',
@@ -88,23 +88,17 @@ export const profileReducer = (
 ): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST':
-            if (state.newPostText.trim() === '') {
+            if (action.newPostBody.trim() === '') {
                 return state
             }
             return {
                 ...state,
                 posts: [
                     ...state.posts,
-                    { id: v1(), message: state.newPostText, likesCount: 0 },
+                    { id: v1(), message: action.newPostBody, likesCount: 0 },
                 ],
-                newPostText: '',
             }
 
-        case 'UPDATE-NEW-POST-TEXT':
-            return {
-                ...state,
-                newPostText: action.text,
-            }
         case 'SET-USER-PROFILE':
             return {
                 ...state,
