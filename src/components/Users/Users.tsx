@@ -42,15 +42,17 @@ export const Users = (props: PropsType) => {
                 {props.users.map((u) => (
                     <div className={styles.card} key={u.id}>
                         <NavLink to={'/profile/' + u.id}>
-                            <img
-                                src={
-                                    u.photos.small !== null
-                                        ? u.photos.small
-                                        : profilePicture
-                                }
-                                alt="ProfileImage"
-                                width="100px"
-                            />
+                            <div className={styles.userPhoto}>
+                                <img
+                                    src={
+                                        u.photos.small !== null
+                                            ? u.photos.small
+                                            : profilePicture
+                                    }
+                                    alt="ProfileImage"
+                                    width="100px"
+                                />
+                            </div>
                         </NavLink>
                         <h3>{u.name}</h3>
                         <h4>{u.status}</h4>
