@@ -1,3 +1,4 @@
+import { appReducer } from './app-reducer'
 import { usersReducer } from './users-reducer'
 import { dialogsReducer } from './dialogs-reducer'
 import { profileReducer } from './profile-reducer'
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
+    app: appReducer,
 })
 
 export type AppRootStateType = any

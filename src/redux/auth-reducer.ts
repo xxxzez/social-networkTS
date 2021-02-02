@@ -35,16 +35,15 @@ export const setAuthUserData = (
     } as const
 }
 
-export const getAuthUserData = () => {
-    return (dispatch: any) => {
-        authAPI.getUserData().then((response) => {
-            if (response.data.resultCode === 0) {
-                let { id, login, email } = response.data.data
-                dispatch(setAuthUserData(id, email, login, true))
-            }
-        })
-    }
+export const getAuthUserData = () => (dispatch: any) => {
+    return authAPI.getUserData().then((response) => {
+        if (response.data.resultCode === 0) {
+            let { id, login, email } = response.data.data
+            dispatch(setAuthUserData(id, email, login, true))
+        }
+    })
 }
+
 export const login = (email: string, password: string, rememberMe: boolean) => {
     return (dispatch: any) => {
         authAPI.login(email, password, rememberMe).then((response) => {

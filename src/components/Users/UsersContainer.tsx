@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { compose } from 'redux'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import {
     follow,
     setCurrentPage,
@@ -58,7 +57,6 @@ const connector = connect(mapStateToProps, {
 
 export type UsersPropsFromRedux = ConnectedProps<typeof connector>
 
-export const UsersContainer = compose<React.ComponentType>(
-    connector,
-    withAuthRedirect
-)(UsersClassContainer)
+export const UsersContainer = compose<React.ComponentType>(connector)(
+    UsersClassContainer
+)

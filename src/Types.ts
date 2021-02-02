@@ -10,6 +10,7 @@ import {
 import { addNewMessage } from './redux/dialogs-reducer'
 import { addPostAC, setStatus, setUserProfile } from './redux/profile-reducer'
 import { setAuthUserData } from './redux/auth-reducer'
+import { initializedSuccess } from './redux/app-reducer'
 
 export type PostType = {
     id: string
@@ -65,12 +66,16 @@ export type AuthType = {
     login: string | null
     isAuth: boolean
 }
+export type AppReducerType = {
+    initialized: boolean
+}
 
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     usersPage: UsersPageType
     auth: AuthType
+    app: AppReducerType
 }
 
 export type LocationType = {
@@ -111,3 +116,4 @@ export type ActionsTypes =
     | ReturnType<typeof setAuthUserData>
     | ReturnType<typeof toggleFollowingProgress>
     | ReturnType<typeof setStatus>
+    | ReturnType<typeof initializedSuccess>
