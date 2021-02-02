@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core'
 import React from 'react'
-import profileIcon from '../../assets/profileIcon.png'
+import profilePicture from '../../assets/profilePicture.png'
 import locationLogo from '../../assets/canadaFlag.jpeg'
 import styles from './Users.module.css'
 import { UserType } from '../../Types'
@@ -46,7 +46,7 @@ export const Users = (props: PropsType) => {
                                 src={
                                     u.photos.small !== null
                                         ? u.photos.small
-                                        : profileIcon
+                                        : profilePicture
                                 }
                                 alt="ProfileImage"
                                 width="100px"

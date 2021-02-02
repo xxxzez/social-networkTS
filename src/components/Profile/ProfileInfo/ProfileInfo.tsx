@@ -2,7 +2,7 @@ import React from 'react'
 import s from './ProfileInfo.module.css'
 import { Preloader } from '../../common/Preloader/Preloader'
 import { ProfileType } from '../../../Types'
-import profilePicture from '../../../assets/profileIcon.png'
+import profilePicture from '../../../assets/profilePicture.png'
 import { ProfileStatus } from './ProfileStatus'
 
 type PropsType = {
@@ -25,7 +25,10 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
                 )}
             </div>
 
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+            <ProfileStatus
+                status={props.status}
+                updateStatus={props.updateStatus}
+            />
 
             <h3>About me: {props.profile.aboutMe}</h3>
             <h3>
