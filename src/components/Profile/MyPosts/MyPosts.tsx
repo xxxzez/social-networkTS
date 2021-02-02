@@ -7,6 +7,7 @@ import {
     maxLengthCreator,
     required,
 } from '../../../utils/validators/validators'
+import { Textarea } from '../../common/FormsControls/FormsControls'
 
 type PropsType = MyPostsPropsFromRedux
 
@@ -37,7 +38,7 @@ const AddPostForm = (props: any) => {
             <Field
                 name="newPostBody"
                 placeholder="Send"
-                component="textarea"
+                component={Textarea}
                 validate={[required, maxLength20]}
             ></Field>
             <button>Send</button>
