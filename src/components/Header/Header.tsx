@@ -84,9 +84,10 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 type PropsType = {
-    login: string
+    login: string | null
     isAuth: boolean
-    email: string
+    email: string | null
+    logout: () => void
 }
 
 export function Header(props: PropsType) {
@@ -208,7 +209,10 @@ export function Header(props: PropsType) {
 
                     <div className={style.login}>
                         {props.isAuth ? (
-                            <span>{`${props.login} ${props.email}`}</span>
+                            <span>
+                                {`${props.login} ${props.email}`}
+                                <button onClick={props.logout}>Log out</button>
+                            </span>
                         ) : (
                             <NavLink to={'/login'}>Login</NavLink>
                         )}

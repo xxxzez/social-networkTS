@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from './Header'
-import { getAuthUserData } from '../../redux/auth-reducer'
+import { getAuthUserData, logout } from '../../redux/auth-reducer'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootStateType } from '../../Types'
 
@@ -23,5 +23,5 @@ const mapStateToProps = (state: RootStateType) => ({
     email: state.auth.email,
 })
 export type PropsType = ConnectedProps<typeof connector>
-const connector = connect(mapStateToProps, { getAuthUserData })
+const connector = connect(mapStateToProps, { getAuthUserData, logout })
 export const HeaderContainer = connector(HeaderClassContainer)

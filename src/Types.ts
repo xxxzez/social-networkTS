@@ -8,11 +8,7 @@ import {
     unfollowSuccess,
 } from './redux/users-reducer'
 import { addNewMessage } from './redux/dialogs-reducer'
-import {
-    addPostAC,
-    setStatus,
-    setUserProfile,
-} from './redux/profile-reducer'
+import { addPostAC, setStatus, setUserProfile } from './redux/profile-reducer'
 import { setAuthUserData } from './redux/auth-reducer'
 
 export type PostType = {
@@ -64,9 +60,9 @@ export type DialogsPageType = {
 }
 
 export type AuthType = {
-    id: number
-    email: string
-    login: string
+    id: number | null
+    email: string | null
+    login: string | null
     isAuth: boolean
 }
 
