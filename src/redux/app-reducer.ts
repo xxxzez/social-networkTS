@@ -20,7 +20,8 @@ export const appReducer = (
     }
 }
 
-export const initializedSuccess = () => ({ type: 'INITIALIZED-SUCCESS' })
+export const initializedSuccess = () =>
+    ({ type: 'INITIALIZED-SUCCESS' } as const)
 
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(getAuthUserData())

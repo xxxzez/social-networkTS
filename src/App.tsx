@@ -59,6 +59,7 @@ export class SimpleApp extends React.Component<any> {
 const mapStateToProps = (state: RootStateType) => ({
     initialized: state.app.initialized,
 })
+
 export const App = compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, { initializeApp })
