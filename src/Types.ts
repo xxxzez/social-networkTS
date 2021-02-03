@@ -8,7 +8,12 @@ import {
     unfollowSuccess,
 } from './redux/users-reducer'
 import { addNewMessage } from './redux/dialogs-reducer'
-import { addPostAC, setStatus, setUserProfile } from './redux/profile-reducer'
+import {
+    addPostAC,
+    deletePost,
+    setStatus,
+    setUserProfile,
+} from './redux/profile-reducer'
 import { setAuthUserData } from './redux/auth-reducer'
 import { initializedSuccess } from './redux/app-reducer'
 
@@ -105,6 +110,7 @@ export type UsersPageType = {
 }
 export type ActionsTypes =
     | ReturnType<typeof addPostAC>
+    | ReturnType<typeof deletePost>
     | ReturnType<typeof addNewMessage>
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof unfollowSuccess>

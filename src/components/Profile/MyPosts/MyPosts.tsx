@@ -22,7 +22,7 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
 
     return (
         <div>
-            My posts
+            <h3>My posts</h3>
             <AddPostFormRedux onSubmit={onAddPost} />
             <div className={s.posts}>{postsElements}</div>
         </div>

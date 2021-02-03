@@ -8,6 +8,12 @@ export const addPostAC = (newPostBody: string) => {
         newPostBody,
     } as const
 }
+export const deletePost = (postId: string) => {
+    return {
+        type: 'DELETE-POST',
+        postId,
+    } as const
+}
 export const setStatus = (status: string) => {
     return {
         type: 'SET-STATUS',
@@ -88,11 +94,15 @@ export const profileReducer = (
             return {
                 ...state,
                 posts: [
-                    { id: v1(), message: action.newPostBody, likesCount: 0 },
                     ...state.posts,
+                    { id: v1(), message: action.newPostBody, likesCount: 0 },
                 ],
             }
-
+        case 'DELETE-POST':
+            return {
+                ...state,
+                posts: state.posts.filter((p) => p.id !== action.postId),
+            }
         case 'SET-USER-PROFILE':
             return {
                 ...state,
