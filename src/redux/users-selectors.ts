@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect'
 import { RootStateType } from '../Types'
 
 export const getTotalUsersCount = (state: RootStateType) => {
@@ -9,9 +10,12 @@ export const getPageSize = (state: RootStateType) => {
 export const getCurrentPage = (state: RootStateType) => {
     return state.usersPage.currentPage
 }
-export const getUsers = (state: RootStateType) => {
+const getUsersSelector = (state: RootStateType) => {
     return state.usersPage.users
 }
+export const getUsers = createSelector(getUsersSelector, (users) => {
+    return users.filter((u) => true)
+})
 export const getIsFetching = (state: RootStateType) => {
     return state.usersPage.isFetching
 }
