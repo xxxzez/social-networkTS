@@ -15,9 +15,12 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
     const onAddPost = (values: any) => {
         props.addPost(values.newPostBody)
     }
+    const deletePost = (userId: string) =>{
+        props.deletePost(userId)
+    }
 
     const postsElements = props.posts.map((p) => (
-        <Post key={p.id} message={p.message} likesCount={p.likesCount} />
+        <Post key={p.id} id={p.id} message={p.message} likesCount={p.likesCount} deletePost={deletePost} />
     ))
 
     return (
@@ -32,6 +35,7 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
 export default MyPosts
 
 const maxLength20 = maxLengthCreator(20)
+
 const AddPostForm = (props: any) => {
     return (
         <form onSubmit={props.handleSubmit}>
