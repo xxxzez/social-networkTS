@@ -17,9 +17,7 @@ const rootReducer = combineReducers({
     app: appReducer,
 })
 
-const store: any = createStore(
+export const store: any = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 )
-
-export default store
