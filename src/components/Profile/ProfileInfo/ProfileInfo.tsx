@@ -11,42 +11,43 @@ type PropsType = {
     updateStatus: (status: string) => void
 }
 
-const ProfileInfo: React.FC<PropsType> = (props) => {
-    if (!props.profile) {
+const ProfileInfo: React.FC<PropsType> = ({
+    profile,
+    status,
+    updateStatus,
+}) => {
+    if (!profile) {
         return <Preloader />
     }
     return (
         <div className={s.profile}>
             <div className={s.profilePicture}>
-                {props.profile.photos.large ? (
-                    <img src={props.profile.photos.large} alt="" />
+                {profile.photos.large ? (
+                    <img src={profile.photos.large} alt="" />
                 ) : (
                     <img src={profilePicture} alt="" width="300px" />
                 )}
             </div>
 
-            <ProfileStatus
-                status={props.status}
-                updateStatus={props.updateStatus}
-            />
+            <ProfileStatus status={status} updateStatus={updateStatus} />
 
-            <h3>About me: {props.profile.aboutMe}</h3>
+            <h3>About me: {profile.aboutMe}</h3>
             <h3>
                 Looking for a job?{' '}
-                {props.profile.lookingForAJob ? 'Yes' : 'Currently no!'}
+                {profile.lookingForAJob ? 'Yes' : 'Currently no!'}
             </h3>
             <h3>
                 What kind of job are u looking for?{' '}
-                {props.profile.lookingForAJobDescription}
+                {profile.lookingForAJobDescription}
             </h3>
-            <h3>Name: {props.profile.fullName}</h3>
-            <h3>UserId: {props.profile.userId}</h3>
-            <h3>Facebook link: {props.profile.contacts.facebook}</h3>
-            <h3>Your website link: {props.profile.contacts.website}</h3>
-            <h3>VK link: {props.profile.contacts.vk}</h3>
-            <h3>Youtube: {props.profile.contacts.youtube}</h3>
-            <h3>Github: {props.profile.contacts.github}</h3>
-            <h3>Email: {props.profile.contacts.mainLink}</h3>
+            <h3>Name: {profile.fullName}</h3>
+            <h3>UserId: {profile.userId}</h3>
+            <h3>Facebook link: {profile.contacts.facebook}</h3>
+            <h3>Your website link: {profile.contacts.website}</h3>
+            <h3>VK link: {profile.contacts.vk}</h3>
+            <h3>Youtube: {profile.contacts.youtube}</h3>
+            <h3>Github: {profile.contacts.github}</h3>
+            <h3>Email: {profile.contacts.mainLink}</h3>
 
             <div>
                 <h3>Welcome to my page guys! Happy to see you here!</h3>
