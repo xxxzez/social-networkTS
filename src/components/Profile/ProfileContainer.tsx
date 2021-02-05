@@ -54,8 +54,10 @@ const connector = connect(mapStateToProps, {
     updateStatus,
 })
 
-export const ProfileContainer = compose<React.ComponentType>(
+const ProfileContainer = compose<React.ComponentType>(
     connector,
     withRouter,
     withAuthRedirect
 )(ProfileClassContainer)
+
+export default ProfileContainer

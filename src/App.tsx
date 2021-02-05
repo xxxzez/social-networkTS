@@ -6,15 +6,16 @@ import { Route, withRouter } from 'react-router-dom'
 import { News } from './components/News/News'
 import { HeaderContainer } from './components/Header/HeaderContainer'
 import { Grid } from '@material-ui/core'
-import { DialogsContainer } from './components/Dialogs/DialogsContainer'
 import { UsersContainer } from './components/Users/UsersContainer'
-import { ProfileContainer } from './components/Profile/ProfileContainer'
 import { ConnectedLogin } from './components/Login/Login'
 import { initializeApp } from './redux/app-reducer'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { RootStateType } from './Types'
 import { Preloader } from './components/common/Preloader/Preloader'
+import { withSuspense } from './hoc/withSuspense'
+const ProfileContainer = React.lazy(() =>import('./components/Profile/ProfileContainer'))
+const DialogsContainer = React.lazy(() =>import('./components/Dialogs/DialogsContainer'))
 
 export class SimpleApp extends React.Component<any> {
     componentDidMount() {
@@ -33,11 +34,11 @@ export class SimpleApp extends React.Component<any> {
                     <Grid item xs={10}>
                         <Route
                             path={'/profile/:userId?'}
-                            render={() => <ProfileContainer />}
+                            render={withSuspense(ProfileContainer)}
                         />
                         <Route
                             path={'/messages'}
-                            render={() => <DialogsContainer />}
+                            render={withSuspense(DialogsContainer)}
                         />
                         <Route
                             path={'/users'}
