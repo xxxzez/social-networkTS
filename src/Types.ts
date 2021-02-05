@@ -44,7 +44,7 @@ export type ProfileType = {
     fullName: string
     userId: number
     photos: ProfilePhotosType
-} | null
+}
 
 export type ProfilePhotosType = {
     small: string | null

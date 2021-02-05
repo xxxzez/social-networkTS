@@ -1,6 +1,6 @@
 import { v1 } from 'uuid'
 import { profileAPI } from '../api/api'
-import { ActionsTypes, ProfilePageType, ProfilePhotosType, ProfileType } from '../Types'
+import { ActionsTypes, ProfilePageType, ProfileType } from '../Types'
 
 export const addPostAC = (newPostBody: string) => {
     return {
@@ -26,7 +26,7 @@ export const setUserProfile = (profile: ProfileType) => {
         profile: profile,
     } as const
 }
-export const savePhotoSuccess = (photos: ProfilePhotosType) => {
+export const savePhotoSuccess = (photos: any) => {
     return {
         type: 'SAVE-PHOTO-SUCCESS',
         photos: photos,
@@ -48,7 +48,7 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
         dispatch(setStatus(status))
     }
 }
-export const savePhoto = (file: string) => async (dispatch: any) => {
+export const savePhoto = (file: any) => async (dispatch: any) => {
     const response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
@@ -56,32 +56,27 @@ export const savePhoto = (file: string) => async (dispatch: any) => {
 }
 
 const initialState = {
-    posts: [
-        { id: v1(), message: 'First post!!!!', likesCount: 17 },
-        { id: v1(), message: 'Second post!!!!', likesCount: 7 },
-    ],
+    posts: [],
     status: '',
     profile: {
-        aboutMe: 'я не cool guy 1001%',
+        aboutMe: '',
         contacts: {
-            facebook: 'facebook.com',
+            facebook: '',
             website: '',
-            vk: 'vk.com/vk',
-            twitter: 'https://twitter.com/@sdf',
-            instagram: 'instagram.com/sds',
-            youtube: 'null',
-            github: 'github.com',
-            mainLink: 'null',
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: '',
+            github: '',
+            mainLink: '',
         },
         lookingForAJob: true,
-        lookingForAJobDescription: 'не ищу, а cool',
-        fullName: 'Matvei Bohush',
-        userId: 2,
+        lookingForAJobDescription: '',
+        fullName: '',
+        userId: 8250,
         photos: {
-            small:
-                'https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0',
-            large:
-                'https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0',
+            small: '',
+            large: '',
         },
     },
 }
@@ -122,7 +117,6 @@ export const profileReducer = (
                 ...state,
                 profile: { ...state.profile, photos: action.photos },
             }
-
         default:
             return state
     }
