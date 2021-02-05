@@ -36,7 +36,7 @@ const ProfileInfo: React.FC<PropsType> = ({
                 {profile.photos.large ? (
                     <img src={profile.photos.large} alt="" />
                 ) : (
-                    <img src={profilePicture} alt="" width="300px" />
+                    <img src={profilePicture} alt="" />
                 )}
             </div>
             {isOwner && <input type="file" onChange={mainPhotoSelected} />}
