@@ -18,7 +18,7 @@ export type ProfilePropsFromRedux = ConnectedProps<typeof connector>
 type PropsType = RouteComponentProps<PathParamsType> & ProfilePropsFromRedux
 
 class ProfileClassContainer extends React.Component<PropsType> {
-    componentDidMount = () => {
+    refreshProfile = () => {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.authorizedUserId
@@ -28,6 +28,14 @@ class ProfileClassContainer extends React.Component<PropsType> {
         }
         this.props.getProfile(userId)
         this.props.getStatus(userId)
+    }
+    componentDidMount = () => {
+        this.refreshProfile()
+    }
+    componentDidUpdate(prevProps: PropsType) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.refreshProfile()
+        }
     }
 
     render() {
