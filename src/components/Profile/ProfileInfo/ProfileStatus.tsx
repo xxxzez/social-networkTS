@@ -22,7 +22,6 @@ export const ProfileStatus = (props: PropsType) => {
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
     }
-
     return (
         <div>
             {!editMode && (
