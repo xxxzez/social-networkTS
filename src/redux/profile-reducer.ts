@@ -54,6 +54,16 @@ export const savePhoto = (file: any) => async (dispatch: any) => {
         dispatch(savePhotoSuccess(response.data.data.photos))
     }
 }
+export const saveProfile = (data: any) => async (
+    dispatch: any,
+    getState: any
+) => {
+    const userId = getState().auth.userId
+    const response = await profileAPI.saveProfile(data)
+    if (response.data.resultCode === 0) {
+        dispatch(getProfile(userId))
+    }
+}
 
 const initialState = {
     posts: [],

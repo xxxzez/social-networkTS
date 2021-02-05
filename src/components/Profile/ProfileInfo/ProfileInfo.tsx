@@ -1,9 +1,10 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import s from './ProfileInfo.module.css'
 import { Preloader } from '../../common/Preloader/Preloader'
 import { ProfileType } from '../../../Types'
 import profilePicture from '../../../assets/profilePicture.png'
 import { ProfileStatus } from './ProfileStatus'
+import { ProfileDataReduxForm } from './ProfileDataForm'
 
 type PropsType = {
     profile: ProfileType
@@ -11,6 +12,7 @@ type PropsType = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (file: any) => void
+    saveProfile: (data: any) => void
 }
 
 const ProfileInfo: React.FC<PropsType> = ({
@@ -19,7 +21,10 @@ const ProfileInfo: React.FC<PropsType> = ({
     updateStatus,
     isOwner,
     savePhoto,
+    saveProfile,
 }) => {
+    const [editMode, setEditMode] = useState(false)
+
     if (!profile) {
         return <Preloader />
     }
@@ -28,6 +33,9 @@ const ProfileInfo: React.FC<PropsType> = ({
         if (e.target.files?.length) {
             savePhoto(e.target.files[0])
         }
+    }
+    const onSubmit = (formData: any) => {
+        saveProfile(formData)
     }
 
     return (
@@ -41,7 +49,18 @@ const ProfileInfo: React.FC<PropsType> = ({
             </div>
             {isOwner && <input type="file" onChange={mainPhotoSelected} />}
             <ProfileStatus status={status} updateStatus={updateStatus} />
-            <ProfileData profile={profile} />
+
+            {editMode ? (
+                <ProfileDataReduxForm initialValues={profile} onSubmit={onSubmit} />
+            ) : (
+                <ProfileData
+                    profile={profile}
+                    isOwner={isOwner}
+                    goToEditMode={() => {
+                        setEditMode(true)
+                    }}
+                />
+            )}
         </div>
     )
 }
@@ -53,9 +72,18 @@ type ContactPropsType = {
     contactValue: any
 }
 
-const ProfileData = ({ profile }: any) => {
+const ProfileData = ({ profile, isOwner, goToEditMode }: any) => {
     return (
         <div>
+            {isOwner && (
+                <div>
+                    <button onClick={goToEditMode}>Edit</button>
+                </div>
+            )}
+
+            <div>
+                <b>Name:</b> {profile.fullName}
+            </div>
             <div>
                 <b>About me: </b>
                 {profile.aboutMe}
@@ -71,12 +99,6 @@ const ProfileData = ({ profile }: any) => {
                 </div>
             )}
             <div>
-                <b>Name:</b> {profile.fullName}
-            </div>
-            <div>
-                <b>UserId:</b> {profile.userId}
-            </div>
-            <div>
                 <b>Contacts:</b>:
                 {Object.keys(profile.contacts).map((key) => {
                     return (
@@ -88,7 +110,6 @@ const ProfileData = ({ profile }: any) => {
                     )
                 })}
             </div>
-            <div></div>
         </div>
     )
 }
