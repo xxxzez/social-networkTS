@@ -6,7 +6,7 @@ import profilePicture from '../../../assets/profilePicture.png'
 import { ProfileStatus } from './ProfileStatus'
 
 type PropsType = {
-    profile: ProfileType | null
+    profile: ProfileType
     status: string
     updateStatus: (status: string) => void
     isOwner: boolean
@@ -40,32 +40,63 @@ const ProfileInfo: React.FC<PropsType> = ({
                 )}
             </div>
             {isOwner && <input type="file" onChange={mainPhotoSelected} />}
-
             <ProfileStatus status={status} updateStatus={updateStatus} />
-
-            <h3>About me: {profile.aboutMe}</h3>
-            <h3>
-                Looking for a job?{' '}
-                {profile.lookingForAJob ? 'Yes' : 'Currently no!'}
-            </h3>
-            <h3>
-                What kind of job are u looking for?{' '}
-                {profile.lookingForAJobDescription}
-            </h3>
-            <h3>Name: {profile.fullName}</h3>
-            <h3>UserId: {profile.userId}</h3>
-            <h3>Facebook link: {profile.contacts.facebook}</h3>
-            <h3>Your website link: {profile.contacts.website}</h3>
-            <h3>VK link: {profile.contacts.vk}</h3>
-            <h3>Youtube: {profile.contacts.youtube}</h3>
-            <h3>Github: {profile.contacts.github}</h3>
-            <h3>Email: {profile.contacts.mainLink}</h3>
-
-            <div>
-                <h3>Welcome to my page guys! Happy to see you here!</h3>
-            </div>
+            <ProfileData profile={profile} />
         </div>
     )
 }
 
 export default ProfileInfo
+
+type ContactPropsType = {
+    contactTitle: string
+    contactValue: any
+}
+
+const ProfileData = ({ profile }: any) => {
+    return (
+        <div>
+            <div>
+                <b>About me: </b>
+                {profile.aboutMe}
+            </div>
+            <div>
+                <b>Looking for a job?</b>
+                {profile.lookingForAJob ? 'Yes' : 'Currently no!'}
+            </div>
+            {profile.lookingForAJob && (
+                <div>
+                    <b>My professional skills:</b>
+                    {profile.lookingForAJobDescription}
+                </div>
+            )}
+            <div>
+                <b>Name:</b> {profile.fullName}
+            </div>
+            <div>
+                <b>UserId:</b> {profile.userId}
+            </div>
+            <div>
+                <b>Contacts:</b>:
+                {Object.keys(profile.contacts).map((key) => {
+                    return (
+                        <Contact
+                            key={key}
+                            contactTitle={key}
+                            contactValue={profile.contacts[key]}
+                        />
+                    )
+                })}
+            </div>
+            <div></div>
+        </div>
+    )
+}
+
+const Contact = ({ contactTitle, contactValue }: ContactPropsType) => {
+    return (
+        <div className={s.contact}>
+            <b>{contactTitle}</b>: {contactValue}
+        </div>
+    )
+}

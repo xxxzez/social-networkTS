@@ -24,10 +24,9 @@ export const ProfileStatus = (props: PropsType) => {
     }
     return (
         <div>
+            <b>Status:</b>
             {!editMode && (
-                <div>
-                    <span onClick={activateEditMode}>{status || '-----'}</span>
-                </div>
+                <span onClick={activateEditMode}>{status || '-----'}</span>
             )}
             {editMode && (
                 <div>

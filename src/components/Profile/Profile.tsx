@@ -5,7 +5,7 @@ import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 type PropsType = {
-    profile: ProfileType | null
+    profile: ProfileType
     status: string
     updateStatus: (status: string) => void
     isOwner: boolean
