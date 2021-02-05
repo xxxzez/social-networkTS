@@ -11,6 +11,7 @@ import { addNewMessage } from './redux/dialogs-reducer'
 import {
     addPostAC,
     deletePost,
+    savePhotoSuccess,
     setStatus,
     setUserProfile,
 } from './redux/profile-reducer'
@@ -123,3 +124,4 @@ export type ActionsTypes =
     | ReturnType<typeof toggleFollowingProgress>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof initializedSuccess>
+    | ReturnType<typeof savePhotoSuccess>

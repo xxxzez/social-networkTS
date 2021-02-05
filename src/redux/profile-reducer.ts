@@ -1,6 +1,6 @@
 import { v1 } from 'uuid'
 import { profileAPI } from '../api/api'
-import { ActionsTypes, ProfilePageType, ProfileType } from '../Types'
+import { ActionsTypes, ProfilePageType, ProfilePhotosType, ProfileType } from '../Types'
 
 export const addPostAC = (newPostBody: string) => {
     return {
@@ -26,6 +26,12 @@ export const setUserProfile = (profile: ProfileType) => {
         profile: profile,
     } as const
 }
+export const savePhotoSuccess = (photos: ProfilePhotosType) => {
+    return {
+        type: 'SAVE-PHOTO-SUCCESS',
+        photos: photos,
+    } as const
+}
 
 export const getProfile = (userId: number) => async (dispatch: any) => {
     const response = await profileAPI.getProfile(userId)
@@ -40,6 +46,12 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
     const response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status))
+    }
+}
+export const savePhoto = (file: string) => async (dispatch: any) => {
+    const response = await profileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos))
     }
 }
 
@@ -104,6 +116,11 @@ export const profileReducer = (
             return {
                 ...state,
                 status: action.status,
+            }
+        case 'SAVE-PHOTO-SUCCESS':
+            return {
+                ...state,
+                profile: { ...state.profile, photos: action.photos },
             }
 
         default:
