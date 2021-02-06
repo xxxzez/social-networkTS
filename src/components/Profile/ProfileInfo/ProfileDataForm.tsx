@@ -7,7 +7,8 @@ import {
 } from '../../common/FormsControls/FormsControls'
 import s from './ProfileInfo.module.css'
 
-const ProfileDataForm = ({ handleSubmit, profile, error }: any) => {
+
+const ProfileDataForm = ({ handleSubmit, initialValues, error }: any) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -42,7 +43,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }: any) => {
             </div>
             <div>
                 <b>Contacts:</b>:
-                {Object.keys(profile.contacts).map((key) => {
+                {Object.keys(initialValues.contacts).map((key) => {
                     return (
                         <div className={s.contact} key={key}>
                             <b>

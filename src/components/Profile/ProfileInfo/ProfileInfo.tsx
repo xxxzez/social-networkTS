@@ -12,7 +12,7 @@ type PropsType = {
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (file: any) => void
-    saveProfile: (data: any) => void
+    saveProfile: any
 }
 
 const ProfileInfo: React.FC<PropsType> = ({
@@ -95,7 +95,7 @@ const ProfileData = ({ profile, isOwner, goToEditMode }: any) => {
             </div>
             <div>
                 <b>Looking for a job?</b>
-                {profile.lookingForAJob ? 'Yes' : 'Currently no!'}
+                {profile.lookingForAJob ? 'Yes' : 'No'}
             </div>
             {profile.lookingForAJob && (
                 <div>
