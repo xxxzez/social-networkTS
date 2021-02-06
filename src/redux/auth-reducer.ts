@@ -7,7 +7,8 @@ const initialState = {
     email: null,
     login: null,
     isAuth: false,
-    captchaUrl: null,
+    captchaUrl:
+        'https://social-network.samuraijs.com/HelpApp/HelpApp/Captcha?w=200&h=100&c=U3W3qnfSKjrGMvo4ANo9ag%3D%3D',
 }
 
 export const authReducer = (
@@ -60,8 +61,10 @@ export const login = (
     const response = await authAPI.login(email, password, rememberMe, captcha)
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData())
-    } else if (response.data.resultCode === 10) {
     } else {
+        if (response.data.resultCode === 10) {
+            dispatch(getCaptchaUrl)
+        }
         let message =
             response.data.messages.length > 0
                 ? response.data.messages[0]

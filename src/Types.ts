@@ -71,7 +71,7 @@ export type AuthType = {
     email: string | null
     login: string | null
     isAuth: boolean
-    captchaUrl: string
+    captchaUrl: string | null
 }
 export type AppReducerType = {
     initialized: boolean

@@ -8,7 +8,47 @@ import { required } from '../../utils/validators/validators'
 import { createField, Input } from '../common/FormsControls/FormsControls'
 import styles from '../common/FormsControls/FormsControls.module.css'
 
-export const Login = (props: any) => {
+type LoginFormOwnProps = {
+    captchaUrl: string | null
+}
+
+const LoginForm = ({ handleSubmit, error, captchaUrl }: any) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            {createField('Email', 'email', [required], Input)}
+            {createField('Password', 'password', [required], Input, {
+                type: 'password',
+            })}
+            {createField(
+                null,
+                'rememberMe',
+                [],
+                Input,
+                { type: 'checkbox' },
+                'Remember'
+            )}
+            {captchaUrl && <img src={captchaUrl} alt="" />}
+            {captchaUrl &&
+                createField(
+                    'Symbols from image',
+                    'captcha',
+                    [required],
+                    Input,
+                    {}
+                )}
+            {error && <div className={styles.formSummaryError}>{error}</div>}
+            <div>
+                <button>Login</button>
+            </div>
+        </form>
+    )
+}
+
+const LoginReduxForm = reduxForm<{}, LoginFormOwnProps>({ form: 'login' })(
+    LoginForm
+)
+
+const Login = (props: any) => {
     const onSubmit = (formData: any) => {
         props.login(
             formData.email,
@@ -28,43 +68,9 @@ export const Login = (props: any) => {
     )
 }
 
-const LoginForm = (props: any) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            {createField('Email', 'email', [required], Input)}
-            {createField('Password', 'password', [required], Input, {
-                type: 'password',
-            })}
-            {createField(
-                null,
-                'rememberMe',
-                [],
-                Input,
-                { type: 'checkbox' },
-                'Remember'
-            )}
-            {props.captchaUrl && <img src={props.captchaUrl} alt="" />}
-            {props.captchaUrl &&
-                createField(
-                    'Symbols from image',
-                    'captcha',
-                    [required],
-                    Input,
-                    {}
-                )}
-            {props.error && (
-                <div className={styles.formSummaryError}>{props.error}</div>
-            )}
-            <div>
-                <button>Login</button>
-            </div>
-        </form>
-    )
-}
 const mapStateToProps = (state: RootStateType) => ({
     isAuth: state.auth.isAuth,
     captchaUrl: state.auth.captchaUrl,
 })
 
-const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 export const ConnectedLogin = connect(mapStateToProps, { login })(Login)
