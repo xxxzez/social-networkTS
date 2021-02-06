@@ -35,7 +35,9 @@ const ProfileInfo: React.FC<PropsType> = ({
         }
     }
     const onSubmit = (formData: any) => {
-        saveProfile(formData)
+        saveProfile(formData).then(() => {
+            setEditMode(false)
+        })
     }
 
     return (
@@ -51,7 +53,10 @@ const ProfileInfo: React.FC<PropsType> = ({
             <ProfileStatus status={status} updateStatus={updateStatus} />
 
             {editMode ? (
-                <ProfileDataReduxForm initialValues={profile} onSubmit={onSubmit} />
+                <ProfileDataReduxForm
+                    initialValues={profile}
+                    onSubmit={onSubmit}
+                />
             ) : (
                 <ProfileData
                     profile={profile}

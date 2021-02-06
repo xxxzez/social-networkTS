@@ -5,13 +5,15 @@ import {
     Input,
     Textarea,
 } from '../../common/FormsControls/FormsControls'
+import s from './ProfileInfo.module.css'
 
-const ProfileDataForm = ({ handleSubmit }: any) => {
+const ProfileDataForm = ({ handleSubmit, profile, error }: any) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
                 <button onClick={() => {}}>Save</button>
             </div>
+
             <div>
                 <b>Full name:</b>
                 {createField('Full name', 'fullName', [], Input)}
@@ -40,15 +42,16 @@ const ProfileDataForm = ({ handleSubmit }: any) => {
             </div>
             <div>
                 <b>Contacts:</b>:
-                {/* {Object.keys(profile.contacts).map((key) => {
+                {Object.keys(profile.contacts).map((key) => {
                     return (
-                        <Contact
-                            key={key}
-                            contactTitle={key}
-                            contactValue={profile.contacts[key]}
-                        />
+                        <div className={s.contact} key={key}>
+                            <b>
+                                {key}:{' '}
+                                {createField(key, 'contacts.' + key, [], Input)}
+                            </b>
+                        </div>
                     )
-                })} */}
+                })}
             </div>
         </form>
     )

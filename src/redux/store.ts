@@ -1,7 +1,7 @@
+import { profileReducer } from './profile-reducer';
 import { appReducer } from './app-reducer'
 import { usersReducer } from './users-reducer'
 import { dialogsReducer } from './dialogs-reducer'
-import { profileReducer } from './profile-reducer'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { authReducer } from './auth-reducer'
