@@ -59,7 +59,7 @@ export const saveProfile = (profile: any): any => async (
     dispatch: any,
     getState: any
 ) => {
-    const userId = getState().auth.userId
+    const userId = getState().auth.id
     const response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
         dispatch(getProfile(userId))
