@@ -2,7 +2,7 @@ import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Navbar } from './components/Navbar/Navbar'
 import { Settings } from './components/Settings/Settings'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
 import { News } from './components/News/News'
 import { HeaderContainer } from './components/Header/HeaderContainer'
 import { Grid } from '@material-ui/core'
@@ -22,8 +22,22 @@ const DialogsContainer = React.lazy(() =>
 )
 
 export class SimpleApp extends React.Component<any> {
+    catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
+        alert('Some error occurred')
+        console.error(promiseRejectionEvent)
+    }
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener(
+            'unhandledrejection',
+            this.catchAllUnhandledErrors
+        )
+    }
+    componentWillUnmount() {
+        window.removeEventListener(
+            'unhandledrejection',
+            this.catchAllUnhandledErrors
+        )
     }
     render() {
         if (!this.props.initialized) {
@@ -37,6 +51,11 @@ export class SimpleApp extends React.Component<any> {
                     <Navbar />
                     <Grid item xs={10}>
                         <Switch>
+                            <Route
+                                exact
+                                path={'/'}
+                                render={() => <Redirect to="/profile" />}
+                            />
                             <Route
                                 path={'/profile/:userId?'}
                                 render={withSuspense(ProfileContainer)}

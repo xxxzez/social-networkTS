@@ -74,3 +74,4 @@ export const profileAPI = {
         return instance.put('profile', data)
     },
 }
+ 
