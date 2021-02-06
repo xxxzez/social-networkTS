@@ -15,7 +15,7 @@ import {
     setStatus,
     setUserProfile,
 } from './redux/profile-reducer'
-import { setAuthUserData } from './redux/auth-reducer'
+import { getCaptchaUrlSuccess, setAuthUserData } from './redux/auth-reducer'
 import { initializedSuccess } from './redux/app-reducer'
 
 export type PostType = {
@@ -71,6 +71,7 @@ export type AuthType = {
     email: string | null
     login: string | null
     isAuth: boolean
+    captchaUrl: string
 }
 export type AppReducerType = {
     initialized: boolean
@@ -125,3 +126,4 @@ export type ActionsTypes =
     | ReturnType<typeof setStatus>
     | ReturnType<typeof initializedSuccess>
     | ReturnType<typeof savePhotoSuccess>
+    | ReturnType<typeof getCaptchaUrlSuccess>

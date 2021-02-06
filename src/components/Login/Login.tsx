@@ -10,7 +10,12 @@ import styles from '../common/FormsControls/FormsControls.module.css'
 
 export const Login = (props: any) => {
     const onSubmit = (formData: any) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(
+            formData.email,
+            formData.password,
+            formData.rememberMe,
+            formData.captcha
+        )
     }
     if (props.isAuth) {
         return <Redirect to="/profile" />
@@ -18,14 +23,14 @@ export const Login = (props: any) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
         </div>
     )
 }
 
-const LoginForm = ({ handleSubmit, error }: any) => {
+const LoginForm = (props: any) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={props.handleSubmit}>
             {createField('Email', 'email', [required], Input)}
             {createField('Password', 'password', [required], Input, {
                 type: 'password',
@@ -38,7 +43,18 @@ const LoginForm = ({ handleSubmit, error }: any) => {
                 { type: 'checkbox' },
                 'Remember'
             )}
-            {error && <div className={styles.formSummaryError}>{error}</div>}
+            {props.captchaUrl && <img src={props.captchaUrl} alt="" />}
+            {props.captchaUrl &&
+                createField(
+                    'Symbols from image',
+                    'captcha',
+                    [required],
+                    Input,
+                    {}
+                )}
+            {props.error && (
+                <div className={styles.formSummaryError}>{props.error}</div>
+            )}
             <div>
                 <button>Login</button>
             </div>
@@ -47,6 +63,7 @@ const LoginForm = ({ handleSubmit, error }: any) => {
 }
 const mapStateToProps = (state: RootStateType) => ({
     isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl,
 })
 
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
