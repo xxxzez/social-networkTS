@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect, ConnectedProps } from 'react-redux'
+import { connect } from 'react-redux'
 import { Profile } from './Profile'
 import {
     getProfile,
@@ -8,16 +8,17 @@ import {
     savePhoto,
     saveProfile,
 } from '../../redux/profile-reducer'
-import { RootStateType } from '../../Types'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import { compose } from 'redux'
+import { AppStateType } from '../../redux/store'
+import { ProfileType } from '../../Types'
 
 type PathParamsType = {
     userId: any
 }
-export type ProfilePropsFromRedux = ConnectedProps<typeof connector>
-type PropsType = RouteComponentProps<PathParamsType> & ProfilePropsFromRedux
+
+type PropsType = RouteComponentProps<PathParamsType> & ConnectedPropsType
 
 class ProfileClassContainer extends React.Component<PropsType> {
     refreshProfile = () => {
@@ -53,24 +54,36 @@ class ProfileClassContainer extends React.Component<PropsType> {
         )
     }
 }
+type MSTPType = {
+    profile: ProfileType
+    status: string
+    authorizedUserId: number | null
+    isAuth: boolean
+}
+type MDTPType = {
+    getProfile: any
+    getStatus: any
+    updateStatus: any
+    savePhoto: any
+    saveProfile: any
+}
+type ConnectedPropsType = MSTPType & MDTPType
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.id,
     isAuth: state.auth.isAuth,
 })
 
-const connector = connect(mapStateToProps, {
-    getProfile,
-    getStatus,
-    updateStatus,
-    savePhoto,
-    saveProfile,
-})
-
 const ProfileContainer = compose<React.ComponentType>(
-    connector,
+    connect(mapStateToProps, {
+        getProfile,
+        getStatus,
+        updateStatus,
+        savePhoto,
+        saveProfile,
+    }),
     withRouter,
     withAuthRedirect
 )(ProfileClassContainer)

@@ -1,9 +1,11 @@
-import { connect, ConnectedProps } from 'react-redux'
-import { RootStateType } from '../../../Types'
+import { connect } from 'react-redux'
 import { addPostAC, deletePost } from '../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
+import { AppStateType } from '../../../redux/store'
 
-const mapStateToProps = (state: RootStateType) => ({
+
+
+const mapStateToProps = (state: AppStateType) => ({
     posts: state.profilePage.posts,
 })
 
@@ -17,9 +19,5 @@ const mapDispatchToProps = (dispatch: any) => {
         },
     }
 }
-
-const connector = connect(mapStateToProps, mapDispatchToProps)
-export type MyPostsPropsFromRedux = ConnectedProps<typeof connector>
-const MyPostsContainer = connector(MyPosts)
-
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 export default MyPostsContainer

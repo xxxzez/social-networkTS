@@ -1,7 +1,6 @@
 import React from 'react'
 import Post from './Post/Post'
 import s from './MyPosts.module.css'
-import { MyPostsPropsFromRedux } from './MyPostsContainer'
 import { Field, reduxForm } from 'redux-form'
 import {
     maxLengthCreator,
@@ -9,8 +8,16 @@ import {
 } from '../../../utils/validators/validators'
 import { Textarea } from '../../common/FormsControls/FormsControls'
 import Button from '@material-ui/core/Button'
+import { PostType } from '../../../Types'
 
-type PropsType = MyPostsPropsFromRedux
+type MSTPType = {
+    posts: PostType[]
+}
+type MDTPType = {
+    addPost: (newPostBody: string) => void
+    deletePost: (userId: string) => void
+}
+type PropsType = MSTPType & MDTPType
 
 const MyPosts: React.FC<PropsType> = React.memo((props) => {
     const onAddPost = (values: any) => {
@@ -19,7 +26,6 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
     const deletePost = (userId: string) => {
         props.deletePost(userId)
     }
-
     const postsElements = props.posts.map((p) => (
         <Post
             key={p.id}
@@ -29,7 +35,6 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
             deletePost={deletePost}
         />
     ))
-
     return (
         <div>
             <h3>My posts</h3>
