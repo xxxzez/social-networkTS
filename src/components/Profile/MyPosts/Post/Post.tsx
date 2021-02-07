@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Post.module.css'
 import logo from '../../../../assets/canadaFlag.jpeg'
+import Button from '@material-ui/core/Button'
 
 type PostType = {
     message: string
@@ -20,7 +21,9 @@ const Post: React.FC<PostType> = React.memo((props) => {
             <div>
                 <span>Like! </span>
                 {props.likesCount}
-                <button onClick={onDelete}>Delete post</button>
+                <Button variant="contained" color="primary" onClick={onDelete}>
+                    Delete post
+                </Button>
             </div>
         </div>
     )

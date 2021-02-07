@@ -67,7 +67,7 @@ export type DialogsPageType = {
 }
 
 export type AuthType = {
-    id: any
+    id: number | null
     email: string | null
     login: string | null
     isAuth: boolean

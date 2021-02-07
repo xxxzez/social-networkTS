@@ -5,6 +5,8 @@ import { ProfileType } from '../../../Types'
 import profilePicture from '../../../assets/profilePicture.png'
 import { ProfileStatus } from './ProfileStatus'
 import { ProfileDataReduxForm } from './ProfileDataForm'
+import Button from '@material-ui/core/Button'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 
 type PropsType = {
     profile: ProfileType
@@ -49,7 +51,24 @@ const ProfileInfo: React.FC<PropsType> = ({
                     <img src={profilePicture} alt="" />
                 )}
             </div>
-            {isOwner && <input type="file" onChange={mainPhotoSelected} />}
+            {isOwner && (
+                <div>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<CloudUploadIcon />}
+                        component="label"
+                    >
+                        Upload File
+                        <input
+                            onChange={mainPhotoSelected}
+                            type="file"
+                            hidden
+                        />
+                    </Button>
+                </div>
+            )}
+
             <ProfileStatus status={status} updateStatus={updateStatus} />
 
             {editMode ? (
@@ -82,7 +101,13 @@ const ProfileData = ({ profile, isOwner, goToEditMode }: any) => {
         <div>
             {isOwner && (
                 <div>
-                    <button onClick={goToEditMode}>Edit</button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={goToEditMode}
+                    >
+                        Edit
+                    </Button>
                 </div>
             )}
 

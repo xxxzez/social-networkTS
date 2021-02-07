@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 import { NavLink } from 'react-router-dom'
 import style from './Header.module.css'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -211,7 +212,13 @@ export function Header(props: PropsType) {
                         {props.isAuth ? (
                             <span>
                                 {`${props.login} ${props.email}`}
-                                <button onClick={props.logout}>Log out</button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={props.logout}
+                                >
+                                    Log out
+                                </Button>
                             </span>
                         ) : (
                             <NavLink to={'/login'}>Login</NavLink>

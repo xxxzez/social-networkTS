@@ -8,6 +8,7 @@ import {
     required,
 } from '../../../utils/validators/validators'
 import { Textarea } from '../../common/FormsControls/FormsControls'
+import Button from '@material-ui/core/Button'
 
 type PropsType = MyPostsPropsFromRedux
 
@@ -15,12 +16,18 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
     const onAddPost = (values: any) => {
         props.addPost(values.newPostBody)
     }
-    const deletePost = (userId: string) =>{
+    const deletePost = (userId: string) => {
         props.deletePost(userId)
     }
 
     const postsElements = props.posts.map((p) => (
-        <Post key={p.id} id={p.id} message={p.message} likesCount={p.likesCount} deletePost={deletePost} />
+        <Post
+            key={p.id}
+            id={p.id}
+            message={p.message}
+            likesCount={p.likesCount}
+            deletePost={deletePost}
+        />
     ))
 
     return (
@@ -45,7 +52,9 @@ const AddPostForm = (props: any) => {
                 component={Textarea}
                 validate={[required, maxLength20]}
             ></Field>
-            <button>Send</button>
+            <Button variant="contained" color="primary">
+                Send
+            </Button>
         </form>
     )
 }
