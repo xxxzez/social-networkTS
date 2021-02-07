@@ -16,14 +16,14 @@ type PropsType = {
     unfollow: (userId: number) => void
 }
 
-export const Users = ({
+export const Users: React.FC<PropsType> = ({
     currentPage,
     totalUsersCount,
     pageSize,
     onPageChanged,
     users,
     ...props
-}: PropsType) => {
+}) => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize)
     const pages = []
     for (let i = 1; i <= pagesCount; i++) {
@@ -56,3 +56,4 @@ export const Users = ({
         </Grid>
     )
 }
+ 

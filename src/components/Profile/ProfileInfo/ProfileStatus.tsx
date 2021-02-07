@@ -6,8 +6,8 @@ type PropsType = {
 }
 
 export const ProfileStatus = (props: PropsType) => {
-    const [editMode, setEditMode] = useState(false)
-    const [status, setStatus] = useState(props.status)
+    const [editMode, setEditMode] = useState<boolean>(false)
+    const [status, setStatus] = useState<string>(props.status)
     useEffect(() => {
         setStatus(props.status)
     }, [props.status])

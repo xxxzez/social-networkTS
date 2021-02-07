@@ -1,6 +1,7 @@
 import React from 'react'
-import { connect, ConnectedProps } from 'react-redux'
+import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { AppStateType } from '../../redux/store'
 import {
     follow,
     setCurrentPage,
@@ -16,10 +17,23 @@ import {
     getIsFetching,
     getFollowingInProgress,
 } from '../../redux/users-selectors'
-import { RootStateType } from '../../Types'
+import { UserType } from '../../Types'
 import { Preloader } from '../common/Preloader/Preloader'
 import { Users } from './Users'
-class UsersClassContainer extends React.Component<UsersPropsFromRedux> {
+
+type PropsType = {
+    currentPage: number
+    pageSize: number
+    isFetching: boolean
+    totalUsersCount: number
+    followingInProgress: number[]
+    users: UserType[]
+
+    requestUsers: (currentPage: number, pageSize: number) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+}
+class UsersClassContainer extends React.Component<PropsType> {
     componentDidMount = () => {
         const { currentPage, pageSize } = this.props
         this.props.requestUsers(currentPage, pageSize)
@@ -48,7 +62,7 @@ class UsersClassContainer extends React.Component<UsersPropsFromRedux> {
     )
 }
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: AppStateType) => ({
     users: getUsers(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
@@ -57,16 +71,12 @@ const mapStateToProps = (state: RootStateType) => ({
     followingInProgress: getFollowingInProgress(state),
 })
 
-const connector = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setCurrentPage,
-    toggleFollowingProgress,
-    requestUsers,
-})
-
-export type UsersPropsFromRedux = ConnectedProps<typeof connector>
-
-export const UsersContainer = compose<React.ComponentType>(connector)(
-    UsersClassContainer
-)
+export const UsersContainer = compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        follow,
+        unfollow,
+        setCurrentPage,
+        toggleFollowingProgress,
+        requestUsers,
+    })
+)(UsersClassContainer)

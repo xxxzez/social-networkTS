@@ -1,4 +1,4 @@
-import { profileReducer } from './profile-reducer';
+import { profileReducer } from './profile-reducer'
 import { appReducer } from './app-reducer'
 import { usersReducer } from './users-reducer'
 import { dialogsReducer } from './dialogs-reducer'
@@ -17,7 +17,8 @@ const rootReducer = combineReducers({
     app: appReducer,
 })
 
-export const store: any = createStore(
+export type AppStateType = ReturnType<typeof rootReducer>
+export const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 )
