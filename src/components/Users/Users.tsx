@@ -25,7 +25,7 @@ export const Users: React.FC<PropsType> = ({
     ...props
 }) => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize)
-    const pages = []
+    const pages: number[] = []
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
@@ -56,4 +56,3 @@ export const Users: React.FC<PropsType> = ({
         </Grid>
     )
 }
- 

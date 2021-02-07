@@ -64,7 +64,7 @@ export const login = (
         if (response.data.resultCode === 10) {
             dispatch(getCaptchaUrl())
         }
-        let message =
+        const message =
             response.data.messages.length > 0
                 ? response.data.messages[0]
                 : 'Some error'

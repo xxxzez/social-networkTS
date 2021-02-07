@@ -8,26 +8,24 @@ const state = {
     ],
     status: '',
     profile: {
-        aboutMe: 'я не cool guy 1001%',
+        aboutMe: '',
         contacts: {
-            facebook: 'facebook.com',
+            facebook: '',
             website: '',
-            vk: 'vk.com/vk',
-            twitter: 'https://twitter.com/@sdf',
-            instagram: 'instagram.com/sds',
-            youtube: 'null',
-            github: 'github.com',
-            mainLink: 'null',
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: '',
+            github: '',
+            mainLink: '',
         },
         lookingForAJob: true,
-        lookingForAJobDescription: 'не ищу, а cool',
-        fullName: 'Matvei Bohush',
+        lookingForAJobDescription: '',
+        fullName: '',
         userId: 2,
         photos: {
-            small:
-                'https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0',
-            large:
-                'https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0',
+            small: '',
+            large: '',
         },
     },
 }

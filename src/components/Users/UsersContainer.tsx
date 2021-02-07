@@ -21,18 +21,22 @@ import { UserType } from '../../Types'
 import { Preloader } from '../common/Preloader/Preloader'
 import { Users } from './Users'
 
-type PropsType = {
+type MSTPType = {
     currentPage: number
     pageSize: number
     isFetching: boolean
     totalUsersCount: number
     followingInProgress: number[]
     users: UserType[]
-
+}
+type MDTPType = {
     requestUsers: (currentPage: number, pageSize: number) => void
     follow: (userId: number) => void
     unfollow: (userId: number) => void
 }
+
+type PropsType = MSTPType & MDTPType
+
 class UsersClassContainer extends React.Component<PropsType> {
     componentDidMount = () => {
         const { currentPage, pageSize } = this.props
