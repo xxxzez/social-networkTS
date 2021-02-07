@@ -1,7 +1,12 @@
 import { stopSubmit } from 'redux-form'
 import { v1 } from 'uuid'
 import { profileAPI } from '../api/api'
-import { ActionsTypes, ProfilePageType, ProfileType } from '../Types'
+import {
+    ActionsTypes,
+    ProfilePageType,
+    ProfilePhotosType,
+    ProfileType,
+} from '../Types'
 
 export const addPostAC = (newPostBody: string) => {
     return {
@@ -24,13 +29,13 @@ export const setStatus = (status: string) => {
 export const setUserProfile = (profile: ProfileType) => {
     return {
         type: 'SET-USER-PROFILE',
-        profile: profile,
+        profile,
     } as const
 }
-export const savePhotoSuccess = (photos: any) => {
+export const savePhotoSuccess = (photos: ProfilePhotosType) => {
     return {
         type: 'SAVE-PHOTO-SUCCESS',
-        photos: photos,
+        photos,
     } as const
 }
 
@@ -53,7 +58,7 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
         alert('Cant update your status')
     }
 }
-export const savePhoto = (file: any) => async (dispatch: any) => {
+export const savePhoto = (file: any): any => async (dispatch: any) => {
     const response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))

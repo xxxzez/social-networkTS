@@ -14,14 +14,10 @@ import { compose } from 'redux'
 import { Preloader } from './components/common/Preloader/Preloader'
 import { withSuspense } from './hoc/withSuspense'
 import { AppStateType } from './redux/store'
-const ProfileContainer = React.lazy(() =>
-    import('./components/Profile/ProfileContainer')
-)
-const DialogsContainer = React.lazy(() =>
-    import('./components/Dialogs/DialogsContainer')
-)
+const ProfileContainer = React.lazy(() =>import('./components/Profile/ProfileContainer'))
+const DialogsContainer = React.lazy(() =>import('./components/Dialogs/DialogsContainer'))
 
-export class SimpleApp extends React.Component<any> {
+export class SimpleApp extends React.Component<PropsType> {
     catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
         console.error(promiseRejectionEvent)
     }
@@ -87,6 +83,14 @@ export class SimpleApp extends React.Component<any> {
         )
     }
 }
+
+type MSTPType = {
+    initialized: boolean
+}
+type MDTPType = {
+    initializeApp: () => void
+}
+type PropsType = MSTPType & MDTPType
 
 const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized,
