@@ -3,14 +3,10 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { reduxForm } from 'redux-form'
 import { login } from '../../redux/auth-reducer'
-import { RootStateType } from '../../Types'
+import { AppStateType } from '../../redux/store'
 import { required } from '../../utils/validators/validators'
 import { createField, Input } from '../common/FormsControls/FormsControls'
 import styles from '../common/FormsControls/FormsControls.module.css'
-
-type LoginFormOwnProps = {
-    captchaUrl: string | null
-}
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }: any) => {
     return (
@@ -43,12 +39,14 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }: any) => {
         </form>
     )
 }
-
+type LoginFormOwnProps = {
+    captchaUrl: string | null
+}
 const LoginReduxForm = reduxForm<{}, LoginFormOwnProps>({ form: 'login' })(
     LoginForm
 )
 
-const Login = (props: any) => {
+const Login: React.FC<PropsType> = (props) => {
     const onSubmit = (formData: any) => {
         props.login(
             formData.email,
@@ -67,8 +65,16 @@ const Login = (props: any) => {
         </div>
     )
 }
+type MSTPType = {
+    isAuth: boolean
+    captchaUrl: string | null
+}
+type MDTPType = {
+    login: any
+}
+type PropsType = MSTPType & MDTPType
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
     captchaUrl: state.auth.captchaUrl,
 })

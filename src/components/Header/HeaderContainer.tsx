@@ -9,7 +9,6 @@ type MSTPType = {
     login: string | null
     email: string | null
 }
-
 type MDTPType = {
     logout: any
 }
