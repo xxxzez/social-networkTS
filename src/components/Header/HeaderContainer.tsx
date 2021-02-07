@@ -1,24 +1,30 @@
 import React from 'react'
 import { Header } from './Header'
 import { logout } from '../../redux/auth-reducer'
-import { connect, ConnectedProps } from 'react-redux'
-import { RootStateType } from '../../Types'
+import { connect } from 'react-redux'
+import { AppStateType } from '../../redux/store'
 
+type MSTPType = {
+    isAuth: boolean
+    login: string | null
+    email: string | null
+}
+
+type MDTPType = {
+    logout: any
+}
+type PropsType = MSTPType & MDTPType
 class HeaderClassContainer extends React.Component<PropsType> {
     render() {
-        return (
-            <div>
-                <Header {...this.props} />
-            </div>
-        )
+        return <Header {...this.props} />
     }
 }
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login,
     email: state.auth.email,
 })
-export type PropsType = ConnectedProps<typeof connector>
-const connector = connect(mapStateToProps, { logout })
-export const HeaderContainer = connector(HeaderClassContainer)
+export const HeaderContainer = connect(mapStateToProps, { logout })(
+    HeaderClassContainer
+)

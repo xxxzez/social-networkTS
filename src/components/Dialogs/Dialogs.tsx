@@ -1,13 +1,20 @@
 import React from 'react'
 import { DialogItem } from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
-import { DialogsPropsFromRedux } from './DialogsContainer'
 import Message from './Message/Message'
 import { Field, reduxForm } from 'redux-form'
 import { maxLengthCreator, required } from '../../utils/validators/validators'
 import { Textarea } from '../common/FormsControls/FormsControls'
+import { DialogsPageType } from '../../Types'
 
-type PropsType = DialogsPropsFromRedux
+type MSTPType = {
+    dialogsPage: DialogsPageType
+}
+type MDTPType = {
+    addNewMessage: (newMessageBody: string) => void
+}
+
+type PropsType = MSTPType & MDTPType
 
 export const Dialogs: React.FC<PropsType> = React.memo((props) => {
     const dialogsElements = props.dialogsPage.dialogs.map((d) => (

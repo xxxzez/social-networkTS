@@ -91,7 +91,7 @@ type PropsType = {
     logout: () => void
 }
 
-export function Header(props: PropsType) {
+export const Header = (props: PropsType) => {
     const classes = useStyles()
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
     const [

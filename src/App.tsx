@@ -11,11 +11,15 @@ import { ConnectedLogin } from './components/Login/Login'
 import { initializeApp } from './redux/app-reducer'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { RootStateType } from './Types'
 import { Preloader } from './components/common/Preloader/Preloader'
 import { withSuspense } from './hoc/withSuspense'
-const ProfileContainer = React.lazy(() =>import('./components/Profile/ProfileContainer'))
-const DialogsContainer = React.lazy(() =>import('./components/Dialogs/DialogsContainer'))
+import { AppStateType } from './redux/store'
+const ProfileContainer = React.lazy(() =>
+    import('./components/Profile/ProfileContainer')
+)
+const DialogsContainer = React.lazy(() =>
+    import('./components/Dialogs/DialogsContainer')
+)
 
 export class SimpleApp extends React.Component<any> {
     catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
@@ -84,7 +88,7 @@ export class SimpleApp extends React.Component<any> {
     }
 }
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized,
 })
 

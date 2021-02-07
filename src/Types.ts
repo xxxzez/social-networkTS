@@ -77,7 +77,7 @@ export type AppReducerType = {
     initialized: boolean
 }
 
-export type RootStateType = {
+type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     usersPage: UsersPageType

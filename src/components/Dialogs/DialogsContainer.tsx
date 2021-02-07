@@ -1,13 +1,11 @@
-import { connect, ConnectedProps } from 'react-redux'
+import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import { addNewMessage } from '../../redux/dialogs-reducer'
-import { RootStateType } from '../../Types'
+import { AppStateType } from '../../redux/store'
 import { Dialogs } from './Dialogs'
 
-export type DialogsPropsFromRedux = ConnectedProps<typeof connector>
-
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: AppStateType) => ({
     dialogsPage: state.dialogsPage,
 })
 
@@ -17,9 +15,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     },
 })
 
-const connector = connect(mapStateToProps, mapDispatchToProps)
- const DialogsContainer = compose<React.ComponentType>(
-    connector,
+const DialogsContainer = compose<React.ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect
 )(Dialogs)
 export default DialogsContainer
