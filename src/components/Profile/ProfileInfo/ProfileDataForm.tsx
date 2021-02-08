@@ -7,7 +7,11 @@ import {
 } from '../../common/FormsControls/FormsControls'
 import s from './ProfileInfo.module.css'
 
-const ProfileDataForm = ({ handleSubmit, initialValues, error }: any) => {
+const ProfileDataForm: React.FC<any> = ({
+    handleSubmit,
+    initialValues,
+    error,
+}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>

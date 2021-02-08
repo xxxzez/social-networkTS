@@ -3,8 +3,6 @@ import { addPostAC, deletePost } from '../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 import { AppStateType } from '../../../redux/store'
 
-
-
 const mapStateToProps = (state: AppStateType) => ({
     posts: state.profilePage.posts,
 })

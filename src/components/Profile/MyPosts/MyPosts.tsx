@@ -36,7 +36,7 @@ const MyPosts: React.FC<PropsType> = React.memo((props) => {
         />
     ))
     return (
-        <div>
+        <div className={s.posts}>
             <h3>My posts</h3>
             <AddPostFormRedux onSubmit={onAddPost} />
             <div className={s.posts}>{postsElements}</div>
@@ -48,7 +48,7 @@ export default MyPosts
 
 const maxLength20 = maxLengthCreator(20)
 
-const AddPostForm = (props: any) => {
+const AddPostForm: React.FC<any> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <Field

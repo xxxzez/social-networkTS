@@ -13,12 +13,12 @@ type PropsType = {
     unfollow: (userId: number) => void
 }
 
-export const User = ({
+export const User: React.FC<PropsType> = ({
     user,
     followingInProgress,
     follow,
     unfollow,
-}: PropsType) => {
+}) => {
     return (
         <div className={styles.card} key={user.id}>
             <NavLink to={'/profile/' + user.id}>

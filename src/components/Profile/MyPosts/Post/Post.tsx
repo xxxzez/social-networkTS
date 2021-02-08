@@ -3,14 +3,14 @@ import s from './Post.module.css'
 import logo from '../../../../assets/canadaFlag.jpeg'
 import Button from '@material-ui/core/Button'
 
-type PostType = {
+type PropsType = {
     message: string
     likesCount: number
     id: string
     deletePost: (userId: string) => void
 }
 
-const Post: React.FC<PostType> = React.memo((props) => {
+const Post: React.FC<PropsType> = React.memo((props) => {
     const onDelete = () => {
         props.deletePost(props.id)
     }
@@ -19,7 +19,7 @@ const Post: React.FC<PostType> = React.memo((props) => {
             <img src={logo} alt="" />
             {props.message}
             <div>
-                <span>Like! </span>
+                <span>Like!</span>
                 {props.likesCount}
                 <Button variant="contained" color="primary" onClick={onDelete}>
                     Delete post

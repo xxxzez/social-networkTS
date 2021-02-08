@@ -13,16 +13,23 @@ type PropsType = {
     saveProfile: any
 }
 
-export const Profile: React.FC<PropsType> = (props) => {
+export const Profile: React.FC<PropsType> = ({
+    profile,
+    status,
+    updateStatus,
+    isOwner,
+    savePhoto,
+    saveProfile,
+}) => {
     return (
         <div className={s.profile}>
             <ProfileInfo
-                profile={props.profile}
-                status={props.status}
-                updateStatus={props.updateStatus}
-                isOwner={props.isOwner}
-                savePhoto={props.savePhoto}
-                saveProfile={props.saveProfile}
+                profile={profile}
+                status={status}
+                updateStatus={updateStatus}
+                isOwner={isOwner}
+                savePhoto={savePhoto}
+                saveProfile={saveProfile}
             />
             <MyPostsContainer />
         </div>

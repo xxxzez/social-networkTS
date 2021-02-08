@@ -5,10 +5,10 @@
     color: rgb(114, 114, 114);
 }
 .profilePicture img {
-    border-radius: 0px;
+    border-radius: 20px;
     width: 400px;
 }
 
 .contact {
-    padding-left: 15px;
+    padding-left: 25px;
 }

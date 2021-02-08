@@ -96,7 +96,7 @@ type ContactPropsType = {
     contactValue: any
 }
 
-const ProfileData = ({ profile, isOwner, goToEditMode }: any) => {
+const ProfileData: React.FC<any> = ({ profile, isOwner, goToEditMode }) => {
     return (
         <div>
             {isOwner && (
@@ -144,7 +144,10 @@ const ProfileData = ({ profile, isOwner, goToEditMode }: any) => {
     )
 }
 
-const Contact = ({ contactTitle, contactValue }: ContactPropsType) => {
+const Contact: React.FC<ContactPropsType> = ({
+    contactTitle,
+    contactValue,
+}) => {
     return (
         <div className={s.contact}>
             <b>{contactTitle}</b>: {contactValue}
