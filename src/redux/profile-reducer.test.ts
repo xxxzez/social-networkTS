@@ -1,5 +1,5 @@
 import { v1 } from 'uuid'
-import { profileReducer, addPostAC, deletePost } from './profile-reducer'
+import { profileReducer, addPost, deletePost } from './profile-reducer'
 
 const state = {
     posts: [
@@ -31,13 +31,13 @@ const state = {
 }
 
 it('length of posts should be incremented', () => {
-    let action = addPostAC('tommy hilfiger')
+    let action = addPost('tommy hilfiger')
     let newState = profileReducer(state, action)
     expect(newState.posts.length).toBe(3)
 })
 
 it('message of new post should be as in action', () => {
-    let action = addPostAC('tommy hilfiger')
+    let action = addPost('tommy hilfiger')
     let newState = profileReducer(state, action)
     expect(newState.posts[2].message).toBe('tommy hilfiger')
 })

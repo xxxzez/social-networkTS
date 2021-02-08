@@ -1,4 +1,5 @@
 import { stopSubmit } from 'redux-form'
+import { ThunkAction } from 'redux-thunk'
 import { v1 } from 'uuid'
 import { profileAPI } from '../api/api'
 import {
@@ -7,8 +8,9 @@ import {
     ProfilePhotosType,
     ProfileType,
 } from '../Types'
+import { AppStateType } from './store'
 
-export const addPostAC = (newPostBody: string) => {
+export const addPost = (newPostBody: string) => {
     return {
         type: 'ADD-POST',
         newPostBody,
@@ -39,16 +41,22 @@ export const savePhotoSuccess = (photos: ProfilePhotosType) => {
     } as const
 }
 
-export const getProfile = (userId: number) => async (dispatch: any) => {
+type ThunkType = ThunkAction<
+    Promise<void>,
+    AppStateType,
+    unknown,
+    ProfileReducerActionsTypes
+>
+export const getProfile = (userId: number): ThunkType => async (dispatch) => {
     const response = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(response.data))
 }
 
-export const getStatus = (userId: number) => async (dispatch: any) => {
+export const getStatus = (userId: number): ThunkType => async (dispatch) => {
     const response = await profileAPI.getStatus(userId)
     dispatch(setStatus(response.data))
 }
-export const updateStatus = (status: string) => async (dispatch: any) => {
+export const updateStatus = (status: string): ThunkType => async (dispatch) => {
     try {
         const response = await profileAPI.updateStatus(status)
         if (response.data.resultCode === 0) {
@@ -58,13 +66,13 @@ export const updateStatus = (status: string) => async (dispatch: any) => {
         alert('Cant update your status')
     }
 }
-export const savePhoto = (file: any): any => async (dispatch: any) => {
+export const savePhoto = (file: any): ThunkType => async (dispatch) => {
     const response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
     }
 }
-export const saveProfile = (profile: any): any => async (
+export const saveProfile = (profile: any) => async (
     dispatch: any,
     getState: any
 ) => {

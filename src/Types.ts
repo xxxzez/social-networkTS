@@ -10,7 +10,7 @@ import {
 } from './redux/users-reducer'
 import { addNewMessage } from './redux/dialogs-reducer'
 import {
-    addPostAC,
+    addPost,
     deletePost,
     savePhotoSuccess,
     setStatus,
@@ -123,7 +123,7 @@ export type UsersReducersActionsTypes =
     | ReturnType<typeof toggleFollowingProgress>
 
 export type ProfileReducerActionsTypes =
-    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof addPost>
     | ReturnType<typeof deletePost>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof savePhotoSuccess>
