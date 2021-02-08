@@ -23,7 +23,6 @@ export const Dialogs: React.FC<PropsType> = React.memo((props) => {
     const messagesElements = props.dialogsPage.messages.map((m) => (
         <Message key={m.id} message={m.message} id={m.id} />
     ))
-
     const addMessage = (values: any) => {
         props.addNewMessage(values.newMessageBody)
     }

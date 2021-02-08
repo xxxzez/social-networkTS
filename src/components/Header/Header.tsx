@@ -207,7 +207,6 @@ export const Header: React.FC<PropsType> = (props) => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
-
                     <div className={style.login}>
                         {props.isAuth ? (
                             <span>

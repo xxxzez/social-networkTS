@@ -48,7 +48,7 @@ const NavbarItem: React.FC<NavbarItemType> = React.memo((props) => {
     )
 })
 
-export const Navbar = React.memo(() => {
+export const Navbar: React.FC = React.memo(() => {
     return (
         <Grid item xs={2}>
             <List>

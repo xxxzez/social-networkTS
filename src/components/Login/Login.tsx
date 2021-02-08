@@ -8,7 +8,7 @@ import { required } from '../../utils/validators/validators'
 import { createField, Input } from '../common/FormsControls/FormsControls'
 import styles from '../common/FormsControls/FormsControls.module.css'
 
-const LoginForm = ({ handleSubmit, error, captchaUrl }: any) => {
+const LoginForm: React.FC<any> = ({ handleSubmit, error, captchaUrl }) => {
     return (
         <form onSubmit={handleSubmit}>
             {createField('Email', 'email', [required], Input)}

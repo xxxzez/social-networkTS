@@ -2,7 +2,11 @@ import React from 'react'
 import { Field } from 'redux-form'
 import styles from './FormsControls.module.css'
 
-const FormControl = ({ input, meta: { touched, error }, children }: any) => {
+const FormControl: React.FC<any> = ({
+    input,
+    meta: { touched, error },
+    children,
+}) => {
     const hasError = touched && error
     return (
         <div
@@ -16,7 +20,7 @@ const FormControl = ({ input, meta: { touched, error }, children }: any) => {
     )
 }
 
-export const Textarea = (props: any) => {
+export const Textarea: React.FC<any> = (props) => {
     const { input, meta, child, ...restProps } = props
     return (
         <FormControl {...props}>
@@ -24,7 +28,7 @@ export const Textarea = (props: any) => {
         </FormControl>
     )
 }
-export const Input = (props: any) => {
+export const Input: React.FC<any> = (props) => {
     const { input, meta, child, ...restProps } = props
     return (
         <FormControl {...props}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Preloader.module.css'
 
-export const Preloader = () => {
+export const Preloader: React.FC = () => {
     return (
         <div className={style.showbox}>
             <div className={style.loader}>
