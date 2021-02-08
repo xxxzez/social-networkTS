@@ -2,7 +2,7 @@ import { stopSubmit } from 'redux-form'
 import { v1 } from 'uuid'
 import { profileAPI } from '../api/api'
 import {
-    ActionsTypes,
+    ProfileReducerActionsTypes,
     ProfilePageType,
     ProfilePhotosType,
     ProfileType,
@@ -108,7 +108,7 @@ const initialState = {
 
 export const profileReducer = (
     state: ProfilePageType = initialState,
-    action: ActionsTypes
+    action: ProfileReducerActionsTypes
 ): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST':

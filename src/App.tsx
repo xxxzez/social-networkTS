@@ -46,36 +46,14 @@ export class SimpleApp extends React.Component<PropsType> {
                     <Navbar />
                     <Grid item xs={10}>
                         <Switch>
-                            <Route
-                                exact
-                                path={'/'}
-                                render={() => <Redirect to="/profile" />}
-                            />
-                            <Route
-                                path={'/profile/:userId?'}
-                                render={withSuspense(ProfileContainer)}
-                            />
-                            <Route
-                                path={'/messages'}
-                                render={withSuspense(DialogsContainer)}
-                            />
-                            <Route
-                                path={'/users'}
-                                render={() => <UsersContainer />}
-                            />
+                            <Route exact path={'/'} render={() => <Redirect to="/profile" />} />
+                            <Route path={'/profile/:userId?'} render={withSuspense(ProfileContainer)} />
+                            <Route path={'/messages'} render={withSuspense(DialogsContainer)} />
+                            <Route path={'/users'} render={() => <UsersContainer />} />
                             <Route path={'/news'} render={() => <News />} />
-                            <Route
-                                path={'/settings'}
-                                render={() => <Settings />}
-                            />
-                            <Route
-                                path={'/login'}
-                                render={() => <ConnectedLogin />}
-                            />
-                            <Route
-                                path={'*'}
-                                render={() => <div>404 NOT FOUND</div>}
-                            />
+                            <Route path={'/settings'} render={() => <Settings />} />
+                            <Route path={'/login'} render={() => <ConnectedLogin />} />
+                            <Route path={'*'} render={() => <h2>404 NOT FOUND</h2>} />
                         </Switch>
                     </Grid>
                 </Grid>

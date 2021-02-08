@@ -1,3 +1,4 @@
+import { AppStateType } from './redux/store'
 import {
     followSuccess,
     setCurrentPage,
@@ -17,6 +18,7 @@ import {
 } from './redux/profile-reducer'
 import { getCaptchaUrlSuccess, setAuthUserData } from './redux/auth-reducer'
 import { initializedSuccess } from './redux/app-reducer'
+import { Dispatch } from 'redux'
 
 export type PostType = {
     id: string
@@ -77,14 +79,6 @@ export type AppReducerType = {
     initialized: boolean
 }
 
-type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    usersPage: UsersPageType
-    auth: AuthType
-    app: AppReducerType
-}
-
 export type LocationType = {
     city: string
     country: string
@@ -110,10 +104,15 @@ export type UsersPageType = {
     isFetching: boolean
     followingInProgress: number[]
 }
-export type ActionsTypes =
-    | ReturnType<typeof addPostAC>
-    | ReturnType<typeof deletePost>
-    | ReturnType<typeof addNewMessage>
+
+export type GetStateType = () => AppStateType
+export type UsersDispatchType = Dispatch<UsersReducersActionsTypes>
+export type ProfileDispatchType = Dispatch<ProfileReducerActionsTypes>
+export type AuthDispatchType = Dispatch<AuthReducerActionsTypes>
+export type AppDispatchType = Dispatch<AppReducerActionsTypes>
+export type DialogsDispatchType = Dispatch<DialogsReducerActionsTypes>
+
+export type UsersReducersActionsTypes =
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof unfollowSuccess>
     | ReturnType<typeof setUsers>
@@ -121,9 +120,18 @@ export type ActionsTypes =
     | ReturnType<typeof setTotalUsersCount>
     | ReturnType<typeof toggleIsFetching>
     | ReturnType<typeof setUserProfile>
-    | ReturnType<typeof setAuthUserData>
     | ReturnType<typeof toggleFollowingProgress>
+
+export type ProfileReducerActionsTypes =
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof deletePost>
     | ReturnType<typeof setStatus>
-    | ReturnType<typeof initializedSuccess>
     | ReturnType<typeof savePhotoSuccess>
+    | ReturnType<typeof setUserProfile>
+
+export type AuthReducerActionsTypes =
     | ReturnType<typeof getCaptchaUrlSuccess>
+    | ReturnType<typeof setAuthUserData>
+
+export type AppReducerActionsTypes = ReturnType<typeof initializedSuccess>
+export type DialogsReducerActionsTypes = ReturnType<typeof addNewMessage>

@@ -1,4 +1,4 @@
-import { ActionsTypes, DialogsPageType } from '../Types'
+import { DialogsReducerActionsTypes, DialogsPageType } from '../Types'
 import { v1 } from 'uuid'
 
 export const addNewMessage = (newMessageBody: string) => {
@@ -27,7 +27,7 @@ const initialState: DialogsPageType = {
 
 export const dialogsReducer = (
     state: DialogsPageType = initialState,
-    action: ActionsTypes
+    action: DialogsReducerActionsTypes
 ): DialogsPageType => {
     switch (action.type) {
         case 'SEND-MESSAGE':

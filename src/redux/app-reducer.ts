@@ -1,5 +1,5 @@
 import { getAuthUserData } from './auth-reducer'
-import { ActionsTypes, AppReducerType } from '../Types'
+import { AppReducerActionsTypes, AppReducerType } from '../Types'
 
 const initialState = {
     initialized: false,
@@ -7,7 +7,7 @@ const initialState = {
 
 export const appReducer = (
     state: AppReducerType = initialState,
-    action: ActionsTypes
+    action: AppReducerActionsTypes
 ): AppReducerType => {
     switch (action.type) {
         case 'INITIALIZED-SUCCESS':

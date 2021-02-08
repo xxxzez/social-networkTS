@@ -1,5 +1,5 @@
 import { authAPI, securityAPI } from './../api/api'
-import { ActionsTypes, AuthType } from '../Types'
+import { AuthReducerActionsTypes, AuthType } from '../Types'
 import { stopSubmit } from 'redux-form'
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export const authReducer = (
     state: AuthType = initialState,
-    action: ActionsTypes
+    action: AuthReducerActionsTypes
 ): AuthType => {
     switch (action.type) {
         case 'SET-USER-DATA':
