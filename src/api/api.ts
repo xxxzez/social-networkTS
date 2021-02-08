@@ -1,3 +1,4 @@
+import { ProfileType } from './../Types'
 import axios from 'axios'
 
 const instance = axios.create({
@@ -24,9 +25,34 @@ export const usersAPI = {
     },
 }
 
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1,
+}
+export enum ResultCodeForCaptcha {
+    CaptchaIsRequired = 10,
+}
+
+type MeResponseType = {
+    resultCode: ResultCodesEnum
+    messages: string[]
+    data: {
+        id: number
+        email: string
+        login: string
+    }
+}
+type LoginResponseType = {
+    resultCode: ResultCodesEnum | ResultCodeForCaptcha
+    messages: string[]
+    data: {
+        userId: number
+    }
+}
+
 export const authAPI = {
     getUserData() {
-        return instance.get('auth/me')
+        return instance.get<MeResponseType>('auth/me').then((res) => res.data)
     },
     login(
         email: string,
@@ -34,12 +60,14 @@ export const authAPI = {
         rememberMe: boolean = false,
         captcha: string | null = null
     ) {
-        return instance.post('auth/login', {
-            email,
-            password,
-            rememberMe,
-            captcha,
-        })
+        return instance
+            .post<LoginResponseType>('auth/login', {
+                email,
+                password,
+                rememberMe,
+                captcha,
+            })
+            .then((res) => res.data)
     },
     logout() {
         return instance.delete('auth/login')
@@ -70,8 +98,7 @@ export const profileAPI = {
             },
         })
     },
-    saveProfile(data: any) {
+    saveProfile(data: ProfileType) {
         return instance.put('profile', data)
     },
 }
- 

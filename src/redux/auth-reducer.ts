@@ -1,4 +1,9 @@
-import { authAPI, securityAPI } from './../api/api'
+import {
+    authAPI,
+    ResultCodeForCaptcha,
+    ResultCodesEnum,
+    securityAPI,
+} from './../api/api'
 import { AuthReducerActionsTypes, AuthType } from '../Types'
 import { stopSubmit } from 'redux-form'
 import { AppStateType } from './store'
@@ -51,9 +56,9 @@ type ThunkType = ThunkAction<
     AuthReducerActionsTypes
 >
 export const getAuthUserData = (): ThunkType => async (dispatch) => {
-    const response = await authAPI.getUserData()
-    if (response.data.resultCode === 0) {
-        let { id, login, email } = response.data.data
+    const meData = await authAPI.getUserData()
+    if (meData.resultCode === ResultCodesEnum.Success) {
+        let { id, login, email } = meData.data
         dispatch(setAuthUserData(id, email, login, true))
     }
 }
@@ -64,17 +69,15 @@ export const login = (
     rememberMe: boolean,
     captcha: string | null
 ): any => async (dispatch: any) => {
-    const response = await authAPI.login(email, password, rememberMe, captcha)
-    if (response.data.resultCode === 0) {
+    const data = await authAPI.login(email, password, rememberMe, captcha)
+    if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
-        if (response.data.resultCode === 10) {
+        if (data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
         const message =
-            response.data.messages.length > 0
-                ? response.data.messages[0]
-                : 'Some error'
+            data.messages.length > 0 ? data.messages[0] : 'Some error'
         dispatch(
             stopSubmit('login', {
                 _error: message,
