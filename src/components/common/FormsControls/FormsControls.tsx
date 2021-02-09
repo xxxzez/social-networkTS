@@ -1,9 +1,17 @@
 import React from 'react'
 import { Field } from 'redux-form'
+import { FieldValidatorType } from '../../../utils/validators/validators'
 import styles from './FormsControls.module.css'
 
-const FormControl: React.FC<any> = ({
-    input,
+type FormControlPropsType = {
+    meta: {
+        touched: boolean
+        error: string
+    }
+    children: React.ReactNode
+}
+
+const FormControl: React.FC<FormControlPropsType> = ({
     meta: { touched, error },
     children,
 }) => {
@@ -38,10 +46,10 @@ export const Input: React.FC<any> = (props) => {
 }
 
 export const createField = (
-    placeholder: any,
+    placeholder: string | null,
     name: string,
-    validators: any[],
-    component: any,
+    validators: FieldValidatorType[],
+    component: string | React.Component | React.FC,
     props: any = {},
     text: string = ''
 ) => (
