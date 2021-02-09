@@ -1,14 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { actions } from '../../redux/users-reducer'
 import { AppStateType } from '../../redux/store'
-import {
-    follow,
-    setCurrentPage,
-    unfollow,
-    toggleFollowingProgress,
-    requestUsers,
-} from '../../redux/users-reducer'
+import { follow, unfollow, requestUsers } from '../../redux/users-reducer'
 import {
     getUsers,
     getPageSize,
@@ -79,8 +74,8 @@ export const UsersContainer = compose<React.ComponentType>(
     connect(mapStateToProps, {
         follow,
         unfollow,
-        setCurrentPage,
-        toggleFollowingProgress,
+        actions.setCurrentPage,
+        actions.toggleFollowingProgress,
         requestUsers,
     })
 )(UsersClassContainer)

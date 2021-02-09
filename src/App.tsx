@@ -17,7 +17,7 @@ import { AppStateType } from './redux/store'
 const ProfileContainer = React.lazy(() =>import('./components/Profile/ProfileContainer'))
 const DialogsContainer = React.lazy(() =>import('./components/Dialogs/DialogsContainer'))
 
-export class SimpleApp extends React.Component<PropsType> {
+export class MainApp extends React.Component<PropsType> {
     catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
         console.error(promiseRejectionEvent)
     }
@@ -77,4 +77,4 @@ const mapStateToProps = (state: AppStateType) => ({
 export const App = compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, { initializeApp })
-)(SimpleApp)
+)(MainApp)

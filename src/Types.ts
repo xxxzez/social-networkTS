@@ -1,13 +1,4 @@
 import { AppStateType } from './redux/store'
-import {
-    followSuccess,
-    setCurrentPage,
-    toggleIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    toggleFollowingProgress,
-    unfollowSuccess,
-} from './redux/users-reducer'
 import { addNewMessage } from './redux/dialogs-reducer'
 import {
     addPost,
