@@ -14,12 +14,23 @@ const LoginForm: React.FC<
 > = ({ handleSubmit, error, captchaUrl }) => {
     return (
         <form onSubmit={handleSubmit}>
-            {createField('Email', 'email', [required], Input)}
-            {createField('Password', 'password', [required], Input, {
-                type: 'password',
-            })}
-            {createField(
-                null,
+            {createField<LoginFormValuesTypeKeys>(
+                'Email',
+                'email',
+                [required],
+                Input
+            )}
+            {createField<LoginFormValuesTypeKeys>(
+                'Password',
+                'password',
+                [required],
+                Input,
+                {
+                    type: 'password',
+                }
+            )}
+            {createField<LoginFormValuesTypeKeys>(
+                undefined,
                 'rememberMe',
                 [],
                 Input,
@@ -28,7 +39,7 @@ const LoginForm: React.FC<
             )}
             {captchaUrl && <img src={captchaUrl} alt="" />}
             {captchaUrl &&
-                createField(
+                createField<LoginFormValuesTypeKeys>(
                     'Symbols from image',
                     'captcha',
                     [required],
@@ -52,6 +63,7 @@ type LoginFormValuesType = {
     password: string
     email: string
 }
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
 
 const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({
     form: 'login',
