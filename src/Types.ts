@@ -1,3 +1,4 @@
+import { actions } from './redux/users-reducer'
 import { AppStateType } from './redux/store'
 import { addNewMessage } from './redux/dialogs-reducer'
 import {
@@ -104,14 +105,14 @@ export type AppDispatchType = Dispatch<AppReducerActionsTypes>
 export type DialogsDispatchType = Dispatch<DialogsReducerActionsTypes>
 
 export type UsersReducersActionsTypes =
-    | ReturnType<typeof followSuccess>
-    | ReturnType<typeof unfollowSuccess>
-    | ReturnType<typeof setUsers>
-    | ReturnType<typeof setCurrentPage>
-    | ReturnType<typeof setTotalUsersCount>
-    | ReturnType<typeof toggleIsFetching>
+    | ReturnType<typeof actions.followSuccess>
+    | ReturnType<typeof actions.unfollowSuccess>
+    | ReturnType<typeof actions.setUsers>
+    | ReturnType<typeof actions.setCurrentPage>
+    | ReturnType<typeof actions.setTotalUsersCount>
+    | ReturnType<typeof actions.toggleIsFetching>
     | ReturnType<typeof setUserProfile>
-    | ReturnType<typeof toggleFollowingProgress>
+    | ReturnType<typeof actions.toggleFollowingProgress>
 
 export type ProfileReducerActionsTypes =
     | ReturnType<typeof addPost>

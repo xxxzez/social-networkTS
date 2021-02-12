@@ -70,6 +70,7 @@ const mapStateToProps = (state: AppStateType) => ({
     followingInProgress: getFollowingInProgress(state),
 })
 
+
 export const UsersContainer = compose<React.ComponentType>(
     connect(mapStateToProps, {
         follow,

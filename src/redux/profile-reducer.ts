@@ -1,7 +1,7 @@
 import { stopSubmit } from 'redux-form'
 import { ThunkAction } from 'redux-thunk'
 import { v1 } from 'uuid'
-import { profileAPI } from '../api/api'
+import { profileAPI } from '../api/profile-api'
 import {
     ProfileReducerActionsTypes,
     ProfilePageType,

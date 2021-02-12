@@ -1,9 +1,9 @@
 import { UsersDispatchType } from './../Types'
 import { AppStateType, InferActionsTypes } from './store'
 import { updateObjectInArray } from './../utils/object-helpers'
-import { usersAPI } from './../api/api'
 import { UsersReducersActionsTypes, UsersPageType, UserType } from '../Types'
 import { ThunkAction } from 'redux-thunk'
+import { usersAPI } from '../api/users-api'
 
 const initialState: UsersPageType = {
     users: [],
@@ -94,7 +94,7 @@ export const follow = (userId: number): ThunkType => {
             dispatch,
             userId,
             usersAPI.follow.bind(usersAPI),
-            followSuccess
+            actions.followSuccess
         )
     }
 }
@@ -104,7 +104,7 @@ export const unfollow = (userId: number): ThunkType => {
             dispatch,
             userId,
             usersAPI.unfollow.bind(usersAPI),
-            unfollowSuccess
+            actions.unfollowSuccess
         )
     }
 }

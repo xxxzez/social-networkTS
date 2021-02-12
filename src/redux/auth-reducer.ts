@@ -1,13 +1,10 @@
-import {
-    authAPI,
-    ResultCodeForCaptcha,
-    ResultCodesEnum,
-    securityAPI,
-} from './../api/api'
+import { ResultCodeForCaptcha, ResultCodesEnum } from './../api/api'
 import { AuthReducerActionsTypes, AuthType } from '../Types'
 import { stopSubmit } from 'redux-form'
 import { AppStateType } from './store'
 import { ThunkAction } from 'redux-thunk'
+import { authAPI } from '../api/auth-api'
+import { securityAPI } from '../api/security-api'
 
 const initialState = {
     id: null,
