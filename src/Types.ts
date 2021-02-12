@@ -23,7 +23,7 @@ export type MessageType = {
 }
 export type DialogType = {
     id: string
-    name: string
+    name: string | null
 }
 export type ProfilePageType = {
     posts: Array<PostType>
