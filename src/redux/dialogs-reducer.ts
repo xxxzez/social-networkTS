@@ -14,7 +14,6 @@ const initialState: DialogsPageType = {
         { id: v1(), name: 'Tommy' },
         { id: v1(), name: 'Vlad' },
         { id: v1(), name: 'Igor' },
-        { id: v1(), name: 'Andrew' },
     ],
     messages: [
         { id: v1(), message: 'Whats going on' },
