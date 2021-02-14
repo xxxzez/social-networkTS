@@ -1,6 +1,6 @@
 import { DialogType, MessageType } from './../Types'
 import { v1 } from 'uuid'
-import {  InferActionsTypes } from './store'
+import { InferActionsTypes } from './store'
 
 export const actions = {
     addNewMessage: (newMessageBody: string) =>

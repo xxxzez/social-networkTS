@@ -1,17 +1,16 @@
-import { UsersDispatchType } from './../Types'
-import { AppStateType, BaseThunkType, InferActionsTypes } from './store'
+import { Dispatch } from 'redux'
+import { BaseThunkType, InferActionsTypes } from './store'
 import { updateObjectInArray } from './../utils/object-helpers'
-import { UsersReducersActionsTypes, UsersPageType, UserType } from '../Types'
-import { ThunkAction } from 'redux-thunk'
+import { UserType } from '../Types'
 import { usersAPI } from '../api/users-api'
 
 const initialState = {
-    users: [],
+    users: [] as UserType[],
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: [],
+    followingInProgress: [] as number[],
 }
 
 export const actions = {
@@ -66,7 +65,7 @@ export const requestUsers = (page: number, pageSize: number): ThunkType => {
 }
 
 const _followUnfollowFlow = async (
-    dispatch: UsersDispatchType,
+    dispatch: Dispatch<ActionsTypes>,
     userId: number,
     apiMethod: any,
     actionCreator: (userId: number) => ActionsTypes
@@ -152,6 +151,7 @@ export const usersReducer = (
             return state
     }
 }
+
 type InitialStateType = typeof initialState
 type ActionsTypes = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsTypes>

@@ -20,4 +20,3 @@ const DialogsContainer = compose<React.ComponentType>(
     withAuthRedirect
 )(Dialogs)
 export default DialogsContainer
-  

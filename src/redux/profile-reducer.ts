@@ -65,7 +65,11 @@ export const saveProfile = (profile: ProfileType): ThunkType => async (
     const userId = getState().auth.id
     const data = await profileAPI.saveProfile(profile)
     if (data.resultCode === 0) {
-        dispatch(getProfile(userId))
+        if (userId !== null) {
+            dispatch(getProfile(userId))
+        } else {
+            throw new Error('userId cant be null')
+        }
     } else {
         dispatch(stopSubmit('edit-profile', { _error: data.messages[0] }))
         return Promise.reject(data.messages[0])
@@ -116,7 +120,10 @@ export const profileReducer = (
         case 'SAVE-PHOTO-SUCCESS':
             return {
                 ...state,
-                profile: { ...state.profile, photos: action.photos },
+                profile: {
+                    ...state.profile,
+                    photos: action.photos,
+                } as ProfileType,
             }
         default:
             return state

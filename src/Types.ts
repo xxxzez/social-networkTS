@@ -1,15 +1,3 @@
-import { actions } from './redux/users-reducer'
-import { AppStateType } from './redux/store'
-import {
-    addPost,
-    deletePost,
-    savePhotoSuccess,
-    setStatus,
-    setUserProfile,
-} from './redux/profile-reducer'
-import { getCaptchaUrlSuccess, setAuthUserData } from './redux/auth-reducer'
-import { Dispatch } from 'redux'
-
 export type PostType = {
     id: string
     message: string
@@ -94,31 +82,3 @@ export type UsersPageType = {
     isFetching: boolean
     followingInProgress: number[]
 }
-
-export type GetStateType = () => AppStateType
-export type UsersDispatchType = Dispatch<UsersReducersActionsTypes>
-export type ProfileDispatchType = Dispatch<ProfileReducerActionsTypes>
-export type AuthDispatchType = Dispatch<AuthReducerActionsTypes>
-export type AppDispatchType = Dispatch<AppReducerActionsTypes>
-export type DialogsDispatchType = Dispatch<DialogsReducerActionsTypes>
-
-export type UsersReducersActionsTypes =
-    | ReturnType<typeof actions.followSuccess>
-    | ReturnType<typeof actions.unfollowSuccess>
-    | ReturnType<typeof actions.setUsers>
-    | ReturnType<typeof actions.setCurrentPage>
-    | ReturnType<typeof actions.setTotalUsersCount>
-    | ReturnType<typeof actions.toggleIsFetching>
-    | ReturnType<typeof setUserProfile>
-    | ReturnType<typeof actions.toggleFollowingProgress>
-
-export type ProfileReducerActionsTypes =
-    | ReturnType<typeof addPost>
-    | ReturnType<typeof deletePost>
-    | ReturnType<typeof setStatus>
-    | ReturnType<typeof savePhotoSuccess>
-    | ReturnType<typeof setUserProfile>
-
-export type AuthReducerActionsTypes =
-    | ReturnType<typeof getCaptchaUrlSuccess>
-    | ReturnType<typeof setAuthUserData>
