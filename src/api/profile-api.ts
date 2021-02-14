@@ -35,6 +35,8 @@ export const profileAPI = {
             .then((res) => res.data)
     },
     saveProfile(data: ProfileType) {
-        return instance.put('profile', data).then((res) => res.data)
+        return instance
+            .put<APIResponseType>('profile', data)
+            .then((res) => res.data)
     },
-}
+} 
