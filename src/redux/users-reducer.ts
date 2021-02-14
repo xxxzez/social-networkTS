@@ -1,11 +1,11 @@
 import { UsersDispatchType } from './../Types'
-import { AppStateType, InferActionsTypes } from './store'
+import { AppStateType, BaseThunkType, InferActionsTypes } from './store'
 import { updateObjectInArray } from './../utils/object-helpers'
 import { UsersReducersActionsTypes, UsersPageType, UserType } from '../Types'
 import { ThunkAction } from 'redux-thunk'
 import { usersAPI } from '../api/users-api'
 
-const initialState: UsersPageType = {
+const initialState = {
     users: [],
     pageSize: 10,
     totalUsersCount: 0,
@@ -13,8 +13,6 @@ const initialState: UsersPageType = {
     isFetching: true,
     followingInProgress: [],
 }
-
-type ActionsTypes = InferActionsTypes<typeof actions>
 
 export const actions = {
     followSuccess: (userId: number) =>
@@ -55,13 +53,6 @@ export const actions = {
             userId,
         } as const),
 }
-
-type ThunkType = ThunkAction<
-    Promise<void>,
-    AppStateType,
-    unknown,
-    UsersReducersActionsTypes
->
 
 export const requestUsers = (page: number, pageSize: number): ThunkType => {
     return async (dispatch) => {
@@ -110,9 +101,9 @@ export const unfollow = (userId: number): ThunkType => {
 }
 
 export const usersReducer = (
-    state: UsersPageType = initialState,
+    state = initialState,
     action: ActionsTypes
-): UsersPageType => {
+): InitialStateType => {
     switch (action.type) {
         case 'FOLLOW':
             return {
@@ -161,3 +152,6 @@ export const usersReducer = (
             return state
     }
 }
+type InitialStateType = typeof initialState
+type ActionsTypes = InferActionsTypes<typeof actions>
+type ThunkType = BaseThunkType<ActionsTypes>

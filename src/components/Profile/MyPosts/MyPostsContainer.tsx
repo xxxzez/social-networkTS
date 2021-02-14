@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addPost, deletePost } from '../../../redux/profile-reducer'
+import { actions } from '../../../redux/profile-reducer'
 import MyPosts from './MyPosts'
 import { AppStateType } from '../../../redux/store'
 
@@ -10,10 +10,10 @@ const mapStateToProps = (state: AppStateType) => ({
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addPost: (newPostBody: string) => {
-            dispatch(addPost(newPostBody))
+            dispatch(actions.addPost(newPostBody))
         },
         deletePost: (userId: string) => {
-            dispatch(deletePost(userId))
+            dispatch(actions.deletePost(userId))
         },
     }
 }

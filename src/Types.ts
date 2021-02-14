@@ -1,6 +1,5 @@
 import { actions } from './redux/users-reducer'
 import { AppStateType } from './redux/store'
-import { addNewMessage } from './redux/dialogs-reducer'
 import {
     addPost,
     deletePost,
@@ -9,7 +8,6 @@ import {
     setUserProfile,
 } from './redux/profile-reducer'
 import { getCaptchaUrlSuccess, setAuthUserData } from './redux/auth-reducer'
-import { initializedSuccess } from './redux/app-reducer'
 import { Dispatch } from 'redux'
 
 export type PostType = {
@@ -124,6 +122,3 @@ export type ProfileReducerActionsTypes =
 export type AuthReducerActionsTypes =
     | ReturnType<typeof getCaptchaUrlSuccess>
     | ReturnType<typeof setAuthUserData>
-
-export type AppReducerActionsTypes = ReturnType<typeof initializedSuccess>
-export type DialogsReducerActionsTypes = ReturnType<typeof addNewMessage>
