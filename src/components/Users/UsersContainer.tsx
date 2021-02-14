@@ -70,13 +70,15 @@ const mapStateToProps = (state: AppStateType) => ({
     followingInProgress: getFollowingInProgress(state),
 })
 
+const setCurrentPage = actions.setCurrentPage
+const toggleFollowingProgress = actions.toggleFollowingProgress
 
 export const UsersContainer = compose<React.ComponentType>(
     connect(mapStateToProps, {
         follow,
         unfollow,
-        actions.setCurrentPage,
-        actions.toggleFollowingProgress,
+        setCurrentPage,
+        toggleFollowingProgress,
         requestUsers,
     })
 )(UsersClassContainer)

@@ -1,4 +1,4 @@
-import { ResultCodeForCaptcha, ResultCodesEnum } from './../api/api'
+import { ResultCodeForCaptchaEnum, ResultCodesEnum } from './../api/api'
 import { AuthReducerActionsTypes, AuthType } from '../Types'
 import { stopSubmit } from 'redux-form'
 import { AppStateType } from './store'
@@ -70,7 +70,7 @@ export const login = (
     if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
-        if (data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
+        if (data.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
         const message =

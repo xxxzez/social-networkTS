@@ -13,7 +13,7 @@ export enum ResultCodesEnum {
     Success = 0,
     Error = 1,
 }
-export enum ResultCodeForCaptcha {
+export enum ResultCodeForCaptchaEnum {
     CaptchaIsRequired = 10,
 }
 
@@ -21,4 +21,10 @@ export type GetItemsType = {
     items: UserType[]
     totalCount: number
     error: string | null
+}
+
+export type APIResponseType<D = {}, RC = ResultCodesEnum> = {
+    data: D
+    messages: string[]
+    resultCode: RC
 }
