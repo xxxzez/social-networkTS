@@ -12,7 +12,7 @@ export type DialogType = {
     name: string | null
 }
 export type ProfilePageType = {
-    posts: Array<PostType>
+    posts: PostType[]
     profile: ProfileType
     status: string
 }
@@ -42,8 +42,8 @@ export type ProfileContactsType = {
 }
 
 export type DialogsPageType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
+    dialogs: DialogType[]
+    messages: MessageType[]
 }
 
 export type AuthType = {
@@ -75,7 +75,7 @@ export type UserType = {
 }
 
 export type UsersPageType = {
-    users: Array<UserType>
+    users: UserType[]
     pageSize: number
     totalUsersCount: number
     currentPage: number
