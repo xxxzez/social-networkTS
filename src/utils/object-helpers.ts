@@ -1,3 +1,5 @@
+// for reducers
+
 export const updateObjectInArray = (
     items: any[],
     itemId: number,
