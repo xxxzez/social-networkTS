@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
                 <AppBar position="static" color="primary">
                     <Toolbar>
                         <Typography variant="h6">
-                            This project is made by Matvei Bohush
+                            This project is made by Tommy Lee
                         </Typography>
                     </Toolbar>
                 </AppBar>
