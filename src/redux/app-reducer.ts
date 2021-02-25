@@ -4,7 +4,9 @@ import { getAuthUserData } from './auth-reducer'
 const initialState = {
     initialized: false,
 }
+
 type InitialStateType = typeof initialState
+
 type ActionsType = InferActionsTypes<typeof actions>
 
 export const appReducer = (
