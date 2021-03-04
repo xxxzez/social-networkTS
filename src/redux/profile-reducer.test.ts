@@ -35,19 +35,16 @@ it('length of posts should be incremented', () => {
     let newState = profileReducer(state, action)
     expect(newState.posts.length).toBe(3)
 })
-
 it('message of new post should be as in action', () => {
     let action = addPost('tommy hilfiger')
     let newState = profileReducer(state, action)
     expect(newState.posts[2].message).toBe('tommy hilfiger')
 })
-
 it('after deleting length of messages should be decremented', () => {
     let action = deletePost(state.posts[0].id)
     let newState = profileReducer(state, action)
     expect(newState.posts.length).toBe(1)
 })
-
 it(`after deleting length shouldn't be decremented if ID is incorrect`, () => {
     let action = deletePost('123123')
     let newState = profileReducer(state, action)
