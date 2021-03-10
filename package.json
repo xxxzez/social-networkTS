@@ -2,7 +2,7 @@
   "name": "matvei-bohush-social-network",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://xxxzez.github.io/social-networkTS",
+  "homepage": ".",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
