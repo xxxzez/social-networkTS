@@ -9,14 +9,10 @@ const mapStateToProps = (state: AppStateType) => ({
     dialogsPage: state.dialogsPage,
 })
 
-const mapDispatchToProps = (dispatch: any) => ({
-    addNewMessage: (newMessageBody: string) => {
-        dispatch(actions.addNewMessage(newMessageBody))
-    },
-})
-
 const DialogsContainer = compose<React.ComponentType>(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps, {
+        addNewMessage: actions.addNewMessage,
+    }),
     withAuthRedirect
 )(Dialogs)
 export default DialogsContainer
